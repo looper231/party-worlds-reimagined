@@ -60,14 +60,12 @@ Mario Forever: Party Worlds Reimagined is a remake of Mario Forever: Party World
   Graphics credits
 </h3> 
 
-------------
-
 <div align=center>
   
-Sonikku, Askywalker, Yingchin soul, Supersledgebro,<br/>
-Walmaker2022, Gamma v, Sednaiur, Crafink,<br/>
-Shikaternia, Evan.f, Hellfire, Electro_kun,<br/>
-Supermany, SerafimGWS, Random.nick, Pixelator,<br/>
+Sonikku, Askywalker, Yingchun Soul, SuperSledgeBro,<br/>
+Walmaker2022, Gamma V, Sednaiur, Crafink,<br/>
+Shikaternia, Evan.F, Hellfire, Electro_Kun,<br/>
+SuperMany, SerafimGWS, Random.Nick, Pixelator,<br/>
 Eevee, Smuglutena, Nitrox, Nicelife
 
 Mario assets: Nintendo<br/>
