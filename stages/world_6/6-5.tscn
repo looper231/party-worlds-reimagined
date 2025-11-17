@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://sgxx61mf6x1r"]
+[gd_scene load_steps=63 format=4 uid="uid://sgxx61mf6x1r"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_mxguh"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_xxq6x"]
@@ -51,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0roi324girr" path="res://FX/lava-particles/lava-particles.tscn" id="52_0c5fi"]
 [ext_resource type="PackedScene" uid="uid://dfm7d4qtja67b" path="res://engine/objects/core/finish_line/finish_line.tscn" id="53_0c5fi"]
 [ext_resource type="PackedScene" uid="uid://b0o2s50kjcw6" path="res://engine/objects/enemies/piranha_plants/piranha_gray.tscn" id="54_1spmc"]
+[ext_resource type="Texture2D" uid="uid://cube175uuy8i6" path="res://engine/objects/core/finish_line/textures/finishline.png" id="54_mnw6h"]
 [ext_resource type="PackedScene" uid="uid://uhf6frao7p1m" path="res://engine/objects/enemies/podoboo/podoboo.tscn" id="55_mnw6h"]
 [ext_resource type="PackedScene" uid="uid://bn3sploqs0eg6" path="res://engine/objects/enemies/podoboo/podoboo_fair_volcano_launcher.tscn" id="56_rf356"]
 
@@ -546,7 +547,6 @@ metadata/_edit_lock_ = true
 
 [node name="MusicOverlay" parent="." instance=ExtResource("8_xld6h")]
 display_text = "drakonpod - phantom"
-text = Array[String](["drakonpod - phantom"])
 
 [node name="FG Fog" parent="." instance=ExtResource("9_2usti")]
 
@@ -756,10 +756,10 @@ position = Vector2(3968, 32)
 position = Vector2(11152, 368)
 
 [node name="RotoRed" parent="Objects/RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(156, -37)
+position = Vector2(159, 13)
 preview = true
 amplitude = Vector2(160, 160)
-phase = -10.333
+phase = 7.667
 frequency = 180.0
 
 [node name="Bonuses" type="Node2D" parent="."]
@@ -798,16 +798,16 @@ preview = true
 visible = false
 
 [node name="RotoRed" parent="Paths/Path2D/PlatformPath/RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(99, 20)
+position = Vector2(98, 32)
 preview = true
 amplitude = Vector2(100, 150)
-phase = 8.33463
+phase = 13.3346
 
 [node name="RotoRed2" parent="Paths/Path2D/PlatformPath/RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(-99, -20)
+position = Vector2(-98, -32)
 preview = true
 amplitude = Vector2(100, 150)
-phase = -171.667
+phase = -166.667
 
 [node name="PlatformPath2" parent="Paths/Path2D" instance=ExtResource("41_gt5ih")]
 position = Vector2(5023.98, 126.511)
@@ -823,17 +823,17 @@ preview = true
 visible = false
 
 [node name="RotoRed" parent="Paths/Path2D/PlatformPath2/RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(99, -20)
+position = Vector2(98, -32)
 preview = true
 amplitude = Vector2(100, 150)
-phase = -8.33333
+phase = -13.3333
 frequency = -50.0
 
 [node name="RotoRed2" parent="Paths/Path2D/PlatformPath2/RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(-99, 20)
+position = Vector2(-98, 32)
 preview = true
 amplitude = Vector2(100, 150)
-phase = 171.667
+phase = 166.667
 frequency = -50.0
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
@@ -911,14 +911,14 @@ position = Vector2(8016, 432)
 preview = true
 
 [node name="RotoRed" parent="RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(93, 118)
+position = Vector2(82, 125)
 preview = true
-phase = 52.5006
+phase = 57.5006
 
 [node name="RotoRed2" parent="RotoCenter" instance=ExtResource("46_5nixr")]
-position = Vector2(-93, -118)
+position = Vector2(-82, -125)
 preview = true
-phase = -127.5
+phase = -122.5
 
 [node name="Lava Particles" parent="." instance=ExtResource("52_0c5fi")]
 
@@ -1190,6 +1190,20 @@ position = Vector2(12400, 432)
 
 [node name="LavaBubbles8" parent="." instance=ExtResource("51_t65ug")]
 position = Vector2(9432, 432)
+
+[node name="Finishline" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(13072, 420)
+texture = ExtResource("54_mnw6h")
+region_enabled = true
+region_rect = Rect2(224, 264, 31, 24)
+
+[node name="Finishline2" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(13264, 420)
+texture = ExtResource("54_mnw6h")
+region_enabled = true
+region_rect = Rect2(160, 264, 95, 24)
 
 [editable path="Paths/Path2D/PlatformPath/RotoCenter"]
 [editable path="Paths/Path2D/PlatformPath2/RotoCenter"]

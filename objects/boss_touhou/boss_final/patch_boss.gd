@@ -41,9 +41,9 @@ func SPECIAL_do_w1_cutscene() -> void:
 	await get_tree().create_timer(3.5, false, false).timeout
 	move_boss(w14_move_to_position - Vector2(640.0, -90.0), 1.5, Tween.TRANS_CIRC, Tween.EASE_IN)
 
-func SPECIAL_do_w3_cutscene(set_position: Vector2) -> void:
+func SPECIAL_do_w3_cutscene(set_position_new: Vector2) -> void:
 	if !is_used_in_cutscene: return
-	move_boss(set_position, 2.0)
+	move_boss(set_position_new, 2.0)
 	await get_tree().create_timer(3.5, false, false).timeout
 	start_attack_anim()
 	Audio.play_sound(short_charge_up, self)
