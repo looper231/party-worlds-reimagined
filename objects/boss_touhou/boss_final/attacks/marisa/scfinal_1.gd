@@ -88,14 +88,14 @@ func _physics_process(delta: float) -> void:
 			var used_speed = noise_speed
 			if k % 2 == 0: used_speed *= 0.75
 			var used_inside_count: int = noise_count_inside
-			var noise_angle_diff_inside: float = (noise_targeted_cone / 2) / ceil(used_inside_count / 2)
+			var noise_angle_diff_inside: float = (noise_targeted_cone / 2.0) / ceil(used_inside_count / 2)
 			for i in noise_count_outside + 1:
 				var offset_angle: float = deg_to_rad((noise_angle_diff_outside * i) + (noise_targeted_cone / 2))
 				var shoot_angle: float = boss.global_position.angle_to_point(homing_pos) + offset_angle
 				shoot_star_bullet(noise_type, used_speed, shoot_angle, noise_color, shift_rotate)
 			if used_inside_count > 0:
 				for j in used_inside_count:
-					var start_angle: float = -(noise_angle_diff_inside * ceil(used_inside_count / 2))
+					var start_angle: float = -(noise_angle_diff_inside * ceil(used_inside_count / 2.0))
 					var shoot_angle: float = boss.global_position.angle_to_point(homing_pos) + deg_to_rad(start_angle + noise_angle_diff_inside * j)
 					shoot_star_bullet(noise_type, used_speed, shoot_angle, noise_color, shift_rotate)
 
