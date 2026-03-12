@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dw0qf02g4q0gt"]
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_4f2xw"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_nl0wt"]
-[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/localization/special_fonts/misterearlbt_variation.tres" id="2_ugf3j"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_nl0wt"]
+[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/fonts/special_fonts/misterearlbt_variation.tres" id="2_ugf3j"]
 [ext_resource type="Texture2D" uid="uid://dey5eaopp8b8o" path="res://stages/main/credits/textures/looper_pfp.png" id="3_ugf3j"]
 
 [node name="SectionDev1Part2" instance=ExtResource("1_4f2xw")]

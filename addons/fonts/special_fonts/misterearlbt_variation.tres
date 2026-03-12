@@ -1,6 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://u83p423iwekg"]
 
-[ext_resource type="FontFile" uid="uid://b2bmyy3777jaj" path="res://addons/localization/special_fonts/MisterEarlBT_Telexified.otf" id="1_wy07a"]
+[ext_resource type="FontFile" uid="uid://b2bmyy3777jaj" path="res://addons/fonts/special_fonts/MisterEarlBT_Telexified.otf" id="1_wy07a"]
 
 [resource]
 base_font = ExtResource("1_wy07a")

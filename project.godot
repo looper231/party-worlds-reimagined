@@ -86,7 +86,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 [file_customization]
 
 folder_colors={
-"res://addons/localization/special_fonts/": "blue",
+"res://addons/fonts/special_fonts/": "blue",
 "res://engine/": "red",
 "res://gfx/": "purple",
 "res://modules/": "green",

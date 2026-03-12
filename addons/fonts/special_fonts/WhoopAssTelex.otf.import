@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dam7p4rtnpfd7"
-path="res://.godot/imported/ComixHeavy_Telexified+Cyr.otf-1962ca6552e161a2c4796a35778f0e3e.fontdata"
+uid="uid://cl6pg5xvm17g4"
+path="res://.godot/imported/WhoopAssTelex.otf-4c82e6e13233ca2f9d32ad0f0c3d70ef.fontdata"
 
 [deps]
 
-source_file="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf"
-dest_files=["res://.godot/imported/ComixHeavy_Telexified+Cyr.otf-1962ca6552e161a2c4796a35778f0e3e.fontdata"]
+source_file="res://addons/fonts/special_fonts/WhoopAssTelex.otf"
+dest_files=["res://.godot/imported/WhoopAssTelex.otf-4c82e6e13233ca2f9d32ad0f0c3d70ef.fontdata"]
 
 [params]
 

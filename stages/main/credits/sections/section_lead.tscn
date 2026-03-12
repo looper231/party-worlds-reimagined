@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_w704k"]
 [ext_resource type="Texture2D" uid="uid://dey5eaopp8b8o" path="res://stages/main/credits/textures/looper_pfp.png" id="2_w704k"]
 [ext_resource type="Texture2D" uid="uid://dq2seep4cevs7" path="res://stages/main/credits/textures/Meteo_Dream.png" id="3_jfcd1"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="4_y17lv"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="4_y17lv"]
 
 [node name="SectionLead" instance=ExtResource("1_w704k")]
 life_time_sec = 4.0

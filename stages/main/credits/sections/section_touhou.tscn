@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5ulnyl1dldq6"]
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_3bh5p"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_1o1je"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_1o1je"]
 [ext_resource type="Script" uid="uid://dh7kkuf6ptyar" path="res://stages/main/credits/sections/sakuya.gd" id="3_aquye"]
 [ext_resource type="Texture2D" uid="uid://cy6lrnpvlbrio" path="res://objects/boss_touhou/boss_final/textures/patch_boss.png" id="3_jo4h7"]
 [ext_resource type="Texture2D" uid="uid://t6ga65kmc1at" path="res://objects/boss_touhou/boss_final/textures/remi_boss.png" id="4_3bh5p"]

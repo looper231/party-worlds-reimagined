@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b2bmyy3777jaj"
-path="res://.godot/imported/MisterEarlBT_Telexified.otf-7c3a2554be9118b67b98faf52979abef.fontdata"
+path="res://.godot/imported/MisterEarlBT_Telexified.otf-ec0316b0728f4ae2ae297c87ee6816a2.fontdata"
 
 [deps]
 
-source_file="res://addons/localization/special_fonts/MisterEarlBT_Telexified.otf"
-dest_files=["res://.godot/imported/MisterEarlBT_Telexified.otf-7c3a2554be9118b67b98faf52979abef.fontdata"]
+source_file="res://addons/fonts/special_fonts/MisterEarlBT_Telexified.otf"
+dest_files=["res://.godot/imported/MisterEarlBT_Telexified.otf-ec0316b0728f4ae2ae297c87ee6816a2.fontdata"]
 
 [params]
 

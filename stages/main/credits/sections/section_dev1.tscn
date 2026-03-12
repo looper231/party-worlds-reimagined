@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8vf0eiobdkfu"]
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_53upt"]
-[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/localization/special_fonts/misterearlbt_variation.tres" id="2_53upt"]
+[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/fonts/special_fonts/misterearlbt_variation.tres" id="2_53upt"]
 [ext_resource type="Texture2D" uid="uid://dey5eaopp8b8o" path="res://stages/main/credits/textures/looper_pfp.png" id="3_7cj6e"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_71v0h"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_71v0h"]
 
 [node name="SectionDev1" instance=ExtResource("1_53upt")]
 life_time_sec = 35.0

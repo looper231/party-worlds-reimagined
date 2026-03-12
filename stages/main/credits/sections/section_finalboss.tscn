@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c23bje80wt1an"]
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_nnhi2"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_tbt42"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_tbt42"]
 [ext_resource type="Texture2D" uid="uid://ch27r4qbdmfuy" path="res://stages/main/credits/textures/levelpng5.png" id="3_l42np"]
-[ext_resource type="FontFile" uid="uid://cl6pg5xvm17g4" path="res://addons/localization/special_fonts/WhoopAssTelex.otf" id="4_tbt42"]
+[ext_resource type="FontFile" uid="uid://cl6pg5xvm17g4" path="res://addons/fonts/special_fonts/WhoopAssTelex.otf" id="4_tbt42"]
 
 [node name="SectionFinalBoss" instance=ExtResource("1_nnhi2")]
 life_time_sec = 3.6

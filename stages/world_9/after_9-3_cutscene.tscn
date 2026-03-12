@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="4_k3hjt"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="5_iown8"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="6_mj0c1"]
-[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/localization/special_fonts/misterearlbt_variation.tres" id="7_7p7cd"]
+[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/fonts/special_fonts/misterearlbt_variation.tres" id="7_7p7cd"]
 [ext_resource type="Script" uid="uid://c0xlh6o06spwa" path="res://engine/objects/signs/sign_help_key_formatter.gd" id="8_owjtm"]
 [ext_resource type="PackedScene" uid="uid://drhbi6o26ua1b" path="res://stages/world_9/Additives/cutscene/remi_sprite.tscn" id="9_owjtm"]
 [ext_resource type="Texture2D" uid="uid://dp2tf6qot5iya" path="res://gfx/world9/cutscene/chair.png" id="10_40pmo"]

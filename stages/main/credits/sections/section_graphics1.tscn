@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_oft7m"]
 [ext_resource type="Texture2D" uid="uid://da5ekn2vpquj6" path="res://stages/main/credits/textures/levelpng2.png" id="2_oft7m"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_7b867"]
-[ext_resource type="FontFile" uid="uid://cl6pg5xvm17g4" path="res://addons/localization/special_fonts/WhoopAssTelex.otf" id="4_jgeat"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="3_7b867"]
+[ext_resource type="FontFile" uid="uid://cl6pg5xvm17g4" path="res://addons/fonts/special_fonts/WhoopAssTelex.otf" id="4_jgeat"]
 
 [node name="Section3" instance=ExtResource("1_oft7m")]
 life_time_sec = 6.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bukykb3uknqv"]
 
 [ext_resource type="PackedScene" uid="uid://p23jgidr27o5" path="res://stages/main/credits/sections/template/credits_section.tscn" id="1_d8k4o"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_yjy4w"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_yjy4w"]
 
 [node name="SectionSpecialThanks" instance=ExtResource("1_d8k4o")]
 life_time_sec = 6.0

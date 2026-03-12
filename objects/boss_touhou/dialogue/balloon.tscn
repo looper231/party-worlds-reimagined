@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bnshlaqjs8anv" path="res://objects/boss_touhou/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="AudioStream" uid="uid://omormt6rns3v" path="res://objects/boss_touhou/dialogue/se_plst00.wav" id="2_4sdlf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/localization/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_fdhoq"]
+[ext_resource type="FontFile" uid="uid://dam7p4rtnpfd7" path="res://addons/fonts/special_fonts/ComixHeavy_Telexified+Cyr.otf" id="2_fdhoq"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/localization/special_fonts/misterearlbt_variation.tres" id="4_4sdlf"]
+[ext_resource type="FontVariation" uid="uid://u83p423iwekg" path="res://addons/fonts/special_fonts/misterearlbt_variation.tres" id="4_4sdlf"]
 [ext_resource type="Script" uid="uid://c0xlh6o06spwa" path="res://engine/objects/signs/sign_help_key_formatter.gd" id="7_clxbd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
