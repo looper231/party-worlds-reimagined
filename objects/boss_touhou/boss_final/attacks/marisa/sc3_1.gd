@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 			if _boss_attack_interrupt(): return
 			start_shooting_noise = true
 		delete_warning_line()
-		do_screen_shake(0.2, 27)
+		do_screen_shake(0.2, 17)
 		if master_spark_interval.time_left <= 0.0:
 			master_spark_interval.start(spark_shoot_interval)
 			var shoot_angle: float = boss.global_position.angle_to_point(master_spark_target)
