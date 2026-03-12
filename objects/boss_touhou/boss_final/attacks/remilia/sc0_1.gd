@@ -33,7 +33,6 @@ func restart_pattern() -> void:
 	tw.parallel().tween_property(self, "sc0_actual_speed", sc0_knife_speed, 10.0)
 	if !sc7_no_wandering:
 		move_boss_wander(Wander_Type.MOVE_X_TOWARDS_PLAYER, boss.boss_handler.global_position, Vector2(200, -140), Vector2(-200, 30), randf_range(0.0, 100.0), 0.1)
-		boss_nice_aura()
 	begin_attack = true
 	sc0_shoot_knife = true
 

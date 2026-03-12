@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cug6168hp7h0b" path="res://objects/boss_touhou/common/sounds/se_lazer01.wav" id="2_wbxyw"]
 [ext_resource type="AudioStream" uid="uid://builuvm72bfiq" path="res://objects/boss_touhou/common/sounds/se_nep00.wav" id="3_poiu4"]
 [ext_resource type="AudioStream" uid="uid://cxhnaayxaeksh" path="res://objects/boss_touhou/common/sounds/se_option.wav" id="4_0bc4a"]
-[ext_resource type="AudioStream" uid="uid://bsntchcp45yop" path="res://objects/boss_touhou/common/se_boon01.wav" id="4_kyycy"]
+[ext_resource type="AudioStream" uid="uid://dmcf4msglojpp" path="res://objects/boss_touhou/common/sounds/se_boon01.wav" id="4_g0ws4"]
 [ext_resource type="AudioStream" uid="uid://4odebge034r8" path="res://stages/world_3/objects/chorniy_mario/appear.ogg" id="5_0bc4a"]
 [ext_resource type="AudioStream" uid="uid://daxnhpwsdkij1" path="res://objects/boss_touhou/common/sounds/se_kira00.wav" id="5_n88ma"]
 [ext_resource type="AudioStream" uid="uid://d0yopvi5bqs4" path="res://stages/world_3/objects/chorniy_mario/bomb_expl.ogg" id="6_n88ma"]
@@ -83,7 +83,7 @@ size = Vector2(47, 66)
 script = ExtResource("1_taoym")
 bullet_laser_small = ExtResource("2_wbxyw")
 bullet_master_spark = ExtResource("3_poiu4")
-prepare_master_spark = ExtResource("4_kyycy")
+prepare_master_spark = ExtResource("4_g0ws4")
 summon_minion = ExtResource("4_0bc4a")
 kevin_appear = ExtResource("5_0bc4a")
 kevin_explode = ExtResource("6_n88ma")

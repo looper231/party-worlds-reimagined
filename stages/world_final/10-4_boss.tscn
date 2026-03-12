@@ -284,6 +284,7 @@ boss = NodePath("../BossRemilia")
 side_boss = NodePath("../KevinMarisa")
 trigger_boss_HUD = NodePath("../FinalBossHUD")
 boss_music_song = ExtResource("20_6nvcv")
+boss_music_volume = -5.0
 boss_music_jump_to_position = Array[int]([])
 metadata/_edit_lock_ = true
 
