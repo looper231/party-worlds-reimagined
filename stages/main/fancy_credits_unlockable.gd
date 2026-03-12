@@ -2,4 +2,4 @@ extends Node2D
 
 func _ready() -> void:
 	CustomGlobals.load_unlockables_status()
-	if !CustomGlobals.unlock_fancy_credits: queue_free()
+	if !SecretsManager.has_secret("main worlds completed") and !CustomGlobals.unlock_fancy_credits: queue_free()

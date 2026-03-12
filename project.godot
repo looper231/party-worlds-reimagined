@@ -62,6 +62,7 @@ SkinsManager="*res://engine/singletones/scripts/SkinsManager.gd"
 CharacterManager="*res://engine/singletones/scripts/CharacterManager.gd"
 CustomGlobals="*res://stages/singletones/CustomGlobals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SecretsManager="*res://addons/secrets_manager/SecretsManager.tscn"
 
 [debug]
 

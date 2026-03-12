@@ -424,6 +424,8 @@ func _victory_sequence() -> void:
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
 	CustomGlobals.unlock_fancy_credits = true
 	CustomGlobals.save_credits_status()
+	# Unlock achievement here
+	SecretsManager.set_secret("main worlds completed", true)
 	ProfileManager.save_current_profile()
 
 func _custom_victory_screen() -> void:
