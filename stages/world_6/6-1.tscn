@@ -384,7 +384,7 @@ script = ExtResource("5_6c0gp")
 secrets = Array[String](["bonus rooms"])
 toast_text_overrides = Array[String](["all 3 bonus rooms found"])
 progress_by_id = "6-1"
-progress_to = 3
+progress_to = 4
 
 [node name="Player" parent="." instance=ExtResource("4_jb52m")]
 position = Vector2(144, 400)
