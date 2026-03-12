@@ -79,6 +79,7 @@ var last_player_angle: float
 signal request_show_spellcard
 signal request_hide_spellcard
 signal victory_achieved
+signal no_photo_clear
 signal finished_movement
 signal finished_entry_movement
 signal request_fail_battle_forced
@@ -340,7 +341,9 @@ func _battle_victory_sequence() -> void:
 	leaf_gather_effect(0.02, 220.0, 120, 0.6, 1, 1, true, true)
 	Audio.play_sound(boss_defeat, self)
 	_danmaku_clear_screen()
-	if current_pic_count <= 0: _reward_life()
+	if current_pic_count <= 0:
+		no_photo_clear.emit()
+		_reward_life()
 	CustomGlobals.w9b_death_reset()
 	victory_achieved.emit()
 	queue_free()

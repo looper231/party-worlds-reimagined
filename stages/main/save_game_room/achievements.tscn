@@ -21,20 +21,20 @@ spacing_top = -12
 spacing_bottom = -5
 
 [node name="AchievementBox" type="VBoxContainer"]
-offset_left = 160.0
+offset_left = 128.0
 offset_top = 48.0
-offset_right = 480.0
-offset_bottom = 67.0
+offset_right = 512.0
+offset_bottom = 236.0
 theme_override_constants/separation = 2
 script = ExtResource("1_htxfp")
 
-[node name="Achievement1" type="HBoxContainer" parent="."]
+[node name="MainStory" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
 secret_id = "main worlds completed"
 
-[node name="Label" type="Label" parent="Achievement1"]
+[node name="Label" type="Label" parent="MainStory"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -47,7 +47,317 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Toggle" type="Label" parent="Achievement1"]
+[node name="Toggle" type="Label" parent="MainStory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="BonusRooms" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "bonus rooms"
+progress_to = 3
+
+[node name="Label" type="Label" parent="BonusRooms"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all 3 bonus rooms found"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="BonusRooms"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="9-2AltRoute" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "9-2 alt path"
+
+[node name="Label" type="Label" parent="9-2AltRoute"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "world 9-2 alternate route"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="9-2AltRoute"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="9-3Bosses" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "9-3 defeat"
+progress_to = 2
+
+[node name="Label" type="Label" parent="9-3Bosses"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all world 9-3 bosses defeated"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="9-3Bosses"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="9-3BossesNoPhoto" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "9-3 photo"
+progress_to = 2
+
+[node name="Label" type="Label" parent="9-3BossesNoPhoto"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all world 9-3 bosses photoless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="9-3BossesNoPhoto"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="9-3BossesNoHit" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "9-3 nohit"
+progress_to = 2
+
+[node name="Label" type="Label" parent="9-3BossesNoHit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all world 9-3 bosses damageless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="9-3BossesNoHit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="10-4Secret" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "sakuya izayoi defeated"
+
+[node name="Label" type="Label" parent="10-4Secret"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "world 10-4 secret enemy defeated"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="10-4Secret"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="FinalNoHit" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "final boss no-hit"
+
+[node name="Label" type="Label" parent="FinalNoHit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "final boss damageless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="FinalNoHit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="MinecraftLevel" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "minecraft extra"
+
+[node name="Label" type="Label" parent="MinecraftLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "minecraft level completed"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="MinecraftLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="AllSecrets" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "world 9-3 bosses defeated"
+
+[node name="Label" type="Label" parent="AllSecrets"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all achievements completed"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="AllSecrets"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

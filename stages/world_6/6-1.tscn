@@ -1,10 +1,11 @@
-[gd_scene load_steps=77 format=4 uid="uid://w0xp68p3kqoa"]
+[gd_scene load_steps=78 format=4 uid="uid://w0xp68p3kqoa"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_c6rxe"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_88tke"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_klduy"]
 [ext_resource type="AudioStream" uid="uid://dxlie8fjl28a2" path="res://stages/world_6/music/vk-manual.mod" id="4_6c0gp"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="4_jb52m"]
+[ext_resource type="Script" uid="uid://c7xvwquye660r" path="res://addons/secrets_manager/secret_unlocker.gd" id="5_6c0gp"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="6_3fc0t"]
 [ext_resource type="Shader" uid="uid://b8mcr46fhc6u0" path="res://engine/shaders/XOR.gdshader" id="6_i22e2"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="7_pn8xa"]
@@ -377,6 +378,13 @@ jump_to_scene = "uid://b6sdubrgdqndt"
 music = Array[Resource]([ExtResource("4_6c0gp")])
 volume_db = Array[float]([0.0])
 start_from_sec = Array[float]([0.0])
+
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("5_6c0gp")
+secrets = Array[String](["bonus rooms"])
+toast_text_overrides = Array[String](["all 3 bonus rooms found"])
+progress_by_id = "6-1"
+progress_to = 3
 
 [node name="Player" parent="." instance=ExtResource("4_jb52m")]
 position = Vector2(144, 400)
@@ -1319,3 +1327,5 @@ position = Vector2(10624, 416)
 
 [node name="Checkpoint" parent="." instance=ExtResource("41_jkqoj")]
 position = Vector2(4880, 416)
+
+[connection signal="warp_ended" from="Warps/PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]

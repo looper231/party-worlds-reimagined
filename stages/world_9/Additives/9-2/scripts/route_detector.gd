@@ -10,4 +10,5 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 func enforce_route() -> void:
 	if choose_boss_for_next_level == 1:
 		CustomGlobals.w9_alt_boss = true
+		SecretsManager.set_secret("9-2 alt path", true, true, true, "world 9-2 alternate route")
 	else: CustomGlobals.w9_alt_boss = false

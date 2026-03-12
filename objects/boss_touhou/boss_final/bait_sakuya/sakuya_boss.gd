@@ -65,6 +65,7 @@ func reset_to_default_anim() -> void:
 	sprite_node.play(&"default")
 
 func purged_sakuya() -> void:
+	SecretsManager.set_secret("sakuya izayoi defeated", true)
 	reveal_door.emit()
 	queue_free()
 

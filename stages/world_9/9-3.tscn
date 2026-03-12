@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=4 uid="uid://c4a2b8n4cvbni"]
+[gd_scene load_steps=38 format=4 uid="uid://c4a2b8n4cvbni"]
 
 [ext_resource type="Script" uid="uid://xwml13twhn4b" path="res://stages/world_9/Additives/9_3.gd" id="1_chjis"]
+[ext_resource type="Script" uid="uid://u57wnn4q3hnx" path="res://stages/world_9/Additives/9-3/secret_unlocker.gd" id="2_y80lx"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_0p222"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_vwmsq"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_d0yfd"]
@@ -86,6 +87,13 @@ total_cutscene_time_sec = 3.0
 time = -1
 jump_to_scene = "uid://bh4hvwf4d31co"
 metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
+
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("2_y80lx")
+secrets = Array[String](["9-3 defeat", "9-3 photo", "9-3 nohit"])
+toast_text_overrides = Array[String](["all world 9-3 bosses defeated", "all world 9-3 bosses photoless", "all world 9-3 bosses damageless"])
+progress_by_id = "aya"
+progress_to = 2
 
 [node name="MusicLoader" parent="." instance=ExtResource("3_0p222")]
 
@@ -495,7 +503,11 @@ disable_hurtbox = true
 
 [node name="BossHUD" parent="." instance=ExtResource("28_y80lx")]
 
+[connection signal="damaged" from="Player" to="BossW9Handler" method="_on_player_damaged"]
 [connection signal="died" from="Player" to="BossW9Handler" method="_on_player_died"]
+[connection signal="boss_w9_clear" from="BossW9Handler" to="Secret Unlocker" method="progress_secret" binds= [0]]
+[connection signal="boss_w9_damageless" from="BossW9Handler" to="Secret Unlocker" method="progress_secret" binds= [2]]
+[connection signal="boss_w9_photoless" from="BossW9Handler" to="Secret Unlocker" method="progress_secret" binds= [1]]
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="CameraArea" method="_on_boss_w_9_handler_boss_w_9_triggered"]
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="LeafLayer" method="_on_boss_w_9_handler_boss_w_9_triggered"]
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="TileMapLayer" method="_on_boss_w_9_handler_boss_w_9_triggered"]

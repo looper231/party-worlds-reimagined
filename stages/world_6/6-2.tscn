@@ -1,10 +1,11 @@
-[gd_scene load_steps=80 format=4 uid="uid://c6oqjhfh4dwao"]
+[gd_scene load_steps=81 format=4 uid="uid://c6oqjhfh4dwao"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_55ucl"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_7k3co"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_11own"]
 [ext_resource type="AudioStream" uid="uid://2vf6r3e85efq" path="res://stages/world_6/music/stardstm.mod" id="4_mniyn"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="4_s48pj"]
+[ext_resource type="Script" uid="uid://c7xvwquye660r" path="res://addons/secrets_manager/secret_unlocker.gd" id="5_cum2w"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="6_ceiot"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="7_477ui"]
 [ext_resource type="TileSet" uid="uid://dgj1qjxyac2gc" path="res://stages/world_6/data/overworld.tres" id="8_cum2w"]
@@ -480,6 +481,13 @@ jump_to_scene = "uid://b6sdubrgdqndt"
 
 [node name="MusicLoader" parent="." instance=ExtResource("2_11own")]
 music = Array[Resource]([ExtResource("4_mniyn")])
+
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("5_cum2w")
+secrets = Array[String](["bonus rooms"])
+toast_text_overrides = Array[String](["all 3 bonus rooms found"])
+progress_by_id = "6-2"
+progress_to = 3
 
 [node name="Player" parent="." instance=ExtResource("4_s48pj")]
 position = Vector2(144, 400)
@@ -1325,3 +1333,4 @@ rotation = -3.14159
 [connection signal="view_section_changed" from="Main-are" to="ParallaxBackground/Front glow" method="_on_mainare_view_section_changed"]
 [connection signal="view_section_changed" from="Bonus-are" to="ParallaxBackground/Front glow" method="_on_bonusare_view_section_changed"]
 [connection signal="view_section_changed" from="Bonus-are" to="bonus-path" method="_on_bonusare_view_section_changed"]
+[connection signal="warp_ended" from="Objects/PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]

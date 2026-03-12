@@ -4,15 +4,12 @@ extends Node
 @export var secrets: Array[String] = [""]
 @export var show_toast: bool = true
 @export var show_progress_toast: bool = true
-@export var is_classic_achievement: Array[bool] = [false]
 @export var toast_text_overrides: Array[String] = [""]
 @export_category("Progress Achievement")
 @export var progress_by_id: String
 @export var progress_to: int
 
 func _ready() -> void:
-	if secrets.size() > is_classic_achievement.size():
-		is_classic_achievement.resize(secrets.size())
 	if secrets.size() > toast_text_overrides.size():
 		toast_text_overrides.resize(secrets.size())
 
@@ -82,7 +79,3 @@ func add_shit_to_profile(data: String, value: bool = true) -> void:
 func _make_split(id: int, no_check: bool = false) -> void:
 	if SecretsManager.has_secret(secrets[id]) && !no_check:
 		return
-	if Thunder.autosplitter.can_split_on("achievement_mfce") && !is_classic_achievement[id]:
-		Thunder.autosplitter.split("MFCE Achievement")
-	if Thunder.autosplitter.can_split_on("achievement_classic") && is_classic_achievement[id]:
-		Thunder.autosplitter.split("Classic Achievement")

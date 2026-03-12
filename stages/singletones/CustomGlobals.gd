@@ -40,7 +40,7 @@ func w9b_death_add(current_phase: int = 0) -> void:
 func w9b_get_hint_visibility() -> bool:
 	return w9b_show_hint and w9b_death_count >= w9b_death_max
 
-# Unlockables - We've got the fancy credits so far.
+# The one singular unlockable that is now deprecated.
 var unlock_fancy_credits: bool = false
 
 func load_unlockables_status() -> void:

@@ -817,16 +817,16 @@ metadata/_edit_lock_ = true
 position = Vector2(1616, 400)
 
 [node name="PiranhaHead" parent="Objects" instance=ExtResource("25_l8vi3")]
-position = Vector2(8336, 624)
+position = Vector2(8952, 848)
 
 [node name="PiranhaPink" parent="Objects" instance=ExtResource("26_tm3yp")]
-position = Vector2(8384, 624)
+position = Vector2(9000, 848)
 
 [node name="PiranhaGreen" parent="Objects" instance=ExtResource("27_l4xsf")]
-position = Vector2(8432, 624)
+position = Vector2(9048, 848)
 
 [node name="FireBro" parent="Objects" instance=ExtResource("28_w8pr7")]
-position = Vector2(8576, 608)
+position = Vector2(9192, 832)
 
 [node name="FireBro2" parent="Objects" instance=ExtResource("28_w8pr7")]
 position = Vector2(7104, 176)
@@ -848,7 +848,7 @@ position = Vector2(5392, 128)
 hammer_bros_jumping_type = 2
 
 [node name="HammerBro2" parent="Objects" instance=ExtResource("24_1ipqg")]
-position = Vector2(8624, 608)
+position = Vector2(9240, 832)
 
 [node name="HammerBro4" parent="Objects" instance=ExtResource("24_1ipqg")]
 position = Vector2(6560, 400)
@@ -952,5 +952,22 @@ position = Vector2(1368, 48)
 
 [node name="Thwomp5" parent="." instance=ExtResource("41_hwt8b")]
 position = Vector2(3312, 48)
+
+[connection signal="collided_wall" from="T-Main/KoopaGreen" to="T-Main/KoopaGreen" method="turn_x"]
+[connection signal="collided_wall" from="T-Main/SpinyRed" to="T-Main/SpinyRed" method="turn_x"]
+[connection signal="collided_wall" from="T-Main/@CharacterBody2D@41140" to="T-Main/@CharacterBody2D@41140" method="turn_x"]
+[connection signal="collided_wall" from="T-Main/@CharacterBody2D@41141" to="T-Main/@CharacterBody2D@41141" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/KoopaRed" to="T-Other/KoopaRed" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41142" to="T-Other/@CharacterBody2D@41142" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/Goomba" to="T-Other/Goomba" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41150" to="T-Other/@CharacterBody2D@41150" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/KoopaGreen" to="T-Other/KoopaGreen" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/SpinyRed" to="T-Other/SpinyRed" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41159" to="T-Other/@CharacterBody2D@41159" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41212" to="T-Other/@CharacterBody2D@41212" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41213" to="T-Other/@CharacterBody2D@41213" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41214" to="T-Other/@CharacterBody2D@41214" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41215" to="T-Other/@CharacterBody2D@41215" method="turn_x"]
+[connection signal="collided_wall" from="T-Other/@CharacterBody2D@41216" to="T-Other/@CharacterBody2D@41216" method="turn_x"]
 
 [editable path="FG Fog"]

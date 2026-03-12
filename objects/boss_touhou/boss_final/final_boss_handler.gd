@@ -48,6 +48,8 @@ const FINAL_BOSS_HUD = preload("res://objects/boss_touhou/boss_final/final_boss_
 @onready var original_time_scale = Engine.time_scale
 @onready var music_sync_node: MusicSync = $MusicSync
 
+var player_was_hit: bool = false
+
 var phase_index: int
 var music_overlay: CanvasLayer
 var _cam_parent: Node
@@ -422,8 +424,10 @@ func _victory_sequence() -> void:
 	await get_tree().create_timer(wait_time, false, false, true).timeout
 	Scenes.current_scene.finish(true, complete_direction)
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
-	# Unlock achievement here
+	# Unlock achievements here
 	SecretsManager.set_secret("main worlds completed", true)
+	if !player_was_hit:
+		SecretsManager.set_secret("final boss no-hit", true, true, true, "final boss damageless")
 	ProfileManager.save_current_profile()
 
 func _custom_victory_screen() -> void:
@@ -458,3 +462,6 @@ func _on_player_died() -> void:
 	_fail_battle_auto()
 	is_time_slow_active = false
 	#_reset_time_scale()
+
+func _on_player_damaged() -> void:
+	player_was_hit = true

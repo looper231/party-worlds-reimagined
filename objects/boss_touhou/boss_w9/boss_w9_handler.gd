@@ -3,6 +3,9 @@ extends Node2D
 # This handles various things related to the boss fight, including:
 # Nonspells and spells, boss triggering, victory sequence
 signal boss_w9_triggered
+signal boss_w9_clear
+signal boss_w9_photoless
+signal boss_w9_damageless
 
 @export_category("VS Aya Shameimaru / Hatate Himekaidou")
 @export_group("Trigger", "trigger_")
@@ -23,6 +26,9 @@ signal boss_w9_triggered
 @export var boss_music_volume: float = 0
 
 @onready var original_time_scale = Engine.time_scale
+
+var player_was_hit: bool = false
+var no_photo_clear: bool = false
 
 var max_spells: int
 var music_overlay: CanvasLayer
@@ -61,6 +67,9 @@ func _ready() -> void:
 	trigger_boss.request_restore_time.connect(_restore_time_scale)
 	trigger_boss.request_check_time.connect(_time_counter_check_time)
 	trigger_boss.request_hud_pity.connect(_bonus_hud_activate)
+	trigger_boss.no_photo_clear.connect(func() -> void:
+		no_photo_clear = true
+		pass)
 
 func _special_check_boss_name() -> void:
 	trigger_boss_HUD.check_boss_name()
@@ -236,6 +245,10 @@ func _victory_sequence() -> void:
 	await get_tree().create_timer(4.0, false).timeout
 	Scenes.current_scene.finish(true, complete_direction)
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	boss_w9_clear.emit()
+	if no_photo_clear: boss_w9_photoless.emit()
+	if !player_was_hit: boss_w9_damageless.emit()
 
 func hide_photo_counter() -> void:
 	trigger_boss_HUD.boss_photo_counter.disappear()
@@ -253,3 +266,7 @@ func _on_player_died() -> void:
 	_fail_battle_auto()
 	is_time_slow_active = false
 	_reset_time_scale()
+
+
+func _on_player_damaged() -> void:
+	player_was_hit = true

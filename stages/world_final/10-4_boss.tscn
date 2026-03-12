@@ -302,6 +302,7 @@ phases = [NodePath("ActivateBoss"), NodePath("Sc0_Start"), NodePath("Sc0_Middle"
 
 [node name="FinalBossHUD" parent="." instance=ExtResource("23_k6vjy")]
 
+[connection signal="damaged" from="Player" to="FinalBossHandler" method="_on_player_damaged"]
 [connection signal="died" from="Player" to="FinalBossHandler" method="_on_player_died"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="TileMapLayer" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="Back" method="_on_final_boss_handler_final_boss_triggered"]
