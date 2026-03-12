@@ -422,8 +422,6 @@ func _victory_sequence() -> void:
 	await get_tree().create_timer(wait_time, false, false, true).timeout
 	Scenes.current_scene.finish(true, complete_direction)
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
-	CustomGlobals.unlock_fancy_credits = true
-	CustomGlobals.save_credits_status()
 	# Unlock achievement here
 	SecretsManager.set_secret("main worlds completed", true)
 	ProfileManager.save_current_profile()

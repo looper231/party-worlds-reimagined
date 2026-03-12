@@ -50,6 +50,3 @@ func load_unlockables_status() -> void:
 		if chosen_profile.data.get("unlock_fancy_credits") == null: continue
 		unlock_fancy_credits = chosen_profile.data.get("unlock_fancy_credits")
 		return
-
-func save_credits_status() -> void:
-	ProfileManager.current_profile.data.unlock_fancy_credits = unlock_fancy_credits
