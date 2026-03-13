@@ -46,6 +46,8 @@ var is_time_slow_active: bool = false
 @onready var SFXPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
+	CustomGlobals.boss_should_give_pity = true
+	
 	var children_list = get_parent().get_children()
 	for i in children_list.size():
 		if "musicoverlay" in children_list[i].name.to_lower():

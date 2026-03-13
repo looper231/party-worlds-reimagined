@@ -194,7 +194,7 @@ func player_gain_score(amount: int) -> void:
 			ScoreText.new(str(amount), player)
 
 func player_gain_pity(to_suit: String = "super", conditional: bool = true) -> void:
-	if boss.force_end_player_death: return
+	if boss.force_end_player_death or !CustomGlobals.boss_should_give_pity: return
 	if conditional and !Thunder.is_player_power(Data.PLAYER_POWER.SMALL): return
 	# Pity policy goes here.
 	var to: PlayerSuit = CharacterManager.get_suit(to_suit)

@@ -50,3 +50,5 @@ func load_unlockables_status() -> void:
 		if chosen_profile.data.get("unlock_fancy_credits") == null: continue
 		unlock_fancy_credits = chosen_profile.data.get("unlock_fancy_credits")
 		return
+
+var boss_should_give_pity: bool = true

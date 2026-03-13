@@ -448,7 +448,7 @@ uppercase = true
 script = ExtResource("32_wucv8")
 
 [node name="Sign" type="Sprite2D" parent="."]
-position = Vector2(104, 234)
+position = Vector2(104, 231)
 texture = ExtResource("30_hgs5s")
 
 [node name="Label6" type="Label" parent="Sign"]
