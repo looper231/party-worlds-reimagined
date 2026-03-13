@@ -221,6 +221,10 @@ texture_region_size = Vector2i(32, 32)
 14:15/0 = 0
 15:15/0 = 0
 15:15/0/texture_origin = Vector2i(0, -2)
+15:14/0 = 0
+15:14/0/texture_origin = Vector2i(0, -2)
+14:14/0 = 0
+14:14/0/texture_origin = Vector2i(0, -2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1vfn"]
 texture = ExtResource("2_p50tf")
@@ -299,6 +303,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/animation_frame_30/duration = 1.0
 0:0/animation_frame_31/duration = 1.0
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -16)
 
 [resource]
 tile_size = Vector2i(32, 32)
