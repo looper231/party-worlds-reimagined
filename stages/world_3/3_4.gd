@@ -9,6 +9,8 @@ const REVIVE = preload("res://engine/objects/players/prefabs/sounds/1up.wav")
 const APPEAR = preload("res://stages/world_3/objects/chorniy_mario/appear.ogg")
 const JUMP = preload("res://engine/objects/players/prefabs/sounds/jump.wav")
 
+signal activate_warp
+
 @onready var finish_line = $FinishLine
 
 func SPECIAL_do_cutscene() -> void:
@@ -67,8 +69,16 @@ func SPECIAL_do_cutscene() -> void:
 		await get_tree().create_timer(2.0, false, false).timeout
 		patch_node.move_boss(patch_move_pos + Vector2(700.0, -45.0), 1.1, Tween.TRANS_CIRC, Tween.EASE_IN)
 		marisa_new.move_boss(patch_move_pos + Vector2(700.0, 0.0), 1.1, Tween.TRANS_CIRC, Tween.EASE_IN)
+		
+		if do_not_jump_to_scene:
+			await get_tree().create_timer(1.0, false, false).timeout
+			SecretsManager.set_secret("w6 warp", true, true, true, "passage to world 6")
+			activate_warp.emit()
 		)
 
 func do_screen_shake(duration: float = 0.2, amplitude: int = 6, interval: float = 0.01) -> void:
 	if Thunder._current_camera.has_method(&"shock"):
 		Thunder._current_camera.shock(duration, Vector2.ONE * amplitude, interval)
+
+func trigger_world_warp() -> void:
+	do_not_jump_to_scene = true

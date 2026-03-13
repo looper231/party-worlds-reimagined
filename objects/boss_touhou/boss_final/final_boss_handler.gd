@@ -425,7 +425,7 @@ func _victory_sequence() -> void:
 	Scenes.current_scene.finish(true, complete_direction)
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
 	# Unlock achievements here
-	SecretsManager.set_secret("main worlds completed", true)
+	SecretsManager.set_secret("main clear", true, true, true, "main worlds completed")
 	if !player_was_hit:
 		SecretsManager.set_secret("final boss no-hit", true, true, true, "final boss damageless")
 	ProfileManager.save_current_profile()

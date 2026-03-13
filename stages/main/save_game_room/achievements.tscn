@@ -21,10 +21,10 @@ spacing_top = -12
 spacing_bottom = -5
 
 [node name="AchievementBox" type="VBoxContainer"]
-offset_left = 128.0
+offset_left = 144.0
 offset_top = 48.0
-offset_right = 512.0
-offset_bottom = 236.0
+offset_right = 496.0
+offset_bottom = 312.0
 theme_override_constants/separation = 2
 script = ExtResource("1_htxfp")
 
@@ -32,7 +32,7 @@ script = ExtResource("1_htxfp")
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
-secret_id = "main worlds completed"
+secret_id = "main clear"
 
 [node name="Label" type="Label" parent="MainStory"]
 layout_mode = 2
@@ -48,6 +48,176 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="Toggle" type="Label" parent="MainStory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="FullCredits" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "staff roll"
+
+[node name="Label" type="Label" parent="FullCredits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "full staff roll watched"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="FullCredits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="W4Warp" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "w4 warp"
+
+[node name="Label" type="Label" parent="W4Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "passage to world 4"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="W4Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="W5Warp" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "w5 warp"
+
+[node name="Label" type="Label" parent="W5Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "passage to world 5"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="W5Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="W6Warp" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "w6 warp"
+
+[node name="Label" type="Label" parent="W6Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "passage to world 6"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="W6Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="W9Warp" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "w9 warp"
+
+[node name="Label" type="Label" parent="W9Warp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "passage to world 9"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="W9Warp"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

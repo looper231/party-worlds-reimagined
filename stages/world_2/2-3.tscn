@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://pshbbvtsjntl"]
+[gd_scene load_steps=82 format=3 uid="uid://pshbbvtsjntl"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_wsp4p"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_gsux8"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://d0121yqkw7b6i" path="res://engine/objects/fluid/lava_area.tscn" id="12_qfooi"]
 [ext_resource type="Texture2D" uid="uid://bwfda0ga74tqj" path="res://gfx/world2/gwiazdki.png" id="13_05jg1"]
 [ext_resource type="Texture2D" uid="uid://fmwbxeob1quj" path="res://gfx/world1/platformtile-cropped.png" id="14_3ieqd"]
+[ext_resource type="Script" uid="uid://b8cf5kncey7ao" path="res://stages/singletones/text_secret_passage.gd" id="14_nbagc"]
 [ext_resource type="PackedScene" uid="uid://c7wsp4gifxif1" path="res://stages/world_2/additives/platform_path_grey.tscn" id="15_1c7o5"]
+[ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="15_dxfv2"]
 [ext_resource type="PackedScene" uid="uid://kc2ukyx68s2q" path="res://engine/objects/enemies/podoboo/podoboo_volcano_launcher.tscn" id="16_dbe47"]
 [ext_resource type="PackedScene" uid="uid://c58i0gaq0il4o" path="res://engine/objects/enemies/spinies/spiny_red.tscn" id="16_eqytf"]
 [ext_resource type="PackedScene" uid="uid://vqn6y17pt5mx" path="res://engine/objects/enemies/goombas/goomba.tscn" id="17_cfra8"]
@@ -40,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://8a7nemgi0b6q" path="res://engine/objects/powerups/beetroot/beetroot.tscn" id="26_td2vr"]
 [ext_resource type="PackedScene" uid="uid://dvmhwh1khygq6" path="res://engine/objects/bumping_blocks/brick/brick_grey.tscn" id="27_2i3mv"]
 [ext_resource type="PackedScene" uid="uid://b88ks57c23lyq" path="res://engine/objects/effects/bubble/lava_bubbles.tscn" id="40_jcrhg"]
+[ext_resource type="PackedScene" uid="uid://dh4kf1w7jyseo" path="res://engine/objects/warps/pipe_in.tscn" id="41_jcrhg"]
+[ext_resource type="Script" uid="uid://c7xvwquye660r" path="res://addons/secrets_manager/secret_unlocker.gd" id="44_dxfv2"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nsshg"]
 tile_data = PackedInt32Array(0, 1, 0, 65536, 65537, 0, 1, 65537, 0, 65537, 1, 0)
@@ -548,6 +552,27 @@ metadata/_edit_lock_ = true
 
 [node name="Level Label" parent="HUD" instance=ExtResource("11_p6mle")]
 text = "where are you?"
+
+[node name="World5Warp" type="Node2D" parent="HUD"]
+position = Vector2(320, -32)
+script = ExtResource("14_nbagc")
+speed_sec = 1.0
+action_after_sec = 3.0
+change_scene = "res://stages/world_5/map_5.tscn"
+save_to_profile_as_current_world = true
+
+[node name="Label" type="Label" parent="HUD/World5Warp"]
+offset_left = -148.0
+offset_right = 149.0
+offset_bottom = 16.0
+pivot_offset = Vector2(132, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0.435294, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("15_dxfv2")
+theme_override_font_sizes/font_size = 20
+text = "THE SECRET PASSAGE TO WORLD 5 HAS BEEN FOUND!!!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1184,3 +1209,18 @@ position = Vector2(7424, 432)
 
 [node name="LavaBubbles7" parent="." instance=ExtResource("40_jcrhg")]
 position = Vector2(8992, 432)
+
+[node name="PipeIn" parent="." instance=ExtResource("41_jcrhg")]
+position = Vector2(9872, 352)
+rotation = 1.5708
+warp_direction = 0
+
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("44_dxfv2")
+secrets = Array[String](["w5 warp"])
+toast_text_overrides = Array[String](["passage to world 5"])
+
+[connection signal="warp_started" from="PipeIn" to="HUD/World5Warp" method="activate"]
+[connection signal="warp_started" from="PipeIn" to="HUD/World5Warp" method="warp_split"]
+[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="unlock_secret" binds= [0]]
+[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]

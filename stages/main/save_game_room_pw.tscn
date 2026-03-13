@@ -538,8 +538,8 @@ warping_sound = ExtResource("29_fo23o")
 use_circle_transition = true
 
 [node name="AchievementBox" parent="." instance=ExtResource("31_ouyii")]
-offset_left = -512.0
-offset_right = -128.0
+offset_left = -496.0
+offset_right = -144.0
 
 [node name="AchievementTitle" type="Label" parent="."]
 offset_left = -640.0

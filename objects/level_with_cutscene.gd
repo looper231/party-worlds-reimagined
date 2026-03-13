@@ -3,6 +3,7 @@ class_name LevelWithEndCutscene
 
 @export var total_cutscene_time_sec: float = 5.0
 @export var ignore_time_scale: bool = false
+@export var do_not_jump_to_scene: bool = false
 @export_file("*.tscn", "*.scn") var alternate_jump_to_scene: String
 
 func finish(walking: bool = false, walking_dir: int = 1) -> void:
@@ -63,7 +64,7 @@ func finish(walking: bool = false, walking_dir: int = 1) -> void:
 			var scene_to_jump_to: String = jump_to_scene
 			if alternate_jump_to_scene: scene_to_jump_to = alternate_jump_to_scene
 
-			if jump_to_scene or alternate_jump_to_scene:
+			if (jump_to_scene or alternate_jump_to_scene) and !do_not_jump_to_scene:
 				if !_crossfade:
 					TransitionManager.accept_transition(
 						load("res://engine/components/transitions/circle_transition/circle_transition.tscn")

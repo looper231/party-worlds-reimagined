@@ -96,6 +96,7 @@ func _pull_up_curtains() -> void:
 	curtain_tween.tween_property(curtain_layer, "global_position:y", -480.0, curtain_pull_time_sec)
 
 func _lower_curtains() -> void:
+	SecretsManager.set_secret("staff roll", true, true, true, "full staff roll watched")
 	if !is_instance_valid(curtain_layer): return
 	if is_instance_valid(curtain_tween): curtain_tween.kill()
 	_play_sound_effect(CURTAIN_DOWN_SFX)

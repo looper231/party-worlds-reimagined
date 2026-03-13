@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://boqwohvlqm0h5"]
+[gd_scene load_steps=78 format=3 uid="uid://boqwohvlqm0h5"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_2h8mb"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_c4v8o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="4_433v1"]
 [ext_resource type="PackedScene" uid="uid://c5s3uwx77gvab" path="res://modules/music_overlay/music_overlay.tscn" id="4_bp4mf"]
 [ext_resource type="Texture2D" uid="uid://cofink5fi4c08" path="res://gfx/world1/fg_trees1.png" id="4_psnj1"]
+[ext_resource type="Script" uid="uid://c7xvwquye660r" path="res://addons/secrets_manager/secret_unlocker.gd" id="5_2v03h"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="6_xrfta"]
 [ext_resource type="Texture2D" uid="uid://b5irbjty8j80b" path="res://gfx/world1/1-1set.png" id="7_kf5d4"]
 [ext_resource type="Texture2D" uid="uid://3owec4frni7m" path="res://gfx/world1/hard_block_white.png" id="8_rqdhl"]
@@ -19,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://ddwxc43m3q1c6" path="res://engine/objects/core/checkpoint/checkpoint.tscn" id="13_5ax8i"]
 [ext_resource type="PackedScene" uid="uid://vqn6y17pt5mx" path="res://engine/objects/enemies/goombas/goomba.tscn" id="14_jrcaf"]
 [ext_resource type="PackedScene" uid="uid://cno8qn60lpnvv" path="res://engine/objects/enemies/koopas/koopa_green.tscn" id="15_2l22p"]
+[ext_resource type="Script" uid="uid://b8cf5kncey7ao" path="res://stages/singletones/text_secret_passage.gd" id="15_81lgw"]
+[ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="16_2v03h"]
 [ext_resource type="PackedScene" uid="uid://b24hnsctae1a0" path="res://engine/objects/enemies/koopas/koopa_red.tscn" id="16_te8v2"]
 [ext_resource type="PackedScene" uid="uid://c58i0gaq0il4o" path="res://engine/objects/enemies/spinies/spiny_red.tscn" id="17_kxb3e"]
 [ext_resource type="PackedScene" uid="uid://cawvmevhto1k3" path="res://engine/objects/enemies/paratroopas/paratroopa_circle_generator.tscn" id="18_7prxk"]
@@ -37,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://dfm7d4qtja67b" path="res://engine/objects/core/finish_line/finish_line.tscn" id="31_hs2yt"]
 [ext_resource type="PackedScene" uid="uid://cv7p8xyw12pbx" path="res://engine/objects/bumping_blocks/question_block/templates/Life Mushroom Question Block.tscn" id="36_yccw3"]
 [ext_resource type="PackedScene" uid="uid://ltoqkqmxpt65" path="res://engine/objects/powerups/life_mushroom/life_mushroom.tscn" id="37_okm2i"]
+[ext_resource type="PackedScene" uid="uid://b15mtpvvr38vx" path="res://engine/objects/warps/door/door_in.tscn" id="41_tlr73"]
+[ext_resource type="Script" uid="uid://bolb3ni7bgvw3" path="res://stages/world_1/door_in.gd" id="42_gs10e"]
 
 [sub_resource type="Gradient" id="Gradient_r6y4r"]
 offsets = PackedFloat32Array(0)
@@ -654,6 +659,11 @@ metadata/_edit_lock_ = true
 music = Array[Resource]([ExtResource("3_1deg1")])
 volume_db = Array[float]([-6.0])
 
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("5_2v03h")
+secrets = Array[String](["w4 warp"])
+toast_text_overrides = Array[String](["passage to world 4"])
+
 [node name="MusicOverlay" parent="." instance=ExtResource("4_bp4mf")]
 text = Array[String](["Estrayk - I Don't Mind"])
 
@@ -731,6 +741,27 @@ layer_1/tile_data = PackedInt32Array(786445, 196608, 0, 786433, 393216, 2, 78643
 
 [node name="Level Label" parent="HUD" instance=ExtResource("12_cxjqv")]
 text = "I don't mind"
+
+[node name="World4Warp" type="Node2D" parent="HUD"]
+position = Vector2(320, -32)
+script = ExtResource("15_81lgw")
+speed_sec = 1.0
+action_after_sec = 3.0
+change_scene = "res://stages/world_4/map_4.tscn"
+save_to_profile_as_current_world = true
+
+[node name="Label" type="Label" parent="HUD/World4Warp"]
+offset_left = -148.0
+offset_right = 149.0
+offset_bottom = 16.0
+pivot_offset = Vector2(132, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0.435294, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("16_2v03h")
+theme_override_font_sizes/font_size = 20
+text = "THE SECRET PASSAGE TO WORLD 4 HAS BEEN FOUND!!!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="CamArea" parent="." instance=ExtResource("3_1gc8v")]
 offset_right = 11200.0
@@ -1108,3 +1139,14 @@ position = Vector2(3536, 48)
 result = SubResource("Resource_81lgw")
 initially_visible_and_solid = false
 exists_once = true
+
+[node name="DoorIn" parent="." instance=ExtResource("41_tlr73")]
+z_index = -1
+position = Vector2(10496, 416)
+script = ExtResource("42_gs10e")
+
+[connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="unlock_secret"]
+[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="activate"]
+[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="warp_split"]
+[connection signal="warp_started" from="DoorIn" to="DoorIn" method="_lock_player_status"]
+[connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]
