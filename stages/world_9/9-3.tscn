@@ -243,6 +243,7 @@ text = Array[String](["N/A", "ZUN - YOUKAI MOUNTAIN ~ MYSTERIOUS MOUNTAIN (LINDH
 [node name="TBD_Backdrops" type="Node2D" parent="."]
 script = ExtResource("11_dps7q")
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Waterfall" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
@@ -447,6 +448,7 @@ script = ExtResource("23_chjis")
 
 [node name="Battlefield_Waterfalls" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Waterfall30" parent="Battlefield_Waterfalls" instance=ExtResource("11_ibkg3")]
 z_index = 0

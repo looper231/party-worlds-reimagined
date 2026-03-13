@@ -1144,6 +1144,7 @@ exists_once = true
 z_index = -1
 position = Vector2(10496, 416)
 script = ExtResource("42_gs10e")
+timer_disappear_threshold = 280
 
 [connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="unlock_secret"]
 [connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="activate"]

@@ -21,10 +21,10 @@ spacing_top = -12
 spacing_bottom = -5
 
 [node name="AchievementBox" type="VBoxContainer"]
-offset_left = 144.0
+offset_left = 128.0
 offset_top = 48.0
-offset_right = 496.0
-offset_bottom = 312.0
+offset_right = 512.0
+offset_bottom = 388.0
 theme_override_constants/separation = 2
 script = ExtResource("1_htxfp")
 
@@ -48,40 +48,6 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="Toggle" type="Label" parent="MainStory"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_jrqni")
-theme_override_font_sizes/font_size = 28
-text = "no"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="FullCredits" type="HBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("2_jrqni")
-secret_id = "staff roll"
-
-[node name="Label" type="Label" parent="FullCredits"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_m1ut6")
-theme_override_font_sizes/font_size = 20
-text = "full staff roll watched"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="Toggle" type="Label" parent="FullCredits"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -479,6 +445,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
 secret_id = "minecraft extra"
+hidden_on_init = true
 
 [node name="Label" type="Label" parent="MinecraftLevel"]
 layout_mode = 2
@@ -488,12 +455,154 @@ theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource("FontVariation_m1ut6")
 theme_override_font_sizes/font_size = 20
-text = "minecraft level completed"
+text = "block game level completed"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="Toggle" type="Label" parent="MinecraftLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="NeedleLevel" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "needle extra"
+hidden_on_init = true
+
+[node name="Label" type="Label" parent="NeedleLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "needle level completed"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="NeedleLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="NeedleLevelNohit" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "needle nohit"
+hidden_on_init = true
+
+[node name="Label" type="Label" parent="NeedleLevelNohit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "needle level damageless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="NeedleLevelNohit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="GensokyoBosses" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "gensokyo bosses"
+progress_to = 4
+hidden_on_init = true
+
+[node name="Label" type="Label" parent="GensokyoBosses"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all land of illusions bosses defeated"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="GensokyoBosses"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="GensokyoNohit" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "gensokyo nohit"
+progress_to = 4
+hidden_on_init = true
+
+[node name="Label" type="Label" parent="GensokyoNohit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "all land of illusions bosses damageless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="GensokyoNohit"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

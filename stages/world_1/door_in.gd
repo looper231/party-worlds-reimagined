@@ -1,11 +1,13 @@
 extends "res://engine/objects/warps/door/door_in.gd"
 
+@export var timer_disappear_threshold: int = 265
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
 	if !monitoring: return
 	
-	if Data.values.time <= 260 and monitoring:
+	if Data.values.time <= timer_disappear_threshold and monitoring:
 		monitoring = false
 		var disappear_tween = get_tree().create_tween()
 		disappear_tween.tween_property(self, "modulate:a", 0.0, 0.5)

@@ -47,7 +47,8 @@ func start_credits() -> void:
 	
 	var tw = get_tree().create_tween()
 	tw.tween_property(skip_label, "modulate:a", 0.0, 0.8)
-	tw.tween_callback(func() -> void: skip_label.queue_free())
+	tw.tween_callback(func() -> void:
+		if is_instance_valid(skip_label): skip_label.queue_free())
 	
 	await _set_timer(1.0)
 	_pull_up_curtains()
@@ -96,7 +97,7 @@ func _pull_up_curtains() -> void:
 	curtain_tween.tween_property(curtain_layer, "global_position:y", -480.0, curtain_pull_time_sec)
 
 func _lower_curtains() -> void:
-	SecretsManager.set_secret("staff roll", true, true, true, "full staff roll watched")
+	SecretsManager.set_secret("main clear", true, true, true, "main worlds completed")
 	if !is_instance_valid(curtain_layer): return
 	if is_instance_valid(curtain_tween): curtain_tween.kill()
 	_play_sound_effect(CURTAIN_DOWN_SFX)
