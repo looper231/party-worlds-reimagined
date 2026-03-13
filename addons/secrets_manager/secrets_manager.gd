@@ -29,10 +29,10 @@ func _ready() -> void:
 	#saved.modulate.a = 0
 	load_secrets()
 	reparent.call_deferred(GlobalViewport.vp, false)
-	Data.life_added.connect(func():
-		if Data.values.lives >= 99:
-			set_secret("got 100 extra lives at once", true)
-	)
+	#Data.life_added.connect(func():
+	#	if Data.values.lives >= 99:
+	#		set_secret("got 100 extra lives at once", true)
+	#)
 	await get_tree().physics_frame
 	
 	return
@@ -79,10 +79,6 @@ func get_secret(secret: String) -> Variant:
 	if secret in secrets:
 		return secrets[secret]
 	return null
-
-
-func is_endgame() -> bool:
-	return has_secret("story mode completed")
 
 
 func queue_achievement(text: String, title: String = tr("achievement unlocked!"), emit_sound: bool = true) -> void:

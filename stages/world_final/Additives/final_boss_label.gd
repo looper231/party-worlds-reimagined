@@ -1,7 +1,7 @@
 extends Label
 
 func _ready() -> void:
-	if !SecretsManager.get_secret("main clear"): 
+	if !SecretsManager.has_secret("main clear"): 
 		get_child(0).queue_free()
 		self_modulate.a = 0.0
 	else: for coin in get_children():
