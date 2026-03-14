@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://2iilos5p4y2r"
-path="res://.godot/imported/what.wav-d4b7643a8449535231b7864cc26e3477.sample"
+path="res://.godot/imported/what.wav-fabf868426e4ef06054355f66476b717.sample"
 
 [deps]
 
-source_file="res://stages/world_9/Additives/cutscene/what.wav"
-dest_files=["res://.godot/imported/what.wav-d4b7643a8449535231b7864cc26e3477.sample"]
+source_file="res://objects/boss_touhou/cutscene/sounds/what.wav"
+dest_files=["res://.godot/imported/what.wav-fabf868426e4ef06054355f66476b717.sample"]
 
 [params]
 
