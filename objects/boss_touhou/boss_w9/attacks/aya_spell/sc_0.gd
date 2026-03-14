@@ -3,13 +3,13 @@ extends BossSpellcardW9
 const BULLET_RED_RINGED_CIRCLE = preload("res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_red_circle_ringed.tscn")
 const BULLET_BLUE_RINGED_CIRCLE = preload("res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_blue_circle_ringed.tscn")
 const sc0_ring_radius: float = 14.0
-const sc0_amount_in_ring: int = 9
+const sc0_amount_in_ring: int = 8
 const sc0_amount_in_loop: int = 3
-const sc0_shoot_interval: float = 0.25
+const sc0_shoot_interval: float = 0.23
 const sc0_blue_speed: float = 130.0
 const sc0_red_speed: float = 280.0
 const wave_duration: float = 3.0
-const wait_duration: float = 2.5
+const wait_duration: float = 1.5
 
 var attacking_phase: bool = false
 var wait_phase: bool = false

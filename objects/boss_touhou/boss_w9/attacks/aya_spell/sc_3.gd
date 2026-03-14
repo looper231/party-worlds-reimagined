@@ -3,10 +3,10 @@ extends BossSpellcardW9
 const BULLET_ARROW_RED = preload("res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_arrow_red.tscn")
 const AYA_VIEWFINDER = preload("res://objects/boss_touhou/boss_w9/attacks/bullets/camera_viewfinder/aya_camera.tscn")
 const sc3_arrow_speed_max: float = 800.0
-const sc3_arrow_speed_min: float = 80.0
+const sc3_arrow_speed_min: float = 70.0
 const sc3_arrow_dist: float = 20.0
-const sc3_arrow_number_per_burst: int = 420
-const sc3_arrow_range: float = deg_to_rad(40)
+const sc3_arrow_number_per_burst: int = 380
+const sc3_arrow_range: float = deg_to_rad(42)
 const sc3_boss_leap_time: float = 0.5
 const sc3_viewfinder_distance_from_boss: float = 90.0
 const sc3_viewfinder_scale: float = 1.85
