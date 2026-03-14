@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		move_boss_wander(wander_style, boss.boss_handler.global_position, upper_bound, lower_bound, randf_range(90.0, 160.0), sc3_cooldown_time)
 		await _set_timer(sc3_cooldown_time)
 		if _boss_attack_interrupt(): return
-		bullet_screen_clear(false)
+		#bullet_screen_clear(false)
 		leaf_gather_effect()
 		play_sound(boss.short_charge_up)
 

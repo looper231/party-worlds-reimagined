@@ -6,7 +6,7 @@ const sc0_ring_radius: float = 15.0
 const sc0_amount_red_in_ring: int = 3
 const sc0_amount_blue_in_ring: int = 4
 const sc0_amount_in_loop: int = 3
-const sc0_shoot_interval: float = 0.45
+const sc0_shoot_interval: float = 0.35
 const sc0_blue_speed_init: float = 200.0
 const sc0_blue_speed: float = 180.0
 const sc0_red_speed_init: float = 220.0
@@ -14,7 +14,7 @@ const sc0_red_speed: float = 200.0
 const sc0_boss_move_time: float = 2.5
 const wave_duration: float = 3.0
 const boss_move_interval: float = 1.5
-const wait_duration: float = 2.5
+const wait_duration: float = 0.5
 
 var attacking_phase: bool = false
 var wait_phase: bool = false
