@@ -493,7 +493,7 @@ trigger_boss_borders = NodePath("../BossBorders")
 trigger_boss_HUD = NodePath("../BossHUD")
 boss_music = ExtResource("21_fufsc")
 boss_music_fading = false
-boss_music_volume = 3.0
+boss_music_volume = 1.0
 metadata/_edit_lock_ = true
 
 [node name="BossBorders" parent="." instance=ExtResource("21_5yyu5")]
