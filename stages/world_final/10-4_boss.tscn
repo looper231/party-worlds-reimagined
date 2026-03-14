@@ -1,8 +1,9 @@
-[gd_scene load_steps=48 format=4 uid="uid://dmv1cfedqdjph"]
+[gd_scene load_steps=49 format=4 uid="uid://dmv1cfedqdjph"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_tuyco"]
 [ext_resource type="AudioStream" uid="uid://c3fuj530bqcdh" path="res://stages/world_final/music/you_win.ogg" id="2_jhiy2"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_wew7x"]
+[ext_resource type="Script" uid="uid://s4is3yy0cg1p" path="res://stages/world_final/Additives/end_world_handler.gd" id="4_8utrm"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_5vn2s"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_4eewq"]
 [ext_resource type="Script" uid="uid://bdpmff5700nwt" path="res://stages/world_final/Additives/vanish_on_battle.gd" id="8_bjqp8"]
@@ -143,6 +144,11 @@ jump_to_scene = "uid://dpmk8p0lknr8p"
 metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
 
 [node name="MusicLoader" parent="." instance=ExtResource("3_wew7x")]
+
+[node name="End World Handler" type="Node" parent="."]
+script = ExtResource("4_8utrm")
+secrets = Array[String](["main clear", "final boss no-hit"])
+toast_text_overrides = Array[String](["main worlds completed", "final boss damageless"])
 
 [node name="Player" parent="." instance=ExtResource("5_5vn2s")]
 position = Vector2(240, 336)
@@ -344,6 +350,9 @@ position = Vector2(48, 56)
 
 [connection signal="damaged" from="Player" to="FinalBossHandler" method="_on_player_damaged"]
 [connection signal="died" from="Player" to="FinalBossHandler" method="_on_player_died"]
+[connection signal="final_boss_damageless" from="FinalBossHandler" to="End World Handler" method="unlock_secret" binds= [1]]
+[connection signal="final_boss_defeated" from="FinalBossHandler" to="End World Handler" method="_end_world_functions"]
+[connection signal="final_boss_defeated" from="FinalBossHandler" to="End World Handler" method="unlock_secret" binds= [0]]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="TileMapLayer" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="Back" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="GPUParticles2D" method="_on_final_boss_handler_final_boss_triggered"]

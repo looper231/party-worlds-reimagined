@@ -8,6 +8,8 @@ class_name FinalBossHandler
 signal final_boss_triggered
 signal final_boss_next_phase
 signal allow_continue_dialog
+signal final_boss_defeated
+signal final_boss_damageless
 
 const PLATFORM_SUPPORT = preload("res://objects/boss_touhou/boss_final/platform_support.tscn")
 const NEW_BALLOON = preload("res://objects/boss_touhou/dialogue/balloon.tscn")
@@ -425,10 +427,8 @@ func _victory_sequence() -> void:
 	Scenes.current_scene.finish(true, complete_direction)
 	trigger_boss_borders.process_mode = Node.PROCESS_MODE_DISABLED
 	# Unlock achievements here
-	SecretsManager.set_secret("main clear", true, true, true, "main worlds completed")
-	if !player_was_hit:
-		SecretsManager.set_secret("final boss no-hit", true, true, true, "final boss damageless")
-	ProfileManager.save_current_profile()
+	final_boss_defeated.emit()
+	if !player_was_hit: final_boss_damageless.emit()
 
 func _custom_victory_screen() -> void:
 	if !is_instance_valid(white_background) or !is_instance_valid(you_win_text): return

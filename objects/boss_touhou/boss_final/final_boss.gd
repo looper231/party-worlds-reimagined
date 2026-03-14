@@ -164,7 +164,7 @@ func start_next_spell_card(index: int = current_spell_index) -> void:
 	if index >= phases.size():
 		_battle_victory_sequence()
 		return
-	if force_end_player_death: return
+	if force_end_player_death or defeated_boss_wander: return
 	#print(internal_boss_name + ": Initial index of " + str(index))
 	var spell_index = clamp(index - offset_phase_index, 0, phases.size() - 1)
 	current_spell_used = phases[spell_index]
