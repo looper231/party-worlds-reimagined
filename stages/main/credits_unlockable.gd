@@ -4,7 +4,8 @@ extends StaticBody2D
 
 func _ready() -> void:
 	hide()
-	if !callback_only && (SecretsManager.has_secret("main clear") || CustomGlobals.unlock_fancy_credits):
+	CustomGlobals.load_unlockables_status()
+	if !callback_only && (SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits):
 		show()
 		reset_physics_interpolation()
 		return
