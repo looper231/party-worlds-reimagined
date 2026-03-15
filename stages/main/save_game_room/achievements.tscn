@@ -96,13 +96,13 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="W4Warp" type="HBoxContainer" parent="."]
+[node name="W3Warp" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
-secret_id = "w4 warp"
+secret_id = "w3 warp"
 
-[node name="Label" type="Label" parent="W4Warp"]
+[node name="Label" type="Label" parent="W3Warp"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -110,12 +110,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource("FontVariation_m1ut6")
 theme_override_font_sizes/font_size = 20
-text = "passage to world 4"
+text = "passage to world 3"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Toggle" type="Label" parent="W4Warp"]
+[node name="Toggle" type="Label" parent="W3Warp"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

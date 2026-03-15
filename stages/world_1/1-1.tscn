@@ -661,8 +661,8 @@ volume_db = Array[float]([-6.0])
 
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_2v03h")
-secrets = Array[String](["w4 warp"])
-toast_text_overrides = Array[String](["passage to world 4"])
+secrets = Array[String](["w3 warp"])
+toast_text_overrides = Array[String](["passage to world 3"])
 
 [node name="MusicOverlay" parent="." instance=ExtResource("4_bp4mf")]
 text = Array[String](["Estrayk - I Don't Mind"])
@@ -747,7 +747,7 @@ position = Vector2(320, -32)
 script = ExtResource("15_81lgw")
 speed_sec = 1.0
 action_after_sec = 3.0
-change_scene = "res://stages/world_4/map_4.tscn"
+change_scene = "res://stages/world_3/map_3.tscn"
 save_to_profile_as_current_world = true
 
 [node name="Label" type="Label" parent="HUD/World4Warp"]
@@ -759,7 +759,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0.435294, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("16_2v03h")
 theme_override_font_sizes/font_size = 20
-text = "THE SECRET PASSAGE TO WORLD 4 HAS BEEN FOUND!!!"
+text = "THE SECRET PASSAGE TO WORLD 3 HAS BEEN FOUND!!!"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
