@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://1umrsve21bua"]
+
+[ext_resource type="PackedScene" uid="uid://c8ql6hro5f6gv" path="res://engine/components/game_over/game_over_continue.tscn" id="1_s7kxm"]
+
+[sub_resource type="GDScript" id="GDScript_s7kxm"]
+script/source = "extends \"res://addons/secrets_manager/secret_unlocker.gd\"
+
+func add_shit_to_profile(data: String, value: bool = true) -> void:
+	super(data, value)
+	ProfileManager.save_current_profile()
+"
+
+[node name="GameOverLayer" instance=ExtResource("1_s7kxm")]
+
+[node name="Secret Unlocker" type="Node" parent="." index="0"]
+script = SubResource("GDScript_s7kxm")
+
+[connection signal="screen_opened" from="GameOver" to="Secret Unlocker" method="add_shit_to_profile" binds= ["gameover"]]

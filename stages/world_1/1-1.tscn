@@ -1147,7 +1147,7 @@ script = ExtResource("42_gs10e")
 timer_disappear_threshold = 280
 
 [connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="unlock_secret"]
-[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="warp_split"]
 [connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="activate"]
+[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="warp_split"]
 [connection signal="warp_started" from="DoorIn" to="DoorIn" method="_lock_player_status"]
 [connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]

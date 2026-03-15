@@ -96,6 +96,40 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
+[node name="Main1cc" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "main 1cc"
+
+[node name="Label" type="Label" parent="Main1cc"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "main worlds no continues"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="Main1cc"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
 [node name="W3Warp" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -407,6 +441,7 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="10-4Secret" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")

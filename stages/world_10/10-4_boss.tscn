@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://dmv1cfedqdjph"]
+[gd_scene load_steps=50 format=4 uid="uid://dmv1cfedqdjph"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_tuyco"]
 [ext_resource type="AudioStream" uid="uid://c3fuj530bqcdh" path="res://stages/world_10/music/you_win.ogg" id="2_jhiy2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_4eewq"]
 [ext_resource type="Script" uid="uid://bdpmff5700nwt" path="res://stages/world_10/Additives/vanish_on_battle.gd" id="8_bjqp8"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="8_y6ghm"]
+[ext_resource type="Texture2D" uid="uid://c32gr3g5syhnt" path="res://engine/objects/warps/door/door_background.png" id="10_oylyn"]
 [ext_resource type="TileSet" uid="uid://ch1gwbf1qp55e" path="res://stages/world_10/Additives/w8_office.tres" id="10_tuyco"]
 [ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="11_jhiy2"]
 [ext_resource type="FontFile" uid="uid://blaokmcj1basl" path="res://gfx/whoopass.regular.ttf" id="11_xgg62"]
@@ -147,8 +148,8 @@ metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
 
 [node name="End World Handler" type="Node" parent="."]
 script = ExtResource("4_8utrm")
-secrets = Array[String](["main clear", "final boss no-hit", "main nowarp"])
-toast_text_overrides = Array[String](["main worlds completed", "final boss damageless", "main worlds warpless"])
+secrets = Array[String](["main clear", "final boss no-hit", "main nowarp", "main 1cc"])
+toast_text_overrides = Array[String](["main worlds completed", "final boss damageless", "main worlds warpless", "main worlds no continues"])
 
 [node name="Player" parent="." instance=ExtResource("5_5vn2s")]
 position = Vector2(240, 336)
@@ -168,6 +169,11 @@ tile_map_data = PackedByteArray("AABAAPP/AQABAAAAAAAEAAsAAQABAAAAAAANAAsAAQABAAA
 tile_set = ExtResource("10_tuyco")
 script = ExtResource("8_bjqp8")
 
+[node name="DoorBackground" type="Sprite2D" parent="TileMapLayer"]
+z_index = -1
+position = Vector2(240, 320)
+texture = ExtResource("10_oylyn")
+
 [node name="Back" type="TileMapLayer" parent="."]
 z_index = -1
 tile_map_data = PackedByteArray("AAAAAAEAAQAHAAQAAAAAAAIAAQAHAAQAAAAAAAMAAQADAAAAAAAAAAQAAQAGAAQAAAAAAAUAAQAFAAQAAAAAAAYAAQAFAAQAAAAAAAcAAQAGAAYAAAAAAAgAAQAFAAQAAAAAAAkAAQADAAIAAAAAAAoAAQAHAAYAAAAAAAsAAQADAAQAAAAAAAwAAQAFAAQAAAAAAA0AAQAAAAcAAAAAAA4AAQADAAQAAAABAAEAAQAHAAQAAAABAAIAAQAFAAQAAAABAAMAAQADAAAAAAABAAQAAQADAAQAAAABAAUAAQAEAAcAAAABAAYAAQADAAAAAAABAAcAAQAGAAYAAAABAAgAAQADAAIAAAABAAkAAQADAAAAAAABAAoAAQAEAAcAAAABAAsAAQAFAAQAAAABAAwAAQAFAAYAAAABAA0AAQADAAIAAAABAA4AAQADAAYAAAACAAEAAQAGAAYAAAACAAIAAQAAAAUAAAACAAMAAQAFAAQAAAACAAQAAQAFAAQAAAACAAUAAQAAAAUAAAACAAYAAQADAAAAAAACAAcAAQAHAAYAAAACAAgAAQAHAAQAAAACAAkAAQAHAAQAAAACAAoAAQAFAAYAAAACAAsAAQADAAAAAAACAAwAAQACAAIAAAACAA0AAQAGAAQAAAACAA4AAQAHAAQAAAADAAEAAQAGAAYAAAADAAIAAQAAAAcAAAADAAMAAQADAAYAAAADAAQAAQADAAYAAAADAAUAAQAGAAYAAAADAAYAAQAAAAcAAAADAAcAAQAHAAYAAAADAAgAAQAAAAUAAAADAAkAAQAHAAYAAAADAAoAAQADAAIAAAADAAsAAQADAAYAAAADAAwAAQAEAAcAAAADAA0AAQAHAAQAAAADAA4AAQADAAAAAAAFAAEAAQAFAAYAAAAFAAIAAQAAAAcAAAAFAAwAAQAGAAYAAAAFAA0AAQAAAAUAAAAFAA4AAQAAAAcAAAAGAAEAAQAHAAQAAAAGAAIAAQAHAAQAAAAGAAwAAQADAAQAAAAGAA0AAQAEAAcAAAAGAA4AAQAFAAQAAAAHAAEAAQAFAAQAAAAHAAIAAQAEAAcAAAAHAAwAAQADAAAAAAAHAA0AAQAAAAcAAAAHAA4AAQADAAIAAAAIAAEAAQAGAAYAAAAIAAIAAQAFAAYAAAAIAAwAAQAHAAYAAAAIAA0AAQADAAIAAAAIAA4AAQADAAIAAAAJAAEAAQAAAAcAAAAJAAIAAQADAAAAAAAJAAwAAQACAAIAAAAJAA0AAQAFAAYAAAAJAA4AAQAGAAYAAAAKAAEAAQADAAAAAAAKAAIAAQAAAAUAAAAKAAwAAQAAAAUAAAAKAA0AAQADAAAAAAAKAA4AAQADAAAAAAALAAEAAQADAAIAAAALAAIAAQAFAAYAAAALAAwAAQAFAAQAAAALAA0AAQAGAAYAAAALAA4AAQAHAAYAAAAMAAEAAQAHAAQAAAAMAAIAAQACAAIAAAAMAAwAAQADAAQAAAAMAA0AAQAAAAcAAAAMAA4AAQAGAAQAAAANAAEAAQAHAAQAAAANAAIAAQADAAQAAAANAAgAAQAAAAUAAAANAAkAAQAAAAUAAAANAAoAAQAAAAUAAAAOAAEAAQAAAAUAAAAOAAIAAQAHAAYAAAAPAAEAAQADAAAAAAAPAAIAAQAGAAQAAAAQAAEAAQAGAAYAAAAQAAIAAQAHAAQAAAAQAAQAAQAAAAUAAAAQAAUAAQAAAAUAAAAQAAYAAQAAAAUAAAAQAAcAAQAAAAUAAAAQAAgAAQAAAAUAAAAQAAkAAQAAAAUAAAAQAAoAAQAAAAUAAAARAAEAAQAFAAYAAAARAAIAAQADAAAAAAARAAwAAQAFAAYAAAARAA0AAQADAAQAAAARAA4AAQAGAAQAAAASAAEAAQADAAAAAAASAAIAAQAHAAYAAAASAAwAAQADAAAAAAASAA0AAQAEAAcAAAASAA4AAQAFAAQAAAATAAEAAQADAAQAAAATAAIAAQADAAIAAAATAAwAAQACAAIAAAATAA0AAQAGAAQAAAATAA4AAQAHAAYAAAAUAAEAAQADAAYAAAAUAAIAAQAAAAcAAAAUAAwAAQAAAAcAAAAUAA0AAQACAAIAAAAUAA4AAQAHAAQAAAAVAAEAAQADAAIAAAAVAAIAAQAFAAYAAAAVAAwAAQAHAAQAAAAVAA0AAQAAAAcAAAAVAA4AAQAHAAYAAAAWAAEAAQAFAAQAAAAWAAIAAQADAAQAAAAWAAwAAQAEAAcAAAAWAA0AAQADAAQAAAAWAA4AAQAFAAYAAAAXAAEAAQADAAIAAAAXAAIAAQAGAAQAAAAXAAQAAQAAAAUAAAAXAAUAAQAAAAUAAAAXAAYAAQAAAAUAAAAXAAcAAQAAAAUAAAAXAAgAAQAAAAUAAAAXAAkAAQAAAAUAAAAXAAoAAQAAAAUAAAAYAAEAAQAHAAYAAAAYAAIAAQADAAYAAAAZAAEAAQAAAAUAAAAZAAIAAQACAAIAAAAaAAEAAQAHAAQAAAAaAAIAAQAAAAUAAAAaAAQAAQAAAAUAAAAaAAUAAQAAAAUAAAAaAAYAAQAAAAUAAAAaAAcAAQAAAAUAAAAaAAgAAQAAAAUAAAAaAAkAAQAAAAUAAAAaAAoAAQAAAAUAAAAbAAEAAQADAAYAAAAbAAIAAQAGAAYAAAAbAAwAAQAFAAQAAAAbAA0AAQADAAIAAAAbAA4AAQADAAQAAAAcAAEAAQAAAAcAAAAcAAIAAQAAAAcAAAAcAAwAAQACAAIAAAAcAA0AAQADAAQAAAAcAA4AAQAHAAQAAAAdAAEAAQAFAAQAAAAdAAIAAQADAAIAAAAdAAwAAQADAAYAAAAdAA0AAQAAAAcAAAAdAA4AAQAFAAYAAAAeAAEAAQAEAAcAAAAeAAIAAQAGAAYAAAAeAAwAAQAEAAcAAAAeAA0AAQADAAIAAAAeAA4AAQADAAYAAAAfAAEAAQAFAAYAAAAfAAIAAQAAAAcAAAAfAAwAAQAFAAYAAAAfAA0AAQAHAAQAAAAfAA4AAQAHAAQAAAAMAAYAAQAGAAQAAAAMAAUAAQADAAQAAAAMAAQAAQAHAAQAAAAMAAMAAQAGAAQAAAALAAYAAQAFAAYAAAALAAUAAQADAAIAAAALAAQAAQACAAIAAAALAAMAAQAGAAQAAAAKAAYAAQAHAAYAAAAKAAUAAQAGAAYAAAAKAAQAAQAGAAYAAAAKAAMAAQADAAYAAAAJAAYAAQACAAIAAAAJAAUAAQAHAAQAAAAJAAQAAQAFAAQAAAAJAAMAAQAEAAcAAAAIAAYAAQAFAAYAAAAIAAUAAQADAAYAAAAIAAQAAQADAAQAAAAIAAMAAQAEAAcAAAAHAAYAAQAAAAUAAAAHAAUAAQAAAAcAAAAHAAQAAQAHAAQAAAAHAAMAAQAFAAYAAAAGAAYAAQADAAQAAAAGAAUAAQADAAYAAAAGAAQAAQAHAAQAAAAGAAMAAQADAAIAAAAFAAYAAQADAAAAAAAFAAUAAQADAAQAAAAFAAQAAQACAAIAAAAFAAMAAQAAAAUAAAA=")
@@ -183,6 +189,7 @@ tile_map_data = PackedByteArray("AAAMAAoAAQAHAAQAAAAMAAkAAQAAAAUAAAAMAAgAAQADAAA
 tile_set = ExtResource("10_tuyco")
 collision_enabled = false
 script = ExtResource("8_bjqp8")
+metadata/_edit_lock_ = true
 
 [node name="Battlefield" type="TileMapLayer" parent="."]
 z_index = -1
@@ -237,10 +244,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Objects" type="Node2D" parent="."]
-
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
@@ -284,6 +287,7 @@ metadata/_edit_lock_ = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(0.44, 0.44, 0.44, 1)
+z_index = 50
 material = SubResource("CanvasItemMaterial_65f8u")
 amount = 200
 texture = ExtResource("18_jhiy2")
@@ -320,7 +324,6 @@ phases = [NodePath("ActivateBoss"), NodePath("Sc0_Start"), NodePath("Sc0_Middle"
 [node name="FinalBossHUD" parent="." instance=ExtResource("23_k6vjy")]
 
 [node name="Label" type="Label" parent="."]
-z_index = -1
 offset_left = 864.0
 offset_top = 184.0
 offset_right = 1088.0
@@ -359,8 +362,6 @@ position = Vector2(48, 56)
 [connection signal="died" from="Player" to="FinalBossHandler" method="_on_player_died"]
 [connection signal="final_boss_damageless" from="FinalBossHandler" to="End World Handler" method="unlock_secret" binds= [1]]
 [connection signal="final_boss_defeated" from="FinalBossHandler" to="End World Handler" method="_end_world_functions"]
-[connection signal="final_boss_defeated" from="FinalBossHandler" to="End World Handler" method="unlock_secret" binds= [0]]
-[connection signal="final_boss_defeated" from="FinalBossHandler" to="End World Handler" method="unlock_if" binds= [PackedStringArray("warped"), 2]]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="TileMapLayer" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="Back" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="WallBG" method="_on_final_boss_handler_final_boss_triggered"]

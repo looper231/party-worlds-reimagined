@@ -57,12 +57,12 @@ TransitionManager="*res://engine/singletones/scripts/TransitionManager.gd"
 ProfileManager="*res://engine/singletones/scripts/ProfileManager.gd"
 SettingsManager="*res://engine/singletones/scripts/SettingsManager.gd"
 Pause="*res://engine/components/pause/pause.tscn"
-GameOverContinue="*res://engine/components/game_over/game_over_continue.tscn"
 SkinsManager="*res://engine/singletones/scripts/SkinsManager.gd"
 CharacterManager="*res://engine/singletones/scripts/CharacterManager.gd"
 CustomGlobals="*res://stages/singletones/CustomGlobals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SecretsManager="*res://addons/secrets_manager/SecretsManager.tscn"
+GameOverContinue="*res://addons/game_over_pwr/game_over_layer.tscn"
 
 [debug]
 

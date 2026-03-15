@@ -124,6 +124,7 @@ func _update_save() -> void:
 			wnumbers = prof.data.star_numbers.split("-")
 		else:
 			wnumbers = prof.get_world_numbers().split("-")
+		wnumbers[1] = str(clampi(int(wnumbers[1]), 1, level_count[int(wnumbers[0])]))
 		_star_sel_world = int(wnumbers[0])
 		_star_sel_level = int(wnumbers[1])
 		label.set_world_numbers("-".join(wnumbers))
@@ -198,9 +199,11 @@ func _update_reset_labels() -> void:
 			return
 		if no_applicable_text: return
 		
-		var _arr: PackedStringArray = ["warpless"]
+		var _arr: PackedStringArray = ["warpless", "no continues"]
 		if "warped" in _prof:
 			_arr.remove_at(0)
+		if "gameover" in _prof:
+			_arr.remove_at(1)
 		if _arr.is_empty():
 			return
 		reset_node.secrets.text = tr("applicable for %s") % ", ".join(_arr)
