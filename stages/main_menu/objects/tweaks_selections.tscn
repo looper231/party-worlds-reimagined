@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://kiw6yxeov3fj"]
+[gd_scene load_steps=37 format=3 uid="uid://kiw6yxeov3fj"]
 
 [ext_resource type="Script" uid="uid://cn67joohcklbn" path="res://engine/components/ui/generic/menu_items_controller.gd" id="1_e1b0h"]
 [ext_resource type="Script" uid="uid://cv1lqga2vn25" path="res://stages/main_menu/scripts/tweak_category_sel.gd" id="2_2sf4t"]
@@ -84,6 +84,11 @@ atlas = ExtResource("5_fjyvq")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84j8u"]
+resource_local_to_scene = true
+atlas = ExtResource("5_fjyvq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yorwq"]
 resource_local_to_scene = true
 atlas = ExtResource("5_fjyvq")
 region = Rect2(0, 0, 16, 16)
@@ -1051,6 +1056,48 @@ texture = SubResource("AtlasTexture_84j8u")
 stretch_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Aesthetic/HBoxContainer26/Toggle"]
+modulate = Color(0, 0, 0, 0.462745)
+z_index = -1
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 19.0
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_lobhh")
+stretch_mode = 2
+
+[node name="HBoxContainer18" type="HBoxContainer" parent="Aesthetic"]
+layout_mode = 2
+script = ExtResource("3_pxu1a")
+tweak_name = "disable_danmaku_scoring"
+default_value = true
+tweak_description = "during certain battles in the game, score pop-up effects may clutter up the screen. this tweak disables them.
+
+note: this does not affect gameplay in any way!"
+selected_sound = ExtResource("3_ltw82")
+
+[node name="Label" type="Label" parent="Aesthetic/HBoxContainer18"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_colors/font_outline_color = Color(0, 0, 0.329412, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_5xeuf")
+theme_override_font_sizes/font_size = 12
+text = "disable score pop-ups during certain battles"
+uppercase = true
+
+[node name="Toggle" type="TextureRect" parent="Aesthetic/HBoxContainer18"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_yorwq")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Aesthetic/HBoxContainer18/Toggle"]
 modulate = Color(0, 0, 0, 0.462745)
 z_index = -1
 layout_mode = 2

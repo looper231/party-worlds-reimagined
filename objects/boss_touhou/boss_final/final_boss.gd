@@ -277,7 +277,8 @@ func _danmaku_clear_screen(should_tally_score: bool = true) -> void:
 			if is_instance_valid(bullet_pool[i]):
 				if should_tally_score:
 					Data.add_score(10)
-					ScoreText.new(str(10), bullet_pool[i])
+					if !SettingsManager.get_tweak("disable_danmaku_scoring", true):
+						ScoreText.new(str(10), bullet_pool[i])
 				bullet_pool[i].delete_self()
 				bullets_cleared += 1
 		if should_tally_score: _danmaku_clear_tally(bullets_cleared)
