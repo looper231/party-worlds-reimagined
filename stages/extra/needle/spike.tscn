@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2kodqwj4626b"]
+
+[ext_resource type="Script" uid="uid://cway2863r5lkh" path="res://engine/objects/enemies/spikes/spike.gd" id="1_vbw3k"]
+[ext_resource type="Texture2D" uid="uid://pujov6sbhglg" path="res://engine/objects/enemies/spikes/textures/spike_hard_block.png" id="2_vbw3k"]
+
+[node name="Spike" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_vbw3k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+polygon = PackedVector2Array(0, -32, 16, 0, -16, 0)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vbw3k")
