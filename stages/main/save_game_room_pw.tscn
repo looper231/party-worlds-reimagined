@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://bttcwqhe3g75w"]
+[gd_scene load_steps=56 format=4 uid="uid://bttcwqhe3g75w"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_jkjdm"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_7c8x4"]
@@ -92,6 +92,40 @@ size = Vector2(64, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewu63"]
 size = Vector2(64, 128)
 
+[sub_resource type="GDScript" id="GDScript_7phk3"]
+script/source = "extends \"res://engine/scenes/save_game_room/scripts/saved_level_label.gd\"
+
+func update_label() -> void:
+	if !pipe_save.profile_name:
+		set_empty()
+		return
+	
+	var profile_name = pipe_save.profile_name
+	
+	if ProfileManager.profiles.has(profile_name):
+		var prof: ProfileManager.Profile = ProfileManager.profiles[profile_name]
+		
+		var full_numbers: String = prof.get_world_numbers()
+		var world_numbers: Array = full_numbers.split(\"-\")
+		if !world_numbers[0]:
+			set_empty()
+			return
+		
+		pipe_save.is_empty = false
+		if world_numbers.size() < 2 or _tweak:
+			set_empty()
+			return
+		
+		text = text_template % full_numbers[2]
+	else:
+		set_empty()
+
+func set_world_numbers(world_numbers: String) -> void:
+	if _tweak: set_empty()
+	text = text_template % world_numbers.get_slice(\"-\", 1)
+	pipe_save.is_empty = false
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgra3"]
 size = Vector2(64, 64)
 
@@ -122,6 +156,8 @@ metadata/_edit_lock_ = true
 
 [node name="ResetAndSelect" type="Node2D" parent="."]
 script = ExtResource("9_y4kjk")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Progress" type="TextureProgressBar" parent="ResetAndSelect"]
 visible = false
@@ -374,7 +410,7 @@ level_count = {
 }
 map_scene_template = "res://stages/world_{0}/map_{0}.tscn"
 map_scene_template_2 = "res://stages/world_{0}/map{0}.tscn"
-level_scene_template = "res://stages/world_{0}/level_{0}-{1}.tscn"
+level_scene_template = "res://stages/world_{0}/{0}-{1}.tscn"
 reset_node_path = NodePath("../ResetAndSelect")
 force_disable_level_save = false
 set_data_to_profile = ""
@@ -424,7 +460,7 @@ level_count = {
 }
 map_scene_template = "res://stages/world_{0}/map_{0}.tscn"
 map_scene_template_2 = "res://stages/world_{0}/map{0}.tscn"
-level_scene_template = "res://stages/world_{0}/level_{0}-{1}.tscn"
+level_scene_template = "res://stages/world_{0}/{0}-{1}.tscn"
 reset_node_path = NodePath("../ResetAndSelect")
 force_disable_level_save = false
 set_data_to_profile = ""
@@ -809,6 +845,63 @@ region_rect = Rect2(160, 96, 32, 32)
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_ewu63")
 
+[node name="ResetGensokyo" type="Node2D" parent="Extras"]
+z_index = 6
+position = Vector2(1840, 0)
+script = ExtResource("9_y4kjk")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Progress" type="TextureProgressBar" parent="Extras/ResetGensokyo"]
+visible = false
+offset_left = 275.0
+offset_top = 22.0
+offset_right = 555.0
+offset_bottom = 38.0
+max_value = 1.0
+step = 0.05
+texture_under = ExtResource("9_mwdyk")
+texture_progress = ExtResource("10_8x5mf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Extras/ResetGensokyo"]
+offset_left = 224.0
+offset_top = -66.0
+offset_right = 577.0
+offset_bottom = -2.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Extras/ResetGensokyo/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "TO DELETE THIS SAVE, PRESS AND HOLD DEL BUTTON FOR 3 SEC."
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Unlock2" type="Label" parent="Extras/ResetGensokyo/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "to select a level, use corresponding number buttons."
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("13_7phk3")
+
+[node name="Secrets" type="Label" parent="Extras/ResetGensokyo/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "applicable for warpless"
+horizontal_alignment = 1
+uppercase = true
+
 [node name="GensokyoUnlock" type="StaticBody2D" parent="Extras"]
 position = Vector2(2368, 384)
 collision_layer = 112
@@ -818,24 +911,46 @@ secrets_conditionals = Array[String](["main clear", "9-3 defeat", "9-3 nohit"])
 achievements_to_unlock = Array[String](["GensokyoBosses", "GensokyoNohit", "GensokyoClear"])
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Extras/GensokyoUnlock"]
+[node name="PipeIn" parent="Extras/GensokyoUnlock" instance=ExtResource("28_cenxx")]
+position = Vector2(0, -48)
+script = ExtResource("19_8x5mf")
+profile_name = "gensokyo"
+level_count = {
+1: 4
+}
+map_scene_template = "res://stages/extra/gensokyo/map.tscn"
+map_scene_template_2 = "res://stages/extra/gensokyo/map.tscn"
+level_scene_template = "res://stages/extra/gensokyo/gensokyo-{1}.tscn"
+reset_node_path = NodePath("../../ResetGensokyo")
+force_disable_level_save = false
+set_data_to_profile = ""
+allow_selecting_worlds = false
+allow_selecting_completed_levels = false
+no_applicable_text = true
+warp_to_scene = "uid://k5q4u8vwb6xx"
+warping_sound = ExtResource("29_fo23o")
+use_circle_transition = true
+circle_closing_speed = 0.03
+circle_opening_speed = 0.03
+circle_center_after_middle = true
+circle_wait_till_scene_changed = false
+
+[node name="Label" type="Label" parent="Extras/GensokyoUnlock/PipeIn"]
 offset_left = -64.0
-offset_top = -80.0
+offset_top = -56.0
 offset_right = 64.0
-offset_bottom = -51.0
+offset_bottom = -27.0
 theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("22_dbn72")
 theme_override_font_sizes/font_size = 21
-text = "land of illusions"
+text = "world of
+illusions - %s"
 horizontal_alignment = 1
 uppercase = true
-
-[node name="PipeIn" parent="Extras/GensokyoUnlock" instance=ExtResource("28_cenxx")]
-position = Vector2(0, -48)
-warp_to_scene = "uid://1pva5d65flxq"
-warping_sound = ExtResource("29_fo23o")
-use_circle_transition = true
+script = SubResource("GDScript_7phk3")
+empty_text = "world of
+illusions"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Extras/GensokyoUnlock"]
 shape = SubResource("RectangleShape2D_mgra3")
@@ -846,7 +961,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Skylight" type="Sprite2D" parent="Extras/GensokyoUnlock"]
-z_index = 50
+z_index = 5
 position = Vector2(-32, -272)
 texture = ExtResource("34_ewu63")
 
@@ -867,3 +982,4 @@ color = Color(0.298039, 0, 0, 1)
 [connection signal="unlock_achievement" from="Extras/NeedleUnlock" to="Extras/AchievementBox" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/MinecraftUnlock" to="Extras/AchievementBox" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/GensokyoUnlock" to="Extras/AchievementBox" method="show_achievement"]
+[connection signal="player_enter" from="Extras/GensokyoUnlock/PipeIn" to="Extras/ResetGensokyo" method="_player_enter_centered"]

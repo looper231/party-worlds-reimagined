@@ -24,7 +24,7 @@ var map_scene_template: String = "res://stages/world_{0}/map_{0}.tscn"
 @export
 var map_scene_template_2: String = "res://stages/world_{0}/map{0}.tscn"
 @export
-var level_scene_template: String = "res://stages/world_{0}/level_{0}-{1}.tscn"
+var level_scene_template: String = "res://stages/world_{0}/{0}-{1}.tscn"
 @export_node_path("Node2D") var reset_node_path: NodePath = ^"../CanvasLayer/Reset"
 @export var force_disable_level_save: bool = false
 @export var set_data_to_profile: String
@@ -172,6 +172,8 @@ func pass_warp() -> void:
 				ProfileManager.current_profile.data.current_world = map_scene_template_2.format([str(_star_sel_world)])
 		if _star_sel_level:
 			Data.values.map_force_selected_marker = level_scene_template.format([str(_star_sel_world), str(_star_sel_level - 1)])
+			if _star_sel_world == 5:
+				Data.values.map_force_selected_marker = "res://stages/world_5/levelpartyworld5.tscn"
 			Data.values.map_force_go_next = true
 	
 	if &"current_world" in ProfileManager.current_profile.data && ProfileManager.current_profile.data.current_world:

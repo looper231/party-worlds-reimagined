@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://k5q4u8vwb6xx"]
+
+[ext_resource type="Script" uid="uid://b2miajjwaop0p" path="res://engine/scenes/map/scripts/map.gd" id="1_nojiw"]
+[ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_gaxnt"]
+[ext_resource type="AudioStream" uid="uid://b8yrlkp7nyp5a" path="res://stages/extra/gensokyo/music/eternal_night_vignette.ogg" id="3_81kds"]
+[ext_resource type="PackedScene" uid="uid://c5s3uwx77gvab" path="res://modules/music_overlay/music_overlay.tscn" id="4_olpa0"]
+[ext_resource type="Texture2D" uid="uid://usm6n80msr7n" path="res://engine/scenes/map/textures/bg.png" id="5_01oah"]
+[ext_resource type="PackedScene" uid="uid://w4jc7nb1lcsy" path="res://engine/scenes/map/prefabs/player.tscn" id="14_baxxk"]
+[ext_resource type="PackedScene" uid="uid://beu6ovtvrvpfc" path="res://engine/scenes/map/prefabs/dot.tscn" id="15_vkcsa"]
+[ext_resource type="Script" uid="uid://w38wmhi8lagh" path="res://engine/scenes/map/scripts/map_camera.gd" id="16_md66m"]
+[ext_resource type="Texture2D" uid="uid://cdnmy6n3ljijy" path="res://gfx/map-labels/W7_TRIBUTE.png" id="17_u03oj"]
+[ext_resource type="Script" uid="uid://dr3vhptgbru6r" path="res://engine/scenes/map/scripts/world_text.gd" id="18_jewal"]
+[ext_resource type="Texture2D" uid="uid://b6hnnpa1sdewh" path="res://engine/scenes/map/textures/mario_icon.png" id="19_oduaq"]
+[ext_resource type="Texture2D" uid="uid://h5k1m7htt20h" path="res://engine/scenes/map/textures/press_start.png" id="20_8ueod"]
+[ext_resource type="Script" uid="uid://dxfohdq1ugjpj" path="res://engine/scenes/map/scripts/start_text.gd" id="21_y5fc2"]
+[ext_resource type="Script" uid="uid://v61jbnq007mi" path="res://engine/scenes/map/scripts/marker_space.gd" id="22_sj5fd"]
+[ext_resource type="Texture2D" uid="uid://cyx06gn10n78x" path="res://engine/scenes/map/textures/debug.png" id="23_ssp6w"]
+[ext_resource type="Texture2D" uid="uid://co2aqkfsljcf1" path="res://engine/scenes/map/textures/x.png" id="24_f7atl"]
+[ext_resource type="Script" uid="uid://bgm1hm3784ld7" path="res://engine/scenes/map/scripts/map_player_marker.gd" id="25_fvrkr"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_nojiw")
+player = NodePath("Player")
+metadata/_edit_lock_ = true
+
+[node name="MusicLoader" parent="." instance=ExtResource("2_gaxnt")]
+music = Array[Resource]([ExtResource("3_81kds")])
+
+[node name="MusicOverlay" parent="." instance=ExtResource("4_olpa0")]
+displaying_mode = 1
+text = Array[String](["ZUN - Eternal Night Vignette ~ Eastern Night (Red Chameleon Port)"])
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture = ExtResource("5_01oah")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 3333, 480)
+region_filter_clip_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Bg2" type="Sprite2D" parent="."]
+position = Vector2(3333, 0)
+texture = ExtResource("5_01oah")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 480, 3333, 480)
+region_filter_clip_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Bg3" type="Sprite2D" parent="."]
+position = Vector2(6666, 0)
+texture = ExtResource("5_01oah")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 960, 3333, 480)
+region_filter_clip_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("14_baxxk")]
+z_index = 5
+z_as_relative = false
+position = Vector2(-16, 312)
+dots = ExtResource("15_vkcsa")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 4288
+limit_bottom = 480
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_limits = true
+script = ExtResource("16_md66m")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GUI"]
+position = Vector2(320, -46)
+texture = ExtResource("17_u03oj")
+script = ExtResource("18_jewal")
+
+[node name="BounceMarker" type="Marker2D" parent="GUI/Sprite2D"]
+position = Vector2(0, 146)
+
+[node name="MarioIcon" type="Sprite2D" parent="GUI"]
+position = Vector2(581, 436)
+texture = ExtResource("19_oduaq")
+metadata/_edit_lock_ = true
+
+[node name="PressStart" type="Sprite2D" parent="GUI"]
+position = Vector2(320, 443)
+texture = ExtResource("20_8ueod")
+script = ExtResource("21_y5fc2")
+
+[node name="MarkerSpace" type="Node2D" parent="."]
+editor_description = "Use this as World"
+script = ExtResource("22_sj5fd")
+space_name = 1
+dot_texture = ExtResource("23_ssp6w")
+x_texture = ExtResource("24_f7atl")
+draw_dots = true
+metadata/_edit_lock_ = true
+
+[node name="MapPlayerMarker9" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(0, 312)
+script = ExtResource("25_fvrkr")
+
+[node name="MapPlayerMarker" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(88, 312)
+script = ExtResource("25_fvrkr")
+level = "uid://cq8yl0fsgr2pn"
+
+[node name="MapPlayerMarker2" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(128, 280)
+script = ExtResource("25_fvrkr")
+
+[node name="MapPlayerMarker3" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(352, 280)
+script = ExtResource("25_fvrkr")
+
+[node name="MapPlayerMarker5" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(472, 312)
+script = ExtResource("25_fvrkr")
+
+[node name="MapPlayerMarker28" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(552, 312)
+script = ExtResource("25_fvrkr")
+level = "uid://cq8yl0fsgr2pn"
+
+[node name="MapPlayerMarker4" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(600, 296)
+script = ExtResource("25_fvrkr")
+
+[node name="MapPlayerMarker26" type="Marker2D" parent="MarkerSpace"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(656, 296)
+script = ExtResource("25_fvrkr")
