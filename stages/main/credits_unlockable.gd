@@ -19,7 +19,7 @@ func check_game_clear_state() -> bool:
 		var chosen_profile = ProfileManager.profiles[key]
 		if chosen_profile.has_completed_world("10"): return true
 	
-	return SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits or ProfileManager.current_profile.has_completed_world("10")
+	return SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits
 
 
 func activate() -> void:

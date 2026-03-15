@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bttcwqhe3g75w"]
+[gd_scene load_steps=55 format=4 uid="uid://bttcwqhe3g75w"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_jkjdm"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_7c8x4"]
@@ -8,16 +8,21 @@
 [ext_resource type="Script" uid="uid://db8widi15epm" path="res://engine/scenes/save_game_room/scripts/save_room_logic.gd" id="5_a2pht"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="5_axrby"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="6_rd34b"]
-[ext_resource type="PackedScene" uid="uid://e1hxnaxfnvbl" path="res://engine/scenes/save_game_room/scripts/reset.tscn" id="6_tgxd0"]
+[ext_resource type="Texture2D" uid="uid://cwwgmgsjprj1p" path="res://engine/scenes/save_game_room/textures/reset_counter_bg.png" id="9_mwdyk"]
 [ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="9_nq56u"]
+[ext_resource type="Script" uid="uid://da1t6iei5k574" path="res://engine/scenes/save_game_room/scripts/reset_and_select.gd" id="9_y4kjk"]
+[ext_resource type="Texture2D" uid="uid://cquriu107cwpu" path="res://engine/scenes/save_game_room/textures/reset_counter.png" id="10_8x5mf"]
 [ext_resource type="TileSet" uid="uid://cjoxdod5qfcit" path="res://stages/main/save_game_room_pw.tres" id="10_nilg5"]
+[ext_resource type="Script" uid="uid://c0xlh6o06spwa" path="res://engine/objects/signs/sign_help_key_formatter.gd" id="12_d4svs"]
 [ext_resource type="PackedScene" uid="uid://u383towqhd0i" path="res://engine/objects/warps/pipe_out.tscn" id="12_kj0k2"]
+[ext_resource type="Script" uid="uid://c77sjij60xuim" path="res://stages/main/save_game_room/select_level_label.gd" id="13_7phk3"]
 [ext_resource type="PackedScene" uid="uid://dyg18uvaedfxp" path="res://engine/objects/warps/pipe_save.tscn" id="13_d852e"]
 [ext_resource type="PackedScene" uid="uid://b71msw28e37a" path="res://engine/objects/powerups/red_mushroom/red_mushroom.tscn" id="14_b0luw"]
 [ext_resource type="PackedScene" uid="uid://bsdcxwngf5hru" path="res://engine/objects/powerups/fire_flower/fire_flower.tscn" id="15_bhtk6"]
 [ext_resource type="PackedScene" uid="uid://8a7nemgi0b6q" path="res://engine/objects/powerups/beetroot/beetroot.tscn" id="16_73851"]
 [ext_resource type="PackedScene" uid="uid://o3k018cbex8g" path="res://engine/objects/powerups/green_lui/green_lui.tscn" id="17_elo2e"]
 [ext_resource type="PackedScene" uid="uid://b2d7bys2llvfr" path="res://engine/objects/bumping_blocks/reset_power_block/reset_power_block.tscn" id="18_eof12"]
+[ext_resource type="Script" uid="uid://o5lqwq60ibm4" path="res://stages/main/save_game_room/pipe_save_with_select.gd" id="19_8x5mf"]
 [ext_resource type="Script" uid="uid://clm1anrf3fw3j" path="res://engine/scripts/nodes/general_movement/circle_movement.gd" id="21_f1o1t"]
 [ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="22_dbn72"]
 [ext_resource type="Texture2D" uid="uid://dh5ox7gb4u8fq" path="res://gfx/world3/3-1cloud.png" id="23_8x5mf"]
@@ -115,7 +120,70 @@ limit_bottom = 480
 script = ExtResource("5_axrby")
 metadata/_edit_lock_ = true
 
-[node name="Reset" parent="." instance=ExtResource("6_tgxd0")]
+[node name="ResetAndSelect" type="Node2D" parent="."]
+script = ExtResource("9_y4kjk")
+
+[node name="Progress" type="TextureProgressBar" parent="ResetAndSelect"]
+visible = false
+offset_left = 275.0
+offset_top = 22.0
+offset_right = 555.0
+offset_bottom = 38.0
+max_value = 1.0
+step = 0.05
+texture_under = ExtResource("9_mwdyk")
+texture_progress = ExtResource("10_8x5mf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResetAndSelect"]
+offset_left = 224.0
+offset_top = -66.0
+offset_right = 577.0
+offset_bottom = -2.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ResetAndSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "TO DELETE A SAVE, PRESS AND HOLD DEL BUTTON FOR 3 SEC."
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Unlock" type="Label" parent="ResetAndSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "to select a world, press %s."
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("12_d4svs")
+action = "a_tab"
+
+[node name="Unlock2" type="Label" parent="ResetAndSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "to select a level, use corresponding number buttons."
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("13_7phk3")
+
+[node name="Secrets" type="Label" parent="ResetAndSelect/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_dbn72")
+theme_override_font_sizes/font_size = 21
+text = "applicable for warpless"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="CamArea" parent="." instance=ExtResource("6_rd34b")]
 offset_right = 640.0
@@ -240,10 +308,32 @@ trigger_immediately = true
 
 [node name="PipeSave" parent="." instance=ExtResource("13_d852e")]
 position = Vector2(288, 304)
+script = ExtResource("19_8x5mf")
 profile_name = "save_1"
+level_count = {
+1: 4,
+2: 3,
+3: 4,
+4: 5,
+5: 1,
+6: 5,
+7: 3,
+8: 3,
+9: 3,
+10: 4
+}
+map_scene_template = "res://stages/world_{0}/map_{0}.tscn"
+map_scene_template_2 = "res://stages/world_{0}/map{0}.tscn"
+level_scene_template = "res://stages/world_{0}/{0}-{1}.tscn"
+reset_node_path = NodePath("../ResetAndSelect")
+force_disable_level_save = false
+set_data_to_profile = ""
+allow_selecting_worlds = false
+allow_selecting_completed_levels = false
+no_applicable_text = false
 warping_editor_display_path = false
 warp_to = NodePath("../PipeOut")
-warp_to_scene = "res://stages/world_1/map_1.tscn"
+warp_to_scene = "uid://c2cnlo6bnvvqk"
 warping_sound = ExtResource("29_fo23o")
 use_circle_transition = true
 circle_closing_speed = 0.03
@@ -268,7 +358,29 @@ script = ExtResource("23_j0sbb")
 
 [node name="PipeSave2" parent="." instance=ExtResource("13_d852e")]
 position = Vector2(416, 304)
+script = ExtResource("19_8x5mf")
 profile_name = "save_2"
+level_count = {
+1: 4,
+2: 3,
+3: 4,
+4: 5,
+5: 1,
+6: 5,
+7: 3,
+8: 3,
+9: 3,
+10: 4
+}
+map_scene_template = "res://stages/world_{0}/map_{0}.tscn"
+map_scene_template_2 = "res://stages/world_{0}/map{0}.tscn"
+level_scene_template = "res://stages/world_{0}/level_{0}-{1}.tscn"
+reset_node_path = NodePath("../ResetAndSelect")
+force_disable_level_save = false
+set_data_to_profile = ""
+allow_selecting_worlds = false
+allow_selecting_completed_levels = false
+no_applicable_text = false
 warping_editor_display_path = false
 warp_to = NodePath("../PipeOut")
 warp_to_scene = "res://stages/world_1/map_1.tscn"
@@ -296,7 +408,29 @@ script = ExtResource("23_j0sbb")
 
 [node name="PipeSave3" parent="." instance=ExtResource("13_d852e")]
 position = Vector2(544, 304)
+script = ExtResource("19_8x5mf")
 profile_name = "save_3"
+level_count = {
+1: 4,
+2: 3,
+3: 4,
+4: 5,
+5: 1,
+6: 5,
+7: 3,
+8: 3,
+9: 3,
+10: 4
+}
+map_scene_template = "res://stages/world_{0}/map_{0}.tscn"
+map_scene_template_2 = "res://stages/world_{0}/map{0}.tscn"
+level_scene_template = "res://stages/world_{0}/level_{0}-{1}.tscn"
+reset_node_path = NodePath("../ResetAndSelect")
+force_disable_level_save = false
+set_data_to_profile = ""
+allow_selecting_worlds = false
+allow_selecting_completed_levels = false
+no_applicable_text = false
 warping_editor_display_path = false
 warp_to = NodePath("../PipeOut")
 warp_to_scene = "res://stages/world_1/map_1.tscn"
@@ -487,6 +621,7 @@ offset_right = 2584.0
 offset_bottom = 34.0
 texture = ExtResource("34_4qgcm")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Extras" type="Node2D" parent="."]
 
@@ -723,12 +858,12 @@ offset_right = 720.0
 offset_bottom = 488.0
 color = Color(0.298039, 0, 0, 1)
 
-[connection signal="body_entered" from="PipeSave" to="Reset" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave" to="Reset" method="_on_pipe_save_player_exit" unbinds=1]
-[connection signal="body_entered" from="PipeSave2" to="Reset" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave2" to="Reset" method="_on_pipe_save_player_exit" unbinds=1]
-[connection signal="body_entered" from="PipeSave3" to="Reset" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave3" to="Reset" method="_on_pipe_save_player_exit" unbinds=1]
+[connection signal="body_entered" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
+[connection signal="body_exited" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
+[connection signal="body_entered" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
+[connection signal="body_exited" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
+[connection signal="body_entered" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
+[connection signal="body_exited" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
 [connection signal="unlock_achievement" from="Extras/NeedleUnlock" to="Extras/AchievementBox" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/MinecraftUnlock" to="Extras/AchievementBox" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/GensokyoUnlock" to="Extras/AchievementBox" method="show_achievement"]
