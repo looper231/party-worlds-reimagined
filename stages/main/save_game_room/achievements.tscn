@@ -62,6 +62,40 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
+[node name="MainNoWarps" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_jrqni")
+secret_id = "main nowarp"
+
+[node name="Label" type="Label" parent="MainNoWarps"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_m1ut6")
+theme_override_font_sizes/font_size = 20
+text = "main worlds warpless"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Toggle" type="Label" parent="MainNoWarps"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_jrqni")
+theme_override_font_sizes/font_size = 28
+text = "no"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
 [node name="W4Warp" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -510,14 +544,15 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="NeedleLevelNohit" type="HBoxContainer" parent="."]
+[node name="GensokyoClear" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
-secret_id = "needle nohit"
+secret_id = "gensokyo clear"
 hidden_on_init = true
 
-[node name="Label" type="Label" parent="NeedleLevelNohit"]
+[node name="Label" type="Label" parent="GensokyoClear"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -525,12 +560,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource("FontVariation_m1ut6")
 theme_override_font_sizes/font_size = 20
-text = "needle level damageless"
+text = "land of illusions completed"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Toggle" type="Label" parent="NeedleLevelNohit"]
+[node name="Toggle" type="Label" parent="GensokyoClear"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -546,6 +581,7 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="GensokyoBosses" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
@@ -582,6 +618,7 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="GensokyoNohit" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")

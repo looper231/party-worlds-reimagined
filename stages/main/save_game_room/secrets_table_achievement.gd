@@ -20,3 +20,4 @@ func _ready() -> void:
 func show_hidden() -> void:
 	await get_tree().physics_frame
 	get_child(0).text = original_text
+	show()
