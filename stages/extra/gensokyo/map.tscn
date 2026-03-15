@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2miajjwaop0p" path="res://engine/scenes/map/scripts/map.gd" id="1_nojiw"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_gaxnt"]
-[ext_resource type="AudioStream" uid="uid://b8yrlkp7nyp5a" path="res://stages/extra/gensokyo/music/eternal_night_vignette.ogg" id="3_81kds"]
+[ext_resource type="AudioStream" uid="uid://duqqwdr7jp70p" path="res://stages/extra/gensokyo/music/eiyashou.ogg" id="3_81kds"]
 [ext_resource type="PackedScene" uid="uid://c5s3uwx77gvab" path="res://modules/music_overlay/music_overlay.tscn" id="4_olpa0"]
 [ext_resource type="Texture2D" uid="uid://usm6n80msr7n" path="res://engine/scenes/map/textures/bg.png" id="5_01oah"]
 [ext_resource type="PackedScene" uid="uid://w4jc7nb1lcsy" path="res://engine/scenes/map/prefabs/player.tscn" id="14_baxxk"]
