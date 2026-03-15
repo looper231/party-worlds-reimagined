@@ -1,0 +1,117 @@
+[gd_scene load_steps=18 format=3 uid="uid://deibpeaq5bs6d"]
+
+[ext_resource type="PackedScene" uid="uid://d2et5ej25bbw" path="res://objects/enemies_touhou/rabbits/bamboo_rabbit_horizontal.tscn" id="1_rqbak"]
+[ext_resource type="PackedScene" uid="uid://dj2b5g2smonyu" path="res://engine/objects/enemies/_dead/enemy_stomped.tscn" id="2_gy8t0"]
+[ext_resource type="Script" uid="uid://bhksimoyhb836" path="res://engine/objects/enemies/_dead/prefabs/do_stomped.gd" id="3_yi0og"]
+[ext_resource type="Script" uid="uid://bm81fg3h4j8sj" path="res://engine/scripts/resources/instance_node2d/instance_node2d.gd" id="4_75x6u"]
+[ext_resource type="PackedScene" uid="uid://oe7i3cief0g" path="res://engine/objects/enemies/_dead/enemy_killed.tscn" id="5_xocmk"]
+[ext_resource type="Script" uid="uid://du32vchaulqj6" path="res://engine/objects/enemies/_dead/prefabs/do_killed.gd" id="6_5ok2x"]
+[ext_resource type="Texture2D" uid="uid://d1s164pfm4pqe" path="res://objects/enemies_touhou/rabbits/textures/bamboo_stand.png" id="7_gy8t0"]
+
+[sub_resource type="Resource" id="Resource_bk0nf"]
+resource_local_to_scene = true
+script = ExtResource("4_75x6u")
+creation_nodepack = ExtResource("2_gy8t0")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite/Dead")
+}
+custom_script = ExtResource("3_yi0og")
+
+[sub_resource type="Resource" id="Resource_w2tqh"]
+resource_local_to_scene = true
+script = ExtResource("4_75x6u")
+creation_nodepack = ExtResource("5_xocmk")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 1
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite"),
+"death_speed": Vector2(0, -250)
+}
+custom_script = ExtResource("6_5ok2x")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi0og"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(0, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75x6u"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(31, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xocmk"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(62, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ok2x"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(93, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk0nf"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(124, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2tqh"]
+atlas = ExtResource("7_gy8t0")
+region = Rect2(155, 0, 31, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dcxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi0og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75x6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xocmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ok2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk0nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2tqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gy8t0"]
+size = Vector2(6, 128)
+
+[node name="Bamboo Rabbit Vertical" instance=ExtResource("1_rqbak")]
+
+[node name="EnemyAttacked" parent="Body" index="1"]
+stomping_creation = SubResource("Resource_bk0nf")
+killing_creation = SubResource("Resource_w2tqh")
+
+[node name="Sprite" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_6dcxb")
+
+[node name="BambooArea" parent="." index="4"]
+position = Vector2(-4, -35)
+
+[node name="BambooSprite" parent="BambooArea" index="0"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" parent="BambooArea" index="1"]
+shape = SubResource("RectangleShape2D_gy8t0")

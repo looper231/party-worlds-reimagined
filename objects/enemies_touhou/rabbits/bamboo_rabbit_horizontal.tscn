@@ -1,0 +1,183 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2et5ej25bbw"]
+
+[ext_resource type="PackedScene" uid="uid://cfg1q1jdomjus" path="res://objects/enemies_touhou/fairies/blue_fairy.tscn" id="1_yceuy"]
+[ext_resource type="PackedScene" uid="uid://dj2b5g2smonyu" path="res://engine/objects/enemies/_dead/enemy_stomped.tscn" id="2_2mqrg"]
+[ext_resource type="Script" uid="uid://bhksimoyhb836" path="res://engine/objects/enemies/_dead/prefabs/do_stomped.gd" id="3_jxaqi"]
+[ext_resource type="Script" uid="uid://bm81fg3h4j8sj" path="res://engine/scripts/resources/instance_node2d/instance_node2d.gd" id="4_e60kl"]
+[ext_resource type="PackedScene" uid="uid://oe7i3cief0g" path="res://engine/objects/enemies/_dead/enemy_killed.tscn" id="5_mjrrc"]
+[ext_resource type="Script" uid="uid://du32vchaulqj6" path="res://engine/objects/enemies/_dead/prefabs/do_killed.gd" id="6_76w75"]
+[ext_resource type="Texture2D" uid="uid://bukt340adoq1x" path="res://objects/enemies_touhou/rabbits/textures/bamboo_side.png" id="7_icnyu"]
+[ext_resource type="Texture2D" uid="uid://dk3c07ak6hw61" path="res://objects/enemies_touhou/rabbits/textures/bamboo_side_defeat.png" id="8_u0jwk"]
+[ext_resource type="Texture2D" uid="uid://h0gvkxohcj8s" path="res://objects/enemies_touhou/rabbits/textures/bamboo.png" id="9_2mqrg"]
+[ext_resource type="PackedScene" uid="uid://cqkffl3qe4n7b" path="res://objects/enemies_touhou/misc/bamboo_effect.tscn" id="9_jxaqi"]
+
+[sub_resource type="Resource" id="Resource_4tnm4"]
+resource_local_to_scene = true
+script = ExtResource("4_e60kl")
+creation_nodepack = ExtResource("2_2mqrg")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite/Dead")
+}
+custom_script = ExtResource("3_jxaqi")
+
+[sub_resource type="Resource" id="Resource_fsguc"]
+resource_local_to_scene = true
+script = ExtResource("4_e60kl")
+creation_nodepack = ExtResource("5_mjrrc")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 1
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite"),
+"death_speed": Vector2(0, -250)
+}
+custom_script = ExtResource("6_76w75")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66lpf"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(0, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7coe"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(31, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpg2u"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(62, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsy3p"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(93, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmjyx"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(124, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4fmp"]
+atlas = ExtResource("7_icnyu")
+region = Rect2(155, 0, 31, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qj8rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66lpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7coe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpg2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsy3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmjyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4fmp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_2mqrg"]
+script/source = "extends Area2D
+
+@export var bamboo_effect_node: PackedScene
+
+@onready var enemy_sprite: AnimatedSprite2D
+@onready var self_sprite: Sprite2D = $BambooSprite
+
+var offset_from_parent: Vector2
+
+func _ready() -> void:
+	offset_from_parent = (get_parent().global_position - global_position)
+	offset_from_parent.x = absf(offset_from_parent.x)
+	offset_from_parent.y = absf(offset_from_parent.y)
+	enemy_sprite = get_parent().get_child(2)
+
+func _physics_process(delta: float) -> void:
+	var player: Player = Thunder._current_player
+	if is_instance_valid(player):
+		if !player.is_starman() and overlaps_body(player): player.hurt()
+	
+	var parent_position: Vector2 = get_parent().global_position
+	var parent_dir: int = get_parent().dir
+	
+	global_position.x = parent_position.x + offset_from_parent.x * parent_dir
+	if is_instance_valid(self_sprite):
+		self_sprite.flip_h = parent_dir > 0
+	
+	if !is_instance_valid(enemy_sprite): return
+	match enemy_sprite.frame:
+		0 or 3:
+			global_position.y = parent_position.y + offset_from_parent.y
+		1 or 4:
+			global_position.y = parent_position.y + offset_from_parent.y + 2
+		2 or 5:
+			global_position.y = parent_position.y + offset_from_parent.y + 1
+
+func spawn_bamboo_effect() -> void:
+	var bamboo_effect = bamboo_effect_node.instantiate()
+	bamboo_effect.rotation = self_sprite.rotation
+	if is_instance_valid(self_sprite):
+		bamboo_effect.flip_h = self_sprite.flip_h
+	Scenes.current_scene.add_child(bamboo_effect)
+	bamboo_effect.global_position = global_position
+	bamboo_effect.reset_physics_interpolation()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mqrg"]
+size = Vector2(128, 6)
+
+[node name="Bamboo Rabbit Horizontal" instance=ExtResource("1_yceuy")]
+
+[node name="EnemyAttacked" parent="Body" index="1"]
+stomping_creation = SubResource("Resource_4tnm4")
+killing_creation = SubResource("Resource_fsguc")
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_qj8rv")
+
+[node name="Dead" parent="Sprite" index="0"]
+position = Vector2(0, 6)
+texture = ExtResource("8_u0jwk")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="3"]
+scale = Vector2(5.5, 1)
+
+[node name="BambooArea" type="Area2D" parent="." index="4"]
+position = Vector2(-25, 6)
+collision_layer = 2
+script = SubResource("GDScript_2mqrg")
+bamboo_effect_node = ExtResource("9_jxaqi")
+metadata/_edit_group_ = true
+
+[node name="BambooSprite" type="Sprite2D" parent="BambooArea" index="0"]
+texture = ExtResource("9_2mqrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BambooArea" index="1"]
+visible = false
+shape = SubResource("RectangleShape2D_2mqrg")
+
+[connection signal="killed_succeeded" from="Body/EnemyAttacked" to="BambooArea" method="spawn_bamboo_effect"]
+[connection signal="stomped_succeeded" from="Body/EnemyAttacked" to="BambooArea" method="spawn_bamboo_effect"]

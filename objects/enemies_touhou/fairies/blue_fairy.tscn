@@ -1,0 +1,126 @@
+[gd_scene load_steps=20 format=3 uid="uid://cfg1q1jdomjus"]
+
+[ext_resource type="PackedScene" uid="uid://vqn6y17pt5mx" path="res://engine/objects/enemies/goombas/goomba.tscn" id="1_oynjl"]
+[ext_resource type="PackedScene" uid="uid://dj2b5g2smonyu" path="res://engine/objects/enemies/_dead/enemy_stomped.tscn" id="2_plsjw"]
+[ext_resource type="Script" uid="uid://bhksimoyhb836" path="res://engine/objects/enemies/_dead/prefabs/do_stomped.gd" id="3_ck8c0"]
+[ext_resource type="Script" uid="uid://bm81fg3h4j8sj" path="res://engine/scripts/resources/instance_node2d/instance_node2d.gd" id="4_5rn1x"]
+[ext_resource type="PackedScene" uid="uid://oe7i3cief0g" path="res://engine/objects/enemies/_dead/enemy_killed.tscn" id="5_rk8a0"]
+[ext_resource type="Script" uid="uid://du32vchaulqj6" path="res://engine/objects/enemies/_dead/prefabs/do_killed.gd" id="6_otqs2"]
+[ext_resource type="Texture2D" uid="uid://de0kjlpdjc2u6" path="res://objects/enemies_touhou/fairies/textures/blue_fairy.png" id="7_plsjw"]
+[ext_resource type="Texture2D" uid="uid://d34kh252glvae" path="res://objects/enemies_touhou/fairies/textures/blue_fairy_defeat.png" id="8_ck8c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck8c0"]
+size = Vector2(30, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rn1x"]
+size = Vector2(30, 34)
+
+[sub_resource type="Resource" id="Resource_7qiu4"]
+resource_local_to_scene = true
+script = ExtResource("4_5rn1x")
+creation_nodepack = ExtResource("2_plsjw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite/Dead")
+}
+custom_script = ExtResource("3_ck8c0")
+
+[sub_resource type="Resource" id="Resource_4xj3j"]
+resource_local_to_scene = true
+script = ExtResource("4_5rn1x")
+creation_nodepack = ExtResource("5_rk8a0")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 1
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite"),
+"death_speed": Vector2(0, -250)
+}
+custom_script = ExtResource("6_otqs2")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk8a0"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(0, 0, 35, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otqs2"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(35, 0, 35, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qiu4"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(70, 0, 35, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xj3j"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(105, 0, 35, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2o35"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(140, 0, 35, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4286"]
+atlas = ExtResource("7_plsjw")
+region = Rect2(175, 0, 35, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecdpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk8a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otqs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qiu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xj3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2o35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4286")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Blue Fairy" instance=ExtResource("1_oynjl")]
+turn_sprite = true
+
+[node name="Collision" parent="." index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ck8c0")
+
+[node name="Collision" parent="Body" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5rn1x")
+
+[node name="EnemyAttacked" parent="Body" index="1"]
+stomping_creation = SubResource("Resource_7qiu4")
+killing_creation = SubResource("Resource_4xj3j")
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_ecdpl")
+
+[node name="Dead" parent="Sprite" index="0"]
+position = Vector2(0, 5)
+texture = ExtResource("8_ck8c0")

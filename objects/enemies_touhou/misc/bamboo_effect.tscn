@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqkffl3qe4n7b"]
+
+[ext_resource type="Texture2D" uid="uid://h0gvkxohcj8s" path="res://objects/enemies_touhou/rabbits/textures/bamboo.png" id="1_y4kxw"]
+
+[sub_resource type="GDScript" id="GDScript_y4kxw"]
+script/source = "extends Sprite2D
+
+@export var initial_velocity: float = -4
+@export var gravity_value: float = 0.2
+
+var fall_speed: float = initial_velocity
+
+func _physics_process(delta: float) -> void:
+	global_position.y += fall_speed
+	fall_speed += gravity_value
+"
+
+[node name="BambooEffect" type="Sprite2D"]
+texture = ExtResource("1_y4kxw")
+script = SubResource("GDScript_y4kxw")
