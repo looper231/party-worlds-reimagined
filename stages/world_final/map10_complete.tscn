@@ -135,7 +135,6 @@ animations = [{
 [node name="Map-complete" type="Node2D"]
 script = ExtResource("1_brok6")
 goto_scene = "res://stages/main/credits/credits_pw_end.tscn"
-save_completed_world = false
 world_name = "10"
 
 [node name="MusicLoader" parent="." instance=ExtResource("2_2hh5h")]

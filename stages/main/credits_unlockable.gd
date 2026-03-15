@@ -5,12 +5,21 @@ extends StaticBody2D
 func _ready() -> void:
 	hide()
 	CustomGlobals.load_unlockables_status()
-	if !callback_only && (SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits):
+	if !callback_only && check_game_clear_state():
 		show()
 		reset_physics_interpolation()
 		return
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func check_game_clear_state() -> bool:
+	for key in ProfileManager.profiles:
+		if key == "debug": continue
+		var chosen_profile = ProfileManager.profiles[key]
+		if chosen_profile.has_completed_world("10"): return true
+	
+	return SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits or ProfileManager.current_profile.has_completed_world("10")
 
 
 func activate() -> void:
