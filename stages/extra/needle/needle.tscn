@@ -151,9 +151,11 @@ position = Vector2(1792, 192)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("15_6gdja")]
 position = Vector2(3536, 288)
+id = 1
 
 [node name="Checkpoint3" parent="." instance=ExtResource("15_6gdja")]
 position = Vector2(5264, 448)
+id = 2
 
 [node name="Springboard" parent="." instance=ExtResource("16_aumoq")]
 position = Vector2(3792, 464)
