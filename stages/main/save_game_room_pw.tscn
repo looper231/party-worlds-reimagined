@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="6_rd34b"]
 [ext_resource type="Texture2D" uid="uid://cwwgmgsjprj1p" path="res://engine/scenes/save_game_room/textures/reset_counter_bg.png" id="9_mwdyk"]
 [ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="9_nq56u"]
-[ext_resource type="Script" uid="uid://da1t6iei5k574" path="res://engine/scenes/save_game_room/scripts/reset_and_select.gd" id="9_y4kjk"]
+[ext_resource type="Script" uid="uid://cq2sja8dd13j4" path="res://stages/main/save_game_room/reset_and_select.gd" id="9_y4kjk"]
 [ext_resource type="Texture2D" uid="uid://cquriu107cwpu" path="res://engine/scenes/save_game_room/textures/reset_counter.png" id="10_8x5mf"]
 [ext_resource type="TileSet" uid="uid://cjoxdod5qfcit" path="res://stages/main/save_game_room_pw.tres" id="10_nilg5"]
 [ext_resource type="Script" uid="uid://c0xlh6o06spwa" path="res://engine/objects/signs/sign_help_key_formatter.gd" id="12_d4svs"]
@@ -157,6 +157,7 @@ metadata/_edit_lock_ = true
 
 [node name="ResetAndSelect" type="Node2D" parent="."]
 script = ExtResource("9_y4kjk")
+move_down_by_px = 64.0
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -875,6 +876,7 @@ shape = SubResource("RectangleShape2D_ewu63")
 z_index = 6
 position = Vector2(1840, 0)
 script = ExtResource("9_y4kjk")
+move_down_by_px = 64.0
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -999,13 +1001,14 @@ offset_right = 720.0
 offset_bottom = 488.0
 color = Color(0.298039, 0, 0, 1)
 
-[connection signal="body_entered" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
-[connection signal="body_entered" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
-[connection signal="body_entered" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_enter" unbinds=1]
-[connection signal="body_exited" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_exit" unbinds=1]
+[connection signal="player_enter" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_enter"]
+[connection signal="player_exit" from="PipeSave" to="ResetAndSelect" method="_on_pipe_save_player_exit"]
+[connection signal="player_enter" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_enter"]
+[connection signal="player_exit" from="PipeSave2" to="ResetAndSelect" method="_on_pipe_save_player_exit"]
+[connection signal="player_enter" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_enter"]
+[connection signal="player_exit" from="PipeSave3" to="ResetAndSelect" method="_on_pipe_save_player_exit"]
 [connection signal="unlock_achievement" from="Extras/NeedleUnlock" to="Extras/AchievementBox2" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/MinecraftUnlock" to="Extras/AchievementBox2" method="show_achievement"]
 [connection signal="unlock_achievement" from="Extras/GensokyoUnlock" to="Extras/AchievementBox2" method="show_achievement"]
 [connection signal="player_enter" from="Extras/GensokyoUnlock/PipeIn" to="Extras/ResetGensokyo" method="_player_enter_centered"]
+[connection signal="player_exit" from="Extras/GensokyoUnlock/PipeIn" to="Extras/ResetGensokyo" method="_on_pipe_save_player_exit"]
