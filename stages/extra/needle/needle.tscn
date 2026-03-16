@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://cjlcgplvvk7to"]
+[gd_scene load_steps=22 format=4 uid="uid://cjlcgplvvk7to"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_ssd2m"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_tffms"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_f1j62"]
 [ext_resource type="AudioStream" uid="uid://c20hs5i3x1w7" path="res://stages/extra/needle/music/bad_apple.ogg" id="4_ba2bw"]
+[ext_resource type="PackedScene" uid="uid://c5s3uwx77gvab" path="res://modules/music_overlay/music_overlay.tscn" id="5_dup25"]
 [ext_resource type="AudioStream" uid="uid://cvi77c1uj3arc" path="res://modules/short-die.ogg" id="5_f2dsr"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_p3xpf"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_p7xr7"]
@@ -70,6 +71,9 @@ play_globally = 1
 script = SubResource("GDScript_aumoq")
 secrets = Array[String](["needle extra", "needle lives 0", "needle lives 30"])
 toast_text_overrides = Array[String](["needle level completed", "needle level with more than 0 lives", "needle level with more than -30 lives"])
+
+[node name="MusicOverlay" parent="." instance=ExtResource("5_dup25")]
+text = Array[String](["Hahdesu - Bad Apple (Sweet Melody Remix)"])
 
 [node name="Player" parent="." instance=ExtResource("5_p3xpf")]
 position = Vector2(80, 400)
