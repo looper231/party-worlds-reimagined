@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dsu3sit1o8qsd"]
 
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="1_t2ybe"]
-[ext_resource type="AudioStream" uid="uid://dmt74ar3lvy85" path="res://stages/main_menu/trancynew112.mp3" id="2_gl00q"]
+[ext_resource type="AudioStream" uid="uid://u8hlpf6s04db" path="res://stages/main_menu/trancynew112.ogg" id="2_ucha4"]
 [ext_resource type="Texture2D" uid="uid://usm6n80msr7n" path="res://engine/scenes/map/textures/bg.png" id="3_b1pty"]
 [ext_resource type="Script" uid="uid://cl31gyhukew6s" path="res://engine/components/ui/generic/menu_selector.gd" id="4_frmaf"]
 [ext_resource type="Texture2D" uid="uid://q07o7lx60bis" path="res://gfx/MENU.png" id="4_qh37o"]
@@ -41,7 +41,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="MusicLoader" parent="Menu" instance=ExtResource("1_t2ybe")]
-music = Array[Resource]([ExtResource("2_gl00q")])
+music = Array[Resource]([ExtResource("2_ucha4")])
 channel_id = 0
 
 [node name="Sprite2D" type="TextureRect" parent="Menu"]
