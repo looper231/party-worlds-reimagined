@@ -2,6 +2,11 @@ extends "res://engine/objects/warps/door/door_in.gd"
 
 @export var timer_disappear_threshold: int = 265
 
+func _ready() -> void:
+	super()
+	if Data.values.checkpoint != -1:
+		queue_free()
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
