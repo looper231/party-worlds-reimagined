@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cjlcgplvvk7to"]
+[gd_scene load_steps=21 format=4 uid="uid://cjlcgplvvk7to"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_ssd2m"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_tffms"]
@@ -16,6 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://c8jor7s65am4t" path="res://stages/extra/needle/spike-right.tscn" id="13_6gdja"]
 [ext_resource type="PackedScene" uid="uid://ddwxc43m3q1c6" path="res://engine/objects/core/checkpoint/checkpoint.tscn" id="15_6gdja"]
 [ext_resource type="PackedScene" uid="uid://dgcgfl28trox0" path="res://engine/objects/springboard/springboard.tscn" id="16_aumoq"]
+
+[sub_resource type="GDScript" id="GDScript_aumoq"]
+script/source = "extends \"res://addons/secrets_manager/secret_unlocker.gd\"
+
+func needle_level_secret() -> void:
+	unlock_secret(0)
+	if Data.values.lives >= -30:
+		unlock_secret(2)
+		if Data.values.lives >= 0: unlock_secret(1)
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7801i"]
 texture = ExtResource("10_rjhsd")
@@ -48,12 +58,18 @@ sources/1 = SubResource("TileSetScenesCollectionSource_uxlem")
 script = ExtResource("1_ssd2m")
 time = -1
 completion_music = ExtResource("2_tffms")
+jump_to_scene = "uid://bttcwqhe3g75w"
 metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
 
 [node name="MusicLoader" parent="." instance=ExtResource("3_f1j62")]
 music = Array[Resource]([ExtResource("4_ba2bw")])
 stop_all_music_on_start = false
 play_globally = 1
+
+[node name="Secret Unlocker" type="Node" parent="."]
+script = SubResource("GDScript_aumoq")
+secrets = Array[String](["needle extra", "needle lives 0", "needle lives 30"])
+toast_text_overrides = Array[String](["needle level completed", "needle level with more than 0 lives", "needle level with more than -30 lives"])
 
 [node name="Player" parent="." instance=ExtResource("5_p3xpf")]
 position = Vector2(80, 400)
@@ -161,3 +177,5 @@ position = Vector2(3792, 464)
 
 [node name="Springboard2" parent="." instance=ExtResource("16_aumoq")]
 position = Vector2(3927, 464)
+
+[connection signal="level_completed" from="." to="Secret Unlocker" method="needle_level_secret"]
