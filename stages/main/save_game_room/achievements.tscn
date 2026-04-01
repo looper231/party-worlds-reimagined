@@ -271,7 +271,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_jrqni")
 secret_id = "bonus rooms"
-progress_to = 4
+progress_to = 23
 
 [node name="Label" type="Label" parent="BonusRooms"]
 layout_mode = 2
@@ -281,7 +281,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource("FontVariation_m1ut6")
 theme_override_font_sizes/font_size = 20
-text = "all 3 bonus rooms found"
+text = "all 23 bonus rooms found"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true

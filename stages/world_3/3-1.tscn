@@ -2038,16 +2038,16 @@ position = Vector2(8592, 240)
 preview = true
 
 [node name="RotoRed" parent="Rotos/RotoCenter" instance=ExtResource("30_mlkrl")]
-position = Vector2(30, -49)
+position = Vector2(139, -19)
 preview = true
 amplitude = Vector2(150, 50)
-phase = -77.4999
+phase = -21.6666
 
 [node name="RotoRed2" parent="Rotos/RotoCenter" instance=ExtResource("30_mlkrl")]
-position = Vector2(-30, 49)
+position = Vector2(-139, 19)
 preview = true
 amplitude = Vector2(150, 50)
-phase = 102.5
+phase = 158.333
 
 [node name="Platform" type="Node2D" parent="."]
 

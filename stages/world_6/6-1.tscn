@@ -382,9 +382,9 @@ start_from_sec = Array[float]([0.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_6c0gp")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 3 bonus rooms found"])
+toast_text_overrides = Array[String](["all 23 bonus rooms found"])
 progress_by_id = "6-1"
-progress_to = 4
+progress_to = 23
 
 [node name="Player" parent="." instance=ExtResource("4_jb52m")]
 position = Vector2(144, 400)

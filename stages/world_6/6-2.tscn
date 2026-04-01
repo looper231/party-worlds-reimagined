@@ -485,9 +485,9 @@ music = Array[Resource]([ExtResource("4_mniyn")])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_cum2w")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 3 bonus rooms found"])
+toast_text_overrides = Array[String](["all 23 bonus rooms found"])
 progress_by_id = "6-2"
-progress_to = 4
+progress_to = 23
 
 [node name="Player" parent="." instance=ExtResource("4_s48pj")]
 position = Vector2(144, 400)
