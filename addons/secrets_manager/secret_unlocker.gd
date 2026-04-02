@@ -79,3 +79,7 @@ func add_shit_to_profile(data: String, value: bool = true) -> void:
 func _make_split(id: int, no_check: bool = false) -> void:
 	if SecretsManager.has_secret(secrets[id]) && !no_check:
 		return
+
+
+func _on_pipe_out_warp_ended(extra_arg_0: int) -> void:
+	pass # Replace with function body.

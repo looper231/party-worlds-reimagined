@@ -1481,10 +1481,10 @@ position = Vector2(8880, 400)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter6" instance=ExtResource("35_nu1kw")]
-position = Vector2(71, 71)
+position = Vector2(-71, 71)
 preview = true
 amplitude = Vector2(100, 100)
-phase = 42.5
+phase = 132.5
 frequency = -150.0
 
 [node name="RotoCenter5" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1492,23 +1492,23 @@ position = Vector2(7440, 272)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter5" instance=ExtResource("35_nu1kw")]
-position = Vector2(-14, 139)
+position = Vector2(47, 104)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(138.215, 138.215)
+amplitude = Vector2(115.494, 115.494)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(150, 150)
-phase = 96.667
+phase = 66.667
 
 [node name="RotoCenter4" parent="Enemies" instance=ExtResource("34_qx2lq")]
 position = Vector2(2992, 368)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter4" instance=ExtResource("35_nu1kw")]
-position = Vector2(-34, -36)
+position = Vector2(48, 14)
 preview = true
 amplitude = Vector2(50, 50)
-phase = -131.499
+phase = 18.501
 frequency = 110.0
 
 [node name="RotoCenter3" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1516,10 +1516,10 @@ position = Vector2(1776, 432)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter3" instance=ExtResource("35_nu1kw")]
-position = Vector2(119, 27)
+position = Vector2(-20, -45)
 preview = true
 amplitude = Vector2(150, 45)
-phase = 36.21
+phase = -98.79
 frequency = -75.0
 
 [node name="RotoCenter2" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1527,13 +1527,13 @@ position = Vector2(1168, 304)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter2" instance=ExtResource("35_nu1kw")]
-position = Vector2(-11, -7)
+position = Vector2(2, -57)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(14.1421, 14.1421)
+amplitude = Vector2(55.8578, 55.8578)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(70, 70)
-phase = -150.0
+phase = -90.0
 frequency = -100.0
 
 [node name="PiranhaGreen" parent="Enemies" instance=ExtResource("36_ug88a")]

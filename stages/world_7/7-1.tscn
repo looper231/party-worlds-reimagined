@@ -298,9 +298,9 @@ metadata/_edit_lock_ = true
 position = Vector2(9232, 240)
 
 [node name="RotoRed" parent="Enemies/RotoCenter" instance=ExtResource("21_b3kqh")]
-position = Vector2(137, -61)
+position = Vector2(129, 77)
 preview = true
-phase = -29.167
+phase = 25.833
 frequency = -300.0
 
 [node name="PiranhaGray4" parent="Enemies" instance=ExtResource("15_ad67c")]
@@ -427,30 +427,4 @@ use_blur_transition = true
 [node name="PipeOut2" parent="." instance=ExtResource("31_y6sc7")]
 position = Vector2(6592, 208)
 
-[connection signal="collided_wall" from="Ground/KoopaGreen" to="Ground/KoopaGreen" method="turn_x"]
-[connection signal="collided_wall" from="Ground/SpinyIron_EdgeTurn" to="Ground/SpinyIron_EdgeTurn" method="turn_x"]
-[connection signal="collided_wall" from="Ground/Goomba" to="Ground/Goomba" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124399" to="Ground/@CharacterBody2D@124399" method="turn_x"]
-[connection signal="collided_wall" from="Ground/KoopaRed" to="Ground/KoopaRed" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124428" to="Ground/@CharacterBody2D@124428" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124429" to="Ground/@CharacterBody2D@124429" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124433" to="Ground/@CharacterBody2D@124433" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124434" to="Ground/@CharacterBody2D@124434" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124435" to="Ground/@CharacterBody2D@124435" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124473" to="Ground/@CharacterBody2D@124473" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124474" to="Ground/@CharacterBody2D@124474" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124475" to="Ground/@CharacterBody2D@124475" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124476" to="Ground/@CharacterBody2D@124476" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124477" to="Ground/@CharacterBody2D@124477" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124478" to="Ground/@CharacterBody2D@124478" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124484" to="Ground/@CharacterBody2D@124484" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124485" to="Ground/@CharacterBody2D@124485" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124486" to="Ground/@CharacterBody2D@124486" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124493" to="Ground/@CharacterBody2D@124493" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124494" to="Ground/@CharacterBody2D@124494" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124495" to="Ground/@CharacterBody2D@124495" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124502" to="Ground/@CharacterBody2D@124502" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124515" to="Ground/@CharacterBody2D@124515" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124516" to="Ground/@CharacterBody2D@124516" method="turn_x"]
-[connection signal="collided_wall" from="Ground/@CharacterBody2D@124517" to="Ground/@CharacterBody2D@124517" method="turn_x"]
 [connection signal="warp_ended" from="PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]
