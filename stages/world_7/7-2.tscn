@@ -1,10 +1,11 @@
-[gd_scene load_steps=46 format=4 uid="uid://brtxt7k26dn2f"]
+[gd_scene load_steps=47 format=4 uid="uid://brtxt7k26dn2f"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_nktha"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_fxd31"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_nx2b5"]
 [ext_resource type="AudioStream" uid="uid://bl75fptw2hla" path="res://stages/world_7/music/sunday_morning.xm" id="4_mntlo"]
 [ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_m8kco"]
+[ext_resource type="Script" uid="uid://c7xvwquye660r" path="res://addons/secrets_manager/secret_unlocker.gd" id="5_uq4xs"]
 [ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="6_bpyns"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="7_4clcf"]
 [ext_resource type="TileSet" uid="uid://co61k86k5y2qh" path="res://gfx/world7/additives/7-1tileset.tres" id="8_22cs7"]
@@ -131,6 +132,13 @@ music = Array[Resource]([ExtResource("4_mntlo")])
 volume_db = Array[float]([0.0])
 start_from_sec = Array[float]([0.0])
 
+[node name="Secret Unlocker" type="Node" parent="."]
+script = ExtResource("5_uq4xs")
+secrets = Array[String](["bonus rooms"])
+toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+progress_by_id = "7-2"
+progress_to = 23
+
 [node name="Mario" parent="." instance=ExtResource("5_m8kco")]
 position = Vector2(112, 400)
 
@@ -173,7 +181,7 @@ position = Vector2(320, 240)
 texture = SubResource("GradientTexture2D_qso3g")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 1)
+motion_scale = Vector2(0.2, 0)
 motion_mirroring = Vector2(1024, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -185,7 +193,7 @@ sprite_frames = SubResource("SpriteFrames_j2np1")
 autoplay = "default"
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.3, 1)
+motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(1024, 0)
 metadata/_edit_group_ = true
 
@@ -194,7 +202,7 @@ position = Vector2(512, 408)
 texture = ExtResource("13_uq4xs")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.5, 0)
 motion_mirroring = Vector2(1024, 0)
 metadata/_edit_group_ = true
 
@@ -659,11 +667,11 @@ id = 1
 [node name="FinishLine" parent="." instance=ExtResource("32_22cs7")]
 position = Vector2(15648, 416)
 
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54798" to="TileMapLayer/@CharacterBody2D@54798" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54823" to="TileMapLayer/@CharacterBody2D@54823" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54824" to="TileMapLayer/@CharacterBody2D@54824" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54886" to="TileMapLayer/@CharacterBody2D@54886" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54887" to="TileMapLayer/@CharacterBody2D@54887" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54915" to="TileMapLayer/@CharacterBody2D@54915" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54916" to="TileMapLayer/@CharacterBody2D@54916" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@54917" to="TileMapLayer/@CharacterBody2D@54917" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/KoopaRed" to="TileMapLayer/KoopaRed" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125891" to="TileMapLayer/@CharacterBody2D@125891" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125892" to="TileMapLayer/@CharacterBody2D@125892" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/Goomba" to="TileMapLayer/Goomba" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125953" to="TileMapLayer/@CharacterBody2D@125953" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125981" to="TileMapLayer/@CharacterBody2D@125981" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125982" to="TileMapLayer/@CharacterBody2D@125982" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@125983" to="TileMapLayer/@CharacterBody2D@125983" method="turn_x"]

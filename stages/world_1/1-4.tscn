@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://ca8ytr818ghx0"]
+[gd_scene load_steps=102 format=3 uid="uid://ca8ytr818ghx0"]
 
 [ext_resource type="Script" uid="uid://x2tk4x7xdcru" path="res://stages/world_1/1_4.gd" id="1_okisk"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_r6ol8"]
@@ -227,6 +227,186 @@ visi_y_sort_enabled = false
 custom_vars = {}
 
 [sub_resource type="Resource" id="Resource_3gxsk"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_bs1ak"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_dks1l"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_qd6gu"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_sdchp"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_yx7fo"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_jc32h"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_kdqay"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_et4d6"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_bbw4e"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_djxr2"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_5qang"]
+resource_local_to_scene = true
+script = ExtResource("20_othjs")
+creation_nodepack = ExtResource("19_43ryw")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_uylhy"]
 resource_local_to_scene = true
 script = ExtResource("20_othjs")
 creation_nodepack = ExtResource("19_43ryw")
@@ -886,55 +1066,55 @@ result = SubResource("Resource_3gxsk")
 
 [node name="QuestionBlock24" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2352, 752)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_bs1ak")
 
 [node name="QuestionBlock25" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2384, 752)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_dks1l")
 
 [node name="QuestionBlock32" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2352, 592)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_qd6gu")
 initially_visible_and_solid = false
 
 [node name="QuestionBlock33" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2384, 592)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_sdchp")
 initially_visible_and_solid = false
 
 [node name="QuestionBlock34" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2864, 592)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_yx7fo")
 initially_visible_and_solid = false
 
 [node name="QuestionBlock35" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2896, 592)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_jc32h")
 initially_visible_and_solid = false
 
 [node name="QuestionBlock26" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2416, 752)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_kdqay")
 
 [node name="QuestionBlock27" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2448, 752)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_et4d6")
 
 [node name="QuestionBlock28" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2800, 752)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_bbw4e")
 
 [node name="QuestionBlock29" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2832, 752)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_djxr2")
 
 [node name="QuestionBlock30" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2864, 752)
-result = SubResource("Resource_5hy4l")
+result = SubResource("Resource_5qang")
 
 [node name="QuestionBlock31" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(2896, 752)
-result = SubResource("Resource_3gxsk")
+result = SubResource("Resource_uylhy")
 
 [node name="QuestionBlock3" parent="Bonuses" instance=ExtResource("18_qyowi")]
 position = Vector2(1104, 176)
@@ -1301,10 +1481,10 @@ position = Vector2(8880, 400)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter6" instance=ExtResource("35_nu1kw")]
-position = Vector2(38, 92)
+position = Vector2(71, 71)
 preview = true
 amplitude = Vector2(100, 100)
-phase = 65.0
+phase = 42.5
 frequency = -150.0
 
 [node name="RotoCenter5" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1312,23 +1492,23 @@ position = Vector2(7440, 272)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter5" instance=ExtResource("35_nu1kw")]
-position = Vector2(-66, -36)
+position = Vector2(-14, 139)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(76.6033, 76.6033)
+amplitude = Vector2(138.215, 138.215)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(150, 150)
-phase = -150.833
+phase = 96.667
 
 [node name="RotoCenter4" parent="Enemies" instance=ExtResource("34_qx2lq")]
 position = Vector2(2992, 368)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter4" instance=ExtResource("35_nu1kw")]
-position = Vector2(43, -25)
+position = Vector2(-34, -36)
 preview = true
 amplitude = Vector2(50, 50)
-phase = -27.9991
+phase = -131.499
 frequency = 110.0
 
 [node name="RotoCenter3" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1336,10 +1516,10 @@ position = Vector2(1776, 432)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter3" instance=ExtResource("35_nu1kw")]
-position = Vector2(99, 34)
+position = Vector2(119, 27)
 preview = true
 amplitude = Vector2(150, 45)
-phase = 47.46
+phase = 36.21
 frequency = -75.0
 
 [node name="RotoCenter2" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1347,13 +1527,13 @@ position = Vector2(1168, 304)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter2" instance=ExtResource("35_nu1kw")]
-position = Vector2(5, -1)
+position = Vector2(-11, -7)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(4.00333, 4.00333)
+amplitude = Vector2(14.1421, 14.1421)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(70, 70)
-phase = -14.9997
+phase = -150.0
 frequency = -100.0
 
 [node name="PiranhaGreen" parent="Enemies" instance=ExtResource("36_ug88a")]
