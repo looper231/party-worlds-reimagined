@@ -717,9 +717,9 @@ volume_db = Array[float]([-6.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("4_271jr")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "1-4"
-progress_to = 23
+progress_to = 20
 
 [node name="Mario" parent="." instance=ExtResource("4_mh12b")]
 position = Vector2(128, 400)
@@ -1481,10 +1481,10 @@ position = Vector2(8880, 400)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter6" instance=ExtResource("35_nu1kw")]
-position = Vector2(-71, 71)
+position = Vector2(84, -54)
 preview = true
 amplitude = Vector2(100, 100)
-phase = 132.5
+phase = -35.0
 frequency = -150.0
 
 [node name="RotoCenter5" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1492,23 +1492,23 @@ position = Vector2(7440, 272)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter5" instance=ExtResource("35_nu1kw")]
-position = Vector2(47, 104)
+position = Vector2(70, 2)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(115.494, 115.494)
+amplitude = Vector2(68.6826, 68.6826)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(150, 150)
-phase = 66.667
+phase = 2.50033
 
 [node name="RotoCenter4" parent="Enemies" instance=ExtResource("34_qx2lq")]
 position = Vector2(2992, 368)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter4" instance=ExtResource("35_nu1kw")]
-position = Vector2(48, 14)
+position = Vector2(30, -40)
 preview = true
 amplitude = Vector2(50, 50)
-phase = 18.501
+phase = -50.6657
 frequency = 110.0
 
 [node name="RotoCenter3" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1516,10 +1516,10 @@ position = Vector2(1776, 432)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter3" instance=ExtResource("35_nu1kw")]
-position = Vector2(-20, -45)
+position = Vector2(-150, 1)
 preview = true
 amplitude = Vector2(150, 45)
-phase = -98.79
+phase = 177.46
 frequency = -75.0
 
 [node name="RotoCenter2" parent="Enemies" instance=ExtResource("34_qx2lq")]
@@ -1527,13 +1527,13 @@ position = Vector2(1168, 304)
 preview = true
 
 [node name="RotoRed" parent="Enemies/RotoCenter2" instance=ExtResource("35_nu1kw")]
-position = Vector2(2, -57)
+position = Vector2(37, 31)
 preview = true
 amplitude_enable = true
-amplitude = Vector2(55.8578, 55.8578)
+amplitude = Vector2(49.4975, 49.4975)
 amplitude_changing_speed = 100.0
 amplitude_max = Vector2(70, 70)
-phase = -90.0
+phase = 38.3333
 frequency = -100.0
 
 [node name="PiranhaGreen" parent="Enemies" instance=ExtResource("36_ug88a")]

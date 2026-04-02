@@ -457,9 +457,9 @@ volume_db = Array[float]([-5.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_ukia1")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "8-3"
-progress_to = 23
+progress_to = 20
 
 [node name="Player" parent="." instance=ExtResource("5_gys8t")]
 position = Vector2(80, 400)

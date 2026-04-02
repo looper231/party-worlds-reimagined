@@ -184,9 +184,9 @@ volume_db = Array[float]([-4.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_rqdnw")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "8-1"
-progress_to = 23
+progress_to = 20
 
 [node name="Player" parent="." instance=ExtResource("5_kowxc")]
 position = Vector2(144, 400)
@@ -623,64 +623,64 @@ position = Vector2(11760, 304)
 preview = true
 
 [node name="RotoRed" parent="Objects/RotoCenter3" instance=ExtResource("33_rqdnw")]
-position = Vector2(-41, 44)
+position = Vector2(-16, 58)
 preview = true
 amplitude = Vector2(60, 60)
-phase = 133.334
+phase = 106.667
 
 [node name="RotoRed2" parent="Objects/RotoCenter3" instance=ExtResource("33_rqdnw")]
-position = Vector2(-59, 13)
+position = Vector2(-47, 38)
 preview = true
 amplitude = Vector2(60, 60)
-phase = 168.334
+phase = 141.667
 
 [node name="RotoRed3" parent="Objects/RotoCenter3" instance=ExtResource("33_rqdnw")]
-position = Vector2(-55, -23)
+position = Vector2(-60, 4)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -156.666
+phase = 176.667
 
 [node name="RotoRed4" parent="Objects/RotoCenter3" instance=ExtResource("33_rqdnw")]
-position = Vector2(-32, -51)
+position = Vector2(-52, -31)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -121.665
+phase = -148.332
 
 [node name="RotoRed5" parent="Objects/RotoCenter3" instance=ExtResource("33_rqdnw")]
-position = Vector2(3, -60)
+position = Vector2(-25, -55)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -86.6653
+phase = -113.332
 
 [node name="RotoCenter4" parent="Objects" instance=ExtResource("32_4qy0r")]
 position = Vector2(12784, 432)
 preview = true
 
 [node name="RotoRed5" parent="Objects/RotoCenter4" instance=ExtResource("33_rqdnw")]
-position = Vector2(3, -60)
+position = Vector2(-25, -55)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -86.6653
+phase = -113.332
 
 [node name="RotoCenter5" parent="Objects" instance=ExtResource("32_4qy0r")]
 position = Vector2(12528, 400)
 preview = true
 
 [node name="RotoRed5" parent="Objects/RotoCenter5" instance=ExtResource("33_rqdnw")]
-position = Vector2(-54, -26)
+position = Vector2(-37, -47)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -155.334
+phase = -128.667
 frequency = -50.0
 
 [node name="RotoCenter6" parent="Objects" instance=ExtResource("32_4qy0r")]
 position = Vector2(13008, 400)
 
 [node name="RotoRed5" parent="Objects/RotoCenter6" instance=ExtResource("33_rqdnw")]
-position = Vector2(43, -42)
+position = Vector2(57, -18)
 preview = true
 amplitude = Vector2(60, 60)
-phase = -44.8964
+phase = -18.2297
 frequency = -50.0
 
 [node name="Palms" type="Node2D" parent="."]
@@ -926,6 +926,31 @@ use_blur_transition = true
 position = Vector2(10496, 432)
 
 [connection signal="music_started" from="MusicLoader" to="Sfx" method="_on_music_loader_music_started"]
+[connection signal="collided_wall" from="Front/JumpingGoomba" to="Front/JumpingGoomba" method="turn_x"]
+[connection signal="collided_wall" from="Front/GoombaInBricks" to="Front/GoombaInBricks" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46110" to="Front/@CharacterBody2D@46110" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46119" to="Front/@CharacterBody2D@46119" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46126" to="Front/@CharacterBody2D@46126" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46127" to="Front/@CharacterBody2D@46127" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46147" to="Front/@CharacterBody2D@46147" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46148" to="Front/@CharacterBody2D@46148" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46154" to="Front/@CharacterBody2D@46154" method="turn_x"]
+[connection signal="collided_wall" from="Front/KoopaGreen" to="Front/KoopaGreen" method="turn_x"]
+[connection signal="collided_wall" from="Front/KoopaRed" to="Front/KoopaRed" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46155" to="Front/@CharacterBody2D@46155" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46156" to="Front/@CharacterBody2D@46156" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46157" to="Front/@CharacterBody2D@46157" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46158" to="Front/@CharacterBody2D@46158" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46165" to="Front/@CharacterBody2D@46165" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46166" to="Front/@CharacterBody2D@46166" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46172" to="Front/@CharacterBody2D@46172" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46188" to="Front/@CharacterBody2D@46188" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46189" to="Front/@CharacterBody2D@46189" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46203" to="Front/@CharacterBody2D@46203" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46204" to="Front/@CharacterBody2D@46204" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46211" to="Front/@CharacterBody2D@46211" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46212" to="Front/@CharacterBody2D@46212" method="turn_x"]
+[connection signal="collided_wall" from="Front/@CharacterBody2D@46213" to="Front/@CharacterBody2D@46213" method="turn_x"]
 [connection signal="warp_ended" from="PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]
 
 [editable path="Objects/Water11"]

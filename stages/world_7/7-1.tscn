@@ -109,9 +109,9 @@ start_from_sec = Array[float]([0.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_bds5k")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "7-1"
-progress_to = 23
+progress_to = 20
 
 [node name="Mario" parent="." instance=ExtResource("4_te2ha")]
 position = Vector2(144, 400)
@@ -298,9 +298,9 @@ metadata/_edit_lock_ = true
 position = Vector2(9232, 240)
 
 [node name="RotoRed" parent="Enemies/RotoCenter" instance=ExtResource("21_b3kqh")]
-position = Vector2(129, 77)
+position = Vector2(-73, -131)
 preview = true
-phase = 25.833
+phase = -124.167
 frequency = -300.0
 
 [node name="PiranhaGray4" parent="Enemies" instance=ExtResource("15_ad67c")]
@@ -427,4 +427,30 @@ use_blur_transition = true
 [node name="PipeOut2" parent="." instance=ExtResource("31_y6sc7")]
 position = Vector2(6592, 208)
 
+[connection signal="collided_wall" from="Ground/KoopaGreen" to="Ground/KoopaGreen" method="turn_x"]
+[connection signal="collided_wall" from="Ground/SpinyIron_EdgeTurn" to="Ground/SpinyIron_EdgeTurn" method="turn_x"]
+[connection signal="collided_wall" from="Ground/Goomba" to="Ground/Goomba" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44053" to="Ground/@CharacterBody2D@44053" method="turn_x"]
+[connection signal="collided_wall" from="Ground/KoopaRed" to="Ground/KoopaRed" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44082" to="Ground/@CharacterBody2D@44082" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44083" to="Ground/@CharacterBody2D@44083" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44087" to="Ground/@CharacterBody2D@44087" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44088" to="Ground/@CharacterBody2D@44088" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44089" to="Ground/@CharacterBody2D@44089" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44127" to="Ground/@CharacterBody2D@44127" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44128" to="Ground/@CharacterBody2D@44128" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44129" to="Ground/@CharacterBody2D@44129" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44130" to="Ground/@CharacterBody2D@44130" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44131" to="Ground/@CharacterBody2D@44131" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44132" to="Ground/@CharacterBody2D@44132" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44138" to="Ground/@CharacterBody2D@44138" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44139" to="Ground/@CharacterBody2D@44139" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44140" to="Ground/@CharacterBody2D@44140" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44147" to="Ground/@CharacterBody2D@44147" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44148" to="Ground/@CharacterBody2D@44148" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44149" to="Ground/@CharacterBody2D@44149" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44156" to="Ground/@CharacterBody2D@44156" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44169" to="Ground/@CharacterBody2D@44169" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44170" to="Ground/@CharacterBody2D@44170" method="turn_x"]
+[connection signal="collided_wall" from="Ground/@CharacterBody2D@44171" to="Ground/@CharacterBody2D@44171" method="turn_x"]
 [connection signal="warp_ended" from="PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]

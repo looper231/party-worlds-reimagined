@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://cn462b8a8t27e"]
+[gd_scene load_steps=125 format=4 uid="uid://cn462b8a8t27e"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_rlutw"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_m53yx"]
@@ -1031,6 +1031,141 @@ visi_z_as_relative = true
 visi_y_sort_enabled = false
 custom_vars = {}
 
+[sub_resource type="Resource" id="Resource_romey"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_gvy5g"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_palob"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_vrvcn"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_ubew3"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_hl3tq"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_cgpnx"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_epp1q"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_gap38"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_nodepack = ExtResource("16_cihy6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
 [sub_resource type="Resource" id="Resource_psduu"]
 resource_local_to_scene = true
 script = ExtResource("17_vb5lr")
@@ -1259,6 +1394,22 @@ visi_z_as_relative = true
 visi_y_sort_enabled = false
 custom_vars = {}
 
+[sub_resource type="Resource" id="Resource_0fsfg"]
+resource_local_to_scene = true
+script = ExtResource("17_vb5lr")
+creation_fallback_node = ExtResource("21_adt6e")
+creation_nodepack = ExtResource("24_7dir6")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
 [sub_resource type="Resource" id="Resource_4d01m"]
 resource_local_to_scene = true
 script = ExtResource("17_vb5lr")
@@ -1304,9 +1455,9 @@ volume_db = Array[float]([-6.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_romey")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "3-1"
-progress_to = 23
+progress_to = 20
 
 [node name="Mario" parent="." instance=ExtResource("4_nfs1o")]
 position = Vector2(112, 400)
@@ -1518,39 +1669,39 @@ result = SubResource("Resource_poact")
 
 [node name="QuestionBlock32" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6960, -624)
-result = SubResource("Resource_g17rk")
+result = SubResource("Resource_romey")
 
 [node name="QuestionBlock33" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6928, -624)
-result = SubResource("Resource_poact")
+result = SubResource("Resource_gvy5g")
 
 [node name="QuestionBlock34" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(7024, -624)
-result = SubResource("Resource_g17rk")
+result = SubResource("Resource_palob")
 
 [node name="QuestionBlock35" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6992, -624)
-result = SubResource("Resource_poact")
+result = SubResource("Resource_vrvcn")
 
 [node name="QuestionBlock36" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6960, -784)
-result = SubResource("Resource_g17rk")
+result = SubResource("Resource_ubew3")
 
 [node name="QuestionBlock37" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6928, -784)
-result = SubResource("Resource_poact")
+result = SubResource("Resource_hl3tq")
 
 [node name="QuestionBlock38" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(7024, -784)
-result = SubResource("Resource_g17rk")
+result = SubResource("Resource_cgpnx")
 
 [node name="QuestionBlock40" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6896, -784)
-result = SubResource("Resource_g17rk")
+result = SubResource("Resource_epp1q")
 
 [node name="QuestionBlock39" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(6992, -784)
-result = SubResource("Resource_poact")
+result = SubResource("Resource_gap38")
 
 [node name="QuestionBlock13" parent="Bonus" instance=ExtResource("15_jdm5s")]
 position = Vector2(4592, 272)
@@ -1915,7 +2066,7 @@ result = SubResource("Resource_rbkq2")
 
 [node name="QuestionBlockGreenLui4" parent="Bonus" instance=ExtResource("23_b3nly")]
 position = Vector2(6896, -624)
-result = SubResource("Resource_rbkq2")
+result = SubResource("Resource_0fsfg")
 
 [node name="QuestionBlockLife2" parent="Bonus" instance=ExtResource("25_wlgai")]
 position = Vector2(1552, 176)
@@ -2125,16 +2276,16 @@ position = Vector2(8592, 240)
 preview = true
 
 [node name="RotoRed" parent="Rotos/RotoCenter" instance=ExtResource("30_mlkrl")]
-position = Vector2(55, 46)
+position = Vector2(-135, 22)
 preview = true
 amplitude = Vector2(150, 50)
-phase = 69.1667
+phase = 155.0
 
 [node name="RotoRed2" parent="Rotos/RotoCenter" instance=ExtResource("30_mlkrl")]
-position = Vector2(-55, -46)
+position = Vector2(135, -22)
 preview = true
 amplitude = Vector2(150, 50)
-phase = -110.833
+phase = -24.9997
 
 [node name="Platform" type="Node2D" parent="."]
 

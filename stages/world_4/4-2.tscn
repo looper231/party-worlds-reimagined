@@ -134,9 +134,9 @@ jump_to_scene = "res://stages/world_4/map_4.tscn"
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("3_ftdnq")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "4-2"
-progress_to = 23
+progress_to = 20
 
 [node name="MusicLoader" parent="." instance=ExtResource("2_6vlxg")]
 music = Array[Resource]([ExtResource("3_uty2t")])
@@ -387,19 +387,19 @@ use_blur_transition = true
 
 [connection signal="collided_wall" from="TileMap/Goomba" to="TileMap/Goomba" method="turn_x"]
 [connection signal="collided_wall" from="TileMap/KoopaGreen" to="TileMap/KoopaGreen" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57297" to="TileMap/@CharacterBody2D@57297" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57319" to="TileMap/@CharacterBody2D@57319" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57320" to="TileMap/@CharacterBody2D@57320" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57321" to="TileMap/@CharacterBody2D@57321" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57331" to="TileMap/@CharacterBody2D@57331" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57332" to="TileMap/@CharacterBody2D@57332" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57334" to="TileMap/@CharacterBody2D@57334" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57346" to="TileMap/@CharacterBody2D@57346" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57350" to="TileMap/@CharacterBody2D@57350" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57351" to="TileMap/@CharacterBody2D@57351" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57366" to="TileMap/@CharacterBody2D@57366" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28920" to="TileMap/@CharacterBody2D@28920" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28942" to="TileMap/@CharacterBody2D@28942" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28943" to="TileMap/@CharacterBody2D@28943" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28944" to="TileMap/@CharacterBody2D@28944" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28954" to="TileMap/@CharacterBody2D@28954" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28955" to="TileMap/@CharacterBody2D@28955" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28957" to="TileMap/@CharacterBody2D@28957" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28968" to="TileMap/@CharacterBody2D@28968" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28972" to="TileMap/@CharacterBody2D@28972" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28973" to="TileMap/@CharacterBody2D@28973" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28988" to="TileMap/@CharacterBody2D@28988" method="turn_x"]
 [connection signal="collided_wall" from="TileMap/KoopaRed" to="TileMap/KoopaRed" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57373" to="TileMap/@CharacterBody2D@57373" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@57384" to="TileMap/@CharacterBody2D@57384" method="turn_x"]
-[connection signal="collided_wall" from="TileMap/@CharacterBody2D@66374" to="TileMap/@CharacterBody2D@66374" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@28995" to="TileMap/@CharacterBody2D@28995" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@29006" to="TileMap/@CharacterBody2D@29006" method="turn_x"]
+[connection signal="collided_wall" from="TileMap/@CharacterBody2D@29018" to="TileMap/@CharacterBody2D@29018" method="turn_x"]
 [connection signal="warp_ended" from="PipeOut2" to="Secret Unlocker" method="progress_secret" binds= [0]]

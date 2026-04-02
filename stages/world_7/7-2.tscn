@@ -137,9 +137,9 @@ start_from_sec = Array[float]([0.0])
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_uq4xs")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "7-2"
-progress_to = 23
+progress_to = 20
 
 [node name="Mario" parent="." instance=ExtResource("5_m8kco")]
 position = Vector2(112, 400)
@@ -692,11 +692,11 @@ use_blur_transition = true
 position = Vector2(10048, 368)
 
 [connection signal="collided_wall" from="TileMapLayer/KoopaRed" to="TileMapLayer/KoopaRed" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34830" to="TileMapLayer/@CharacterBody2D@34830" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34831" to="TileMapLayer/@CharacterBody2D@34831" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44805" to="TileMapLayer/@CharacterBody2D@44805" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44806" to="TileMapLayer/@CharacterBody2D@44806" method="turn_x"]
 [connection signal="collided_wall" from="TileMapLayer/Goomba" to="TileMapLayer/Goomba" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34892" to="TileMapLayer/@CharacterBody2D@34892" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34920" to="TileMapLayer/@CharacterBody2D@34920" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34921" to="TileMapLayer/@CharacterBody2D@34921" method="turn_x"]
-[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@34922" to="TileMapLayer/@CharacterBody2D@34922" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44867" to="TileMapLayer/@CharacterBody2D@44867" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44895" to="TileMapLayer/@CharacterBody2D@44895" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44896" to="TileMapLayer/@CharacterBody2D@44896" method="turn_x"]
+[connection signal="collided_wall" from="TileMapLayer/@CharacterBody2D@44897" to="TileMapLayer/@CharacterBody2D@44897" method="turn_x"]
 [connection signal="warp_ended" from="PipeOut" to="Secret Unlocker" method="progress_secret" binds= [0]]

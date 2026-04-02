@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://pshbbvtsjntl"]
+[gd_scene load_steps=89 format=3 uid="uid://pshbbvtsjntl"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_wsp4p"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_gsux8"]
@@ -509,6 +509,36 @@ visi_y_sort_enabled = false
 custom_vars = {}
 
 [sub_resource type="Resource" id="Resource_m5ltw"]
+resource_local_to_scene = true
+script = ExtResource("21_6mnn1")
+creation_nodepack = ExtResource("20_3ni17")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_3jorg"]
+resource_local_to_scene = true
+script = ExtResource("21_6mnn1")
+creation_nodepack = ExtResource("20_3ni17")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {}
+
+[sub_resource type="Resource" id="Resource_8oumy"]
 resource_local_to_scene = true
 script = ExtResource("21_6mnn1")
 creation_nodepack = ExtResource("20_3ni17")
@@ -1074,11 +1104,11 @@ result = SubResource("Resource_m5ltw")
 
 [node name="QuestionBlock22" parent="Bonus" instance=ExtResource("19_6jofq")]
 position = Vector2(1520, 656)
-result = SubResource("Resource_m5ltw")
+result = SubResource("Resource_3jorg")
 
 [node name="QuestionBlock23" parent="Bonus" instance=ExtResource("19_6jofq")]
 position = Vector2(1488, 656)
-result = SubResource("Resource_m5ltw")
+result = SubResource("Resource_8oumy")
 
 [node name="Platform" type="Node2D" parent="."]
 
@@ -1264,9 +1294,9 @@ warp_direction = 0
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("44_dxfv2")
 secrets = Array[String](["w5 warp", "bonus rooms"])
-toast_text_overrides = Array[String](["passage to world 5", "all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["passage to world 5", "all 20 bonus rooms found"])
 progress_by_id = "2-3"
-progress_to = 23
+progress_to = 20
 
 [node name="CamArea" parent="." instance=ExtResource("7_5567o")]
 offset_left = 896.0
@@ -1327,6 +1357,6 @@ position = Vector2(1136, 624)
 
 [connection signal="warp_started" from="PipeIn" to="HUD/World5Warp" method="warp_split"]
 [connection signal="warp_started" from="PipeIn" to="HUD/World5Warp" method="activate"]
-[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="unlock_secret" binds= [0]]
 [connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]
+[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="unlock_secret" binds= [0]]
 [connection signal="warp_ended" from="PipeOut" to="Secret Unlocker" method="progress_secret" binds= [1]]

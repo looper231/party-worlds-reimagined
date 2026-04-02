@@ -733,9 +733,9 @@ jump_to_scene = "res://stages/world_2/map_2.tscn"
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("3_fhseu")
 secrets = Array[String](["bonus rooms"])
-toast_text_overrides = Array[String](["all 23 bonus rooms found"])
+toast_text_overrides = Array[String](["all 20 bonus rooms found"])
 progress_by_id = "2-1"
-progress_to = 23
+progress_to = 20
 
 [node name="MusicLoader" parent="." instance=ExtResource("2_qtsso")]
 music = Array[Resource]([ExtResource("3_pp8ay")])

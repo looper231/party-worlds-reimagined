@@ -661,8 +661,10 @@ volume_db = Array[float]([-6.0])
 
 [node name="Secret Unlocker" type="Node" parent="."]
 script = ExtResource("5_2v03h")
-secrets = Array[String](["w3 warp"])
-toast_text_overrides = Array[String](["passage to world 3"])
+secrets = Array[String](["w3 warp", "bonus rooms"])
+toast_text_overrides = Array[String](["passage to world 3", "all 20 bonus rooms found"])
+progress_by_id = "1-1"
+progress_to = 20
 
 [node name="MusicOverlay" parent="." instance=ExtResource("4_bp4mf")]
 text = Array[String](["Estrayk - I Don't Mind"])
@@ -1147,7 +1149,7 @@ script = ExtResource("42_gs10e")
 timer_disappear_threshold = 280
 
 [connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="unlock_secret"]
-[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="activate"]
 [connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="warp_split"]
+[connection signal="warp_started" from="DoorIn" to="HUD/World4Warp" method="activate"]
 [connection signal="warp_started" from="DoorIn" to="DoorIn" method="_lock_player_status"]
 [connection signal="warp_started" from="DoorIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]
