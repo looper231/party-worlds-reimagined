@@ -109,6 +109,7 @@ sprite_frames = SubResource("SpriteFrames_6dcxb")
 
 [node name="BambooArea" parent="." index="4"]
 position = Vector2(-4, -35)
+reverse_flip_effect = true
 
 [node name="BambooSprite" parent="BambooArea" index="0"]
 rotation = 1.5708

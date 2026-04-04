@@ -102,17 +102,22 @@ animations = [{
 script/source = "extends Area2D
 
 @export var bamboo_effect_node: PackedScene
+@export var reverse_flip_effect: bool = false
 
 @onready var enemy_sprite: AnimatedSprite2D
 @onready var self_sprite: Sprite2D = $BambooSprite
 
 var offset_from_parent: Vector2
+var init_parent_dir: int = -1
 
 func _ready() -> void:
 	offset_from_parent = (get_parent().global_position - global_position)
 	offset_from_parent.x = absf(offset_from_parent.x)
 	offset_from_parent.y = absf(offset_from_parent.y)
 	enemy_sprite = get_parent().get_child(2)
+	if is_instance_valid(get_parent()):
+		if get_parent().force_direction != 0:
+			init_parent_dir = get_parent().force_direction
 
 func _physics_process(delta: float) -> void:
 	var player: Player = Thunder._current_player
@@ -120,11 +125,11 @@ func _physics_process(delta: float) -> void:
 		if !player.is_starman() and overlaps_body(player): player.hurt()
 	
 	var parent_position: Vector2 = get_parent().global_position
-	var parent_dir: int = get_parent().dir
 	
-	global_position.x = parent_position.x + offset_from_parent.x * parent_dir
-	if is_instance_valid(self_sprite):
-		self_sprite.flip_h = parent_dir > 0
+	global_position.x = parent_position.x + offset_from_parent.x * init_parent_dir
+	if is_instance_valid(self_sprite) and is_instance_valid(enemy_sprite):
+		if reverse_flip_effect: self_sprite.flip_v = !enemy_sprite.flip_h
+		else: self_sprite.flip_h = !enemy_sprite.flip_h
 	
 	if !is_instance_valid(enemy_sprite): return
 	match enemy_sprite.frame:
@@ -134,6 +139,9 @@ func _physics_process(delta: float) -> void:
 			global_position.y = parent_position.y + offset_from_parent.y + 2
 		2 or 5:
 			global_position.y = parent_position.y + offset_from_parent.y + 1
+
+func flip_bamboo() -> void:
+	init_parent_dir *= -1
 
 func spawn_bamboo_effect() -> void:
 	var bamboo_effect = bamboo_effect_node.instantiate()
@@ -179,5 +187,6 @@ texture = ExtResource("9_2mqrg")
 visible = false
 shape = SubResource("RectangleShape2D_2mqrg")
 
+[connection signal="collided_wall" from="." to="BambooArea" method="flip_bamboo"]
 [connection signal="killed_succeeded" from="Body/EnemyAttacked" to="BambooArea" method="spawn_bamboo_effect"]
 [connection signal="stomped_succeeded" from="Body/EnemyAttacked" to="BambooArea" method="spawn_bamboo_effect"]
