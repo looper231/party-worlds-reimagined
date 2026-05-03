@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://blhs8yc2rqp6d"]
+
+[ext_resource type="Script" uid="uid://dw3ynr68kkki0" path="res://addons/seirensen_ufo/components/ufo_hud.gd" id="1_dpyp6"]
+[ext_resource type="Texture2D" uid="uid://bjcq53yxhl70j" path="res://addons/seirensen_ufo/textures/ufo_hud.png" id="1_f5yjy"]
+[ext_resource type="SpriteFrames" uid="uid://dihlr1d0b21ks" path="res://addons/seirensen_ufo/textures/ufo_mini.tres" id="2_dpyp6"]
+[ext_resource type="FontFile" uid="uid://b1pi0t5byork2" path="res://engine/components/hud/hud_font.fnt" id="4_n40mg"]
+
+[node name="UFO HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dpyp6")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.407843)
+position = Vector2(88, 64.5)
+texture = ExtResource("1_f5yjy")
+region_enabled = true
+region_rect = Rect2(0, 26, 81, 9)
+metadata/_edit_lock_ = true
+
+[node name="UFO1" type="AnimatedSprite2D" parent="."]
+position = Vector2(66, 62.5)
+sprite_frames = ExtResource("2_dpyp6")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="UFO2" type="AnimatedSprite2D" parent="."]
+position = Vector2(87, 62.5)
+sprite_frames = ExtResource("2_dpyp6")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="UFO3" type="AnimatedSprite2D" parent="."]
+position = Vector2(108, 62.5)
+sprite_frames = ExtResource("2_dpyp6")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="UFOAnnounce" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -8.0
+offset_right = 320.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 8)
+theme_override_fonts/font = ExtResource("4_n40mg")
+text = "Undefined Fantastic Object Appeared!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true

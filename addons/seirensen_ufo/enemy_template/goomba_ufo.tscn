@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://brnvj3qabk65w"]
+
+[ext_resource type="PackedScene" uid="uid://vqn6y17pt5mx" path="res://engine/objects/enemies/goombas/goomba.tscn" id="1_86557"]
+[ext_resource type="PackedScene" uid="uid://dj2b5g2smonyu" path="res://engine/objects/enemies/_dead/enemy_stomped.tscn" id="2_0kyjb"]
+[ext_resource type="Script" uid="uid://bhksimoyhb836" path="res://engine/objects/enemies/_dead/prefabs/do_stomped.gd" id="3_q6niv"]
+[ext_resource type="Script" uid="uid://bm81fg3h4j8sj" path="res://engine/scripts/resources/instance_node2d/instance_node2d.gd" id="4_vaovc"]
+[ext_resource type="PackedScene" uid="uid://oe7i3cief0g" path="res://engine/objects/enemies/_dead/enemy_killed.tscn" id="5_c5gx2"]
+[ext_resource type="Script" uid="uid://du32vchaulqj6" path="res://engine/objects/enemies/_dead/prefabs/do_killed.gd" id="6_ky6sy"]
+[ext_resource type="PackedScene" uid="uid://bffu26t1g7cmu" path="res://addons/seirensen_ufo/components/ufo_hint_eff.tscn" id="7_0kyjb"]
+
+[sub_resource type="GDScript" id="GDScript_0kyjb"]
+script/source = "extends GeneralMovementBody2D
+
+@export_category(\"UFO Properties\")
+@export_enum(\"Red: 0\", \"Green: 1\", \"Blue: 2\") var ufo_color: int = 0
+@export var is_volatile_color: bool = false
+
+@onready var ufo_eff = $\"UFO Hint Effect\"
+
+func _ready() -> void:
+	super()
+	ufo_eff.is_volatile_color = is_volatile_color
+	ufo_eff.ufo_color = ufo_color
+"
+
+[sub_resource type="Resource" id="Resource_l0qfj"]
+resource_local_to_scene = true
+script = ExtResource("4_vaovc")
+creation_nodepack = ExtResource("2_0kyjb")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 0
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite/Dead")
+}
+custom_script = ExtResource("3_q6niv")
+
+[sub_resource type="Resource" id="Resource_u4yg6"]
+resource_local_to_scene = true
+script = ExtResource("4_vaovc")
+creation_nodepack = ExtResource("5_c5gx2")
+creation_force_sibling = false
+trans_offset = Vector2(0, 0)
+trans_inheritances = 7
+trans_rotation = 0.0
+trans_scale = Vector2(1, 1)
+trans_skew = 0.0
+visi_z_index = 1
+visi_z_as_relative = true
+visi_y_sort_enabled = false
+custom_vars = {
+"death": NodePath("../../Sprite"),
+"death_speed": Vector2(0, -250)
+}
+custom_script = ExtResource("6_ky6sy")
+
+[node name="Goomba with UFO" instance=ExtResource("1_86557")]
+script = SubResource("GDScript_0kyjb")
+ufo_color = 0
+is_volatile_color = false
+
+[node name="EnemyAttacked" parent="Body" index="1"]
+stomping_creation = SubResource("Resource_l0qfj")
+killing_creation = SubResource("Resource_u4yg6")
+
+[node name="UFO Hint Effect" parent="." index="4" instance=ExtResource("7_0kyjb")]
+position = Vector2(0, -16)
+
+[connection signal="killed_succeeded" from="Body/EnemyAttacked" to="UFO Hint Effect" method="spawn_ufo"]
+[connection signal="stomped_succeeded" from="Body/EnemyAttacked" to="UFO Hint Effect" method="spawn_ufo"]
