@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj18q7s7m3nea"]
+
+[ext_resource type="Script" uid="uid://c3oiuy4g1oeda" path="res://objects/boss_touhou/boss_dlc/boss_generic_handler.gd" id="1_k3sqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghknn"]
+size = Vector2(304, 480)
+
+[node name="BossGenericHandler" type="Node2D"]
+script = ExtResource("1_k3sqh")
+settings_spellcard_background_layer_1_opacity = 0.87
+settings_spellcard_background_layer_2_opacity = 0.65
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(168, 0)
+shape = SubResource("RectangleShape2D_ghknn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+bus = &"Sound"
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1ffxhm4sgb0"]
+
+[ext_resource type="Script" uid="uid://dip5yp07i3nbc" path="res://objects/boss_touhou/boss_dlc/attacks/reimu/sc_0.gd" id="1_m4hke"]
+
+[node name="sc_0" type="Node"]
+script = ExtResource("1_m4hke")
+spellcard_time = 18.2

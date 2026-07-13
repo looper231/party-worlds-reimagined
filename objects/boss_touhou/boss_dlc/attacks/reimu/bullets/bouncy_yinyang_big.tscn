@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm4cpodg0ph1s"]
+
+[ext_resource type="PackedScene" uid="uid://cld7xpnvo57t" path="res://objects/boss_touhou/boss_dlc/attack_template/bouncy_yinyang.tscn" id="1_ktcpx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nddm"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktcpx"]
+radius = 19.0
+
+[node name="BouncyYinyangBig" instance=ExtResource("1_ktcpx")]
+
+[node name="Sprite" parent="." index="0"]
+region_rect = Rect2(0, 33, 63, 62)
+
+[node name="GravityCollision" parent="." index="1"]
+shape = SubResource("CircleShape2D_7nddm")
+
+[node name="CollisionShape2D" parent="HurtArea" index="0"]
+shape = SubResource("CircleShape2D_ktcpx")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)

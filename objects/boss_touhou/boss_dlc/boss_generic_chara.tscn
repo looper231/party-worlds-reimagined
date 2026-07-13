@@ -1,0 +1,109 @@
+[gd_scene load_steps=24 format=3 uid="uid://dkv3j3gkarwol"]
+
+[ext_resource type="Script" uid="uid://f31j6fbgx8wt" path="res://objects/boss_touhou/boss_dlc/boss_generic.gd" id="1_s2eat"]
+[ext_resource type="AudioStream" uid="uid://0jqk1v6iikwf" path="res://objects/boss_touhou/common/sounds/se_fault.wav" id="2_2cc32"]
+[ext_resource type="AudioStream" uid="uid://cs6u2jbf7prli" path="res://objects/boss_touhou/common/sounds/se_enep01.wav" id="7_m2f1w"]
+[ext_resource type="AudioStream" uid="uid://bqs4ewqi7b7s" path="res://objects/boss_touhou/common/sounds/se_cat00.wav" id="8_l3f88"]
+[ext_resource type="AudioStream" uid="uid://diqi04q255naj" path="res://objects/boss_touhou/common/sounds/se_tan01.wav" id="9_1474q"]
+[ext_resource type="AudioStream" uid="uid://ct3neygbqda02" path="res://objects/boss_touhou/common/sounds/se_ch02.wav" id="9_wsxge"]
+[ext_resource type="AudioStream" uid="uid://bx2s8ajo33k4h" path="res://objects/boss_touhou/common/sounds/se_ch00.wav" id="10_qqqik"]
+[ext_resource type="AudioStream" uid="uid://w6jhk3cstw8t" path="res://objects/boss_touhou/common/sounds/se_enep02.wav" id="11_5k3ya"]
+[ext_resource type="AudioStream" uid="uid://bglg4oksf6efl" path="res://objects/boss_touhou/common/sounds/se_tan00.wav" id="12_2ju7j"]
+[ext_resource type="AudioStream" uid="uid://daxnhpwsdkij1" path="res://objects/boss_touhou/common/sounds/se_kira00.wav" id="13_os8ts"]
+[ext_resource type="AudioStream" uid="uid://c2fesk4mnf4w3" path="res://objects/boss_touhou/common/sounds/se_etbreak.wav" id="14_6ynfq"]
+[ext_resource type="AudioStream" uid="uid://cxhnaayxaeksh" path="res://objects/boss_touhou/common/sounds/se_option.wav" id="14_817dc"]
+[ext_resource type="AudioStream" uid="uid://dt24m275101pu" path="res://objects/boss_touhou/common/sounds/se_nice.wav" id="15_e2wba"]
+[ext_resource type="AudioStream" uid="uid://lnmr1tbr2a8y" path="res://objects/boss_touhou/common/sounds/se_critical.wav" id="16_jy4eg"]
+[ext_resource type="AudioStream" uid="uid://bob0wlrx8p6y7" path="res://objects/boss_touhou/common/sounds/se_timeout.wav" id="18_na7tq"]
+[ext_resource type="AudioStream" uid="uid://cn5mt7emm8k4d" path="res://objects/boss_touhou/common/sounds/se_timeout2.wav" id="19_x6hgp"]
+[ext_resource type="Script" uid="uid://bu7n5s6htw2uo" path="res://objects/boss_touhou/common/components/boss_sprite.gd" id="21_2238h"]
+[ext_resource type="Script" uid="uid://dhaqb1incjw33" path="res://engine/objects/enemies/enemy_body_collision.gd" id="22_2yf6p"]
+[ext_resource type="Script" uid="uid://1n3p7ctv1snn" path="res://engine/scripts/nodes/enemies/enemy_attacked.gd" id="23_f8aqa"]
+[ext_resource type="Material" uid="uid://cwwy5x5gqv5mx" path="res://engine/shaders/add_effect.tres" id="24_k0nbr"]
+[ext_resource type="Texture2D" uid="uid://cyvsod71yq71g" path="res://objects/boss_touhou/common/textures/magic_circle.png" id="25_genlh"]
+[ext_resource type="Script" uid="uid://buvqfvt3rnrx6" path="res://objects/boss_touhou/common/components/magic_circle_eff.gd" id="26_2t2yd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frd68"]
+size = Vector2(30, 51.5)
+
+[node name="BossGeneric" type="CharacterBody2D" groups=["#w9boss"]]
+z_index = 1
+collision_layer = 8388609
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_s2eat")
+battle_fail_sound = ExtResource("2_2cc32")
+boss_defeat = ExtResource("7_m2f1w")
+declare_spell_card = ExtResource("8_l3f88")
+short_charge_up = ExtResource("9_wsxge")
+long_charge_up = ExtResource("10_qqqik")
+burst_sound = ExtResource("11_5k3ya")
+bullet_shoot_1 = ExtResource("12_2ju7j")
+bullet_shoot_2 = ExtResource("9_1474q")
+bullet_twinkle = ExtResource("13_os8ts")
+bullet_erase = ExtResource("14_6ynfq")
+nice_aura = ExtResource("15_e2wba")
+critical = ExtResource("16_jy4eg")
+summon_option = ExtResource("14_817dc")
+sfx_timeout0 = ExtResource("18_na7tq")
+sfx_timeout1 = ExtResource("19_x6hgp")
+max_number_of_spellcards = 3
+disable_hurtbox = true
+life_time = 300.0
+sprite = NodePath("BossSprite")
+visible_on_screen_notifier = NodePath("VisibleOnScreenNotifier2D")
+metadata/_custom_type_script = "uid://co5dvlw7m0osv"
+
+[node name="BossSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.96046e-07, -6)
+scale = Vector2(0.7, 0.7)
+animation = &"move_left"
+autoplay = "default"
+script = ExtResource("21_2238h")
+amplitude = Vector2(0, 5)
+frequency = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_frd68")
+
+[node name="Body" type="Area2D" parent="."]
+z_index = -1
+script = ExtResource("22_2yf6p")
+turn_back = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_frd68")
+debug_color = Color(0, 0.648751, 0.170092, 0.42)
+
+[node name="EnemyAttacked" type="Node" parent="Body"]
+script = ExtResource("23_f8aqa")
+stomping_enabled = false
+stomping_standard = Vector2(0, 0)
+stomping_creation = null
+stomping_scores = 0
+stomping_sound = null
+killing_enabled = false
+killing_creation = null
+frozen_enabled = false
+metadata/_edit_pinned_properties_ = [&"stomping_scores", &"stomping_creation", &"stomping_sound", &"killing_creation"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(6, -3.5)
+scale = Vector2(2.8, 5.25)
+
+[node name="MagicCircleEff" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.337255)
+z_index = -1
+material = ExtResource("24_k0nbr")
+texture = ExtResource("25_genlh")
+script = ExtResource("26_2t2yd")
+metadata/_edit_lock_ = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true
+
+[connection signal="animation_finished" from="BossSprite" to="." method="_on_boss_sprite_animation_finished"]

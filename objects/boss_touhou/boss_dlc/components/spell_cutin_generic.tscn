@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ti6vvvj58k2"]
+
+[ext_resource type="PackedScene" uid="uid://deqaf1juj2xh7" path="res://objects/boss_touhou/common/components/spell_cutin.tscn" id="1_oyria"]
+[ext_resource type="Texture2D" uid="uid://uq5pqirps16j" path="res://objects/boss_touhou/boss_dlc/textures/reimu_spell.png" id="2_kc5bm"]
+
+[node name="SpellCutinGeneric" instance=ExtResource("1_oyria")]
+texture = ExtResource("2_kc5bm")

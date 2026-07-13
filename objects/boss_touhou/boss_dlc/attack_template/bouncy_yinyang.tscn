@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cld7xpnvo57t"]
+
+[ext_resource type="Script" uid="uid://63iubsmd4yqy" path="res://objects/boss_touhou/boss_dlc/attack_template/bouncy_yinyang.gd" id="1_4lfi8"]
+[ext_resource type="Texture2D" uid="uid://bn1vhhfno0svu" path="res://objects/boss_touhou/boss_dlc/textures/yinyang.png" id="2_4lfi8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lfi8"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7i71"]
+radius = 8.0
+
+[node name="BouncyYinyang" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 32
+script = ExtResource("1_4lfi8")
+deletable_bullet = false
+speed = Vector2(300, 0)
+gravity_dir = Vector2(0, 0.8)
+gravity_scale = 0.3
+max_falling_speed = 700.0
+metadata/_custom_type_script = "uid://ng3vu4qwreu5"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_4lfi8")
+region_enabled = true
+region_rect = Rect2(33, 1, 30, 30)
+
+[node name="GravityCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4lfi8")
+debug_color = Color(0.962514, 0, 0.504137, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="HurtArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_h7i71")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, -2.38419e-07)
+scale = Vector2(1.6, 1.6)
+
+[connection signal="collided_floor" from="." to="." method="_on_collided_floor"]
+[connection signal="collided_wall" from="." to="." method="_on_collided_wall"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,86 @@
+[gd_scene load_steps=17 format=4 uid="uid://df0756math5l"]
+
+[ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_qmdwb"]
+[ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_tf2sf"]
+[ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_0382a"]
+[ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_8apnb"]
+[ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_yk1y1"]
+[ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="8_5rkaf"]
+[ext_resource type="Texture2D" uid="uid://djwe62jh83kf" path="res://engine/tilesets/overworld/hard_block.png" id="10_ekok1"]
+[ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="11_3abb1"]
+[ext_resource type="PackedScene" uid="uid://d3xftfdicrdqe" path="res://objects/boss_touhou/boss_dlc/boss_generic_hud.tscn" id="12_qmdwb"]
+[ext_resource type="PackedScene" uid="uid://cl0y766i6c0tq" path="res://objects/boss_touhou/boss_dlc/bosses/reimu/boss_reimu.tscn" id="12_tf2sf"]
+[ext_resource type="PackedScene" uid="uid://bj18q7s7m3nea" path="res://objects/boss_touhou/boss_dlc/boss_generic_handler.tscn" id="13_0382a"]
+[ext_resource type="AudioStream" uid="uid://8ti11v5rpxxp" path="res://stages/extra/gensokyo/music/reimu.ogg" id="14_8apnb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ja1qk"]
+texture = ExtResource("10_ekok1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_0pw8o"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 112
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_ja1qk")
+
+[sub_resource type="Gradient" id="Gradient_21qqm"]
+colors = PackedColorArray(0.227451, 0.345098, 0.470588, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmdwb"]
+gradient = SubResource("Gradient_21qqm")
+fill_to = Vector2(0, 1)
+
+[node name="ReimuTest" type="Node2D"]
+script = ExtResource("1_qmdwb")
+time = -1
+completion_music = ExtResource("2_tf2sf")
+metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
+
+[node name="MusicLoader" parent="." instance=ExtResource("3_0382a")]
+
+[node name="Player" parent="." instance=ExtResource("5_8apnb")]
+position = Vector2(80, 400)
+
+[node name="PlayerCamera2D" type="Camera2D" parent="."]
+editor_draw_screen = false
+script = ExtResource("7_yk1y1")
+metadata/_edit_lock_ = true
+
+[node name="CameraArea" parent="." instance=ExtResource("8_5rkaf")]
+offset_right = 640.0
+offset_bottom = 480.0
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAD//w0AAAAAAAAAAAABAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAATAA4AAAAAAAAAAAASAA4AAAAAAAAAAAARAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAABAA4AAAAAAAAAAAAAAA4AAAAAAAAAAAD//w4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA0AAAAAAAAAAAAXAAwAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAgAAAAAAAAAAAAXAAcAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAUAAAAAAAAAAAAXAAQAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAIAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAAAAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w0AAAAAAAAAAAD9/w0AAAAAAAAAAAD8/w0AAAAAAAAAAAD8/w4AAAAAAAAAAAD9/w4AAAAAAAAAAAD8/wwAAAAAAAAAAAD8/wsAAAAAAAAAAAD8/woAAAAAAAAAAAD8/wkAAAAAAAAAAAD8/wgAAAAAAAAAAAD8/wcAAAAAAAAAAAD8/wYAAAAAAAAAAAD8/wUAAAAAAAAAAAD8/wQAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0pw8o")
+navigation_enabled = false
+
+[node name="HUD" parent="." instance=ExtResource("11_3abb1")]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -100
+metadata/_edit_lock_ = true
+
+[node name="BossGenericHandler" parent="." node_paths=PackedStringArray("trigger_boss", "trigger_boss_HUD") instance=ExtResource("13_0382a")]
+position = Vector2(320, 256)
+trigger_boss = NodePath("../BossReimu")
+trigger_boss_HUD = NodePath("../BossGenericHUD")
+boss_music = ExtResource("14_8apnb")
+
+[node name="BossGenericHUD" parent="." instance=ExtResource("12_qmdwb")]
+main_boss_name = "REIMU HAKUREI"
+
+[node name="BossReimu" parent="." instance=ExtResource("12_tf2sf")]
+position = Vector2(960, -120)
+boss_name = "REIMU HAKUREI"
+max_number_of_spellcards = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(10, 7.5)
+texture = SubResource("GradientTexture2D_qmdwb")
+metadata/_edit_lock_ = true

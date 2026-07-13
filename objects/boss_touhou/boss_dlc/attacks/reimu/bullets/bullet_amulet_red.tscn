@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://lw4wfsv3uqy1"]
+
+[ext_resource type="PackedScene" uid="uid://bck46pm8sso1g" path="res://objects/boss_touhou/common/bullet_base.tscn" id="1_thdoy"]
+[ext_resource type="Script" uid="uid://dagygr7w7f5o4" path="res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_arrow_red.gd" id="2_afbql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v155y"]
+radius = 4.0
+
+[node name="BulletAmuletRed" instance=ExtResource("1_thdoy")]
+script = ExtResource("2_afbql")
+bullet_erase_color = Color(0.917647, 0, 0, 1)
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = true
+shape = SubResource("CircleShape2D_v155y")
+
+[node name="Sprite" parent="." index="1"]
+rotation = 1.5708
+frame = 114
+
+[node name="AppearAnim" parent="Sprite" index="0"]
+visible = true
+rotation = -1.5708
+scale = Vector2(1, 1)
+frame = 1
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-1.49012e-07, 0)
+scale = Vector2(1.1, 1)

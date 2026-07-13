@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl0y766i6c0tq"]
+
+[ext_resource type="PackedScene" uid="uid://dkv3j3gkarwol" path="res://objects/boss_touhou/boss_dlc/boss_generic_chara.tscn" id="1_4bn3y"]
+[ext_resource type="Script" uid="uid://d2x083gmce7tk" path="res://objects/boss_touhou/boss_dlc/bosses/reimu/boss_reimu.gd" id="2_3c6ta"]
+[ext_resource type="PackedScene" uid="uid://dm1ffxhm4sgb0" path="res://objects/boss_touhou/boss_dlc/attacks/reimu/sc_0.tscn" id="2_500g5"]
+[ext_resource type="SpriteFrames" uid="uid://cn8px0r4en3i5" path="res://objects/boss_touhou/boss_dlc/prefabs/reimu_hakurei.tres" id="3_jinkl"]
+
+[node name="BossReimu" instance=ExtResource("1_4bn3y")]
+script = ExtResource("2_3c6ta")
+
+[node name="BossSprite" parent="." index="0"]
+sprite_frames = ExtResource("3_jinkl")
+animation = &"default"
+
+[node name="sc_0" parent="." index="6" instance=ExtResource("2_500g5")]
+
+[connection signal="animation_changed" from="BossSprite" to="." method="_on_boss_sprite_animation_changed"]

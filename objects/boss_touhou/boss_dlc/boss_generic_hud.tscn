@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3xftfdicrdqe"]
+
+[ext_resource type="Script" uid="uid://dtdkg5p842lto" path="res://objects/boss_touhou/boss_dlc/boss_generic_hud.gd" id="1_1jxnx"]
+[ext_resource type="FontFile" uid="uid://b1pi0t5byork2" path="res://engine/components/hud/hud_font.fnt" id="2_23seq"]
+[ext_resource type="Texture2D" uid="uid://dhfk6kbffuuyc" path="res://objects/boss_touhou/common/textures/UI_star.png" id="3_blogf"]
+[ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="4_rnqbf"]
+[ext_resource type="Texture2D" uid="uid://c0pdwlu4f2eai" path="res://objects/boss_touhou/common/textures/UI_spellcard.png" id="5_j4gi0"]
+[ext_resource type="Script" uid="uid://dvy81m1n0a8vd" path="res://objects/boss_touhou/common/components/time_counter.gd" id="6_2erg6"]
+
+[node name="BossGenericHUD" type="CanvasLayer"]
+script = ExtResource("1_1jxnx")
+append_attack_count_to_name = false
+main_boss_name = "DEFAULT"
+
+[node name="BossName" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 56.0
+offset_right = 640.0
+offset_bottom = 74.0
+pivot_offset = Vector2(0, 9)
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_23seq")
+text = "DEFAULT NAME"
+
+[node name="SpellCardCount" type="TextureRect" parent="BossName"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 21.0
+offset_bottom = 38.0
+texture = ExtResource("3_blogf")
+stretch_mode = 1
+
+[node name="SpellCardName" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.172
+anchor_right = 1.0
+anchor_bottom = 0.172
+offset_left = -640.0
+offset_top = -11.56
+offset_right = -48.0
+offset_bottom = 11.44
+grow_horizontal = 0
+pivot_offset = Vector2(0, 9)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.36317, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_rnqbf")
+theme_override_font_sizes/font_size = 32
+text = "Default Sign \"Default Name\""
+horizontal_alignment = 2
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="SCNameBack" type="Sprite2D" parent="SpellCardName"]
+z_index = -1
+position = Vector2(414, 16)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_j4gi0")
+metadata/_edit_lock_ = true
+
+[node name="TimeCounter" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -640.0
+offset_top = 56.0
+offset_right = -48.0
+offset_bottom = 74.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_23seq")
+text = "%.2fs"
+horizontal_alignment = 2
+script = ExtResource("6_2erg6")
+metadata/_edit_lock_ = true
+
+[node name="PowerBonus" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 112.0
+offset_right = 320.0
+offset_bottom = 152.0
+grow_horizontal = 2
+pivot_offset = Vector2(320, 24)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.729412, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.36317, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_rnqbf")
+theme_override_font_sizes/font_size = 45
+text = "Get Power-up Bonus!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true

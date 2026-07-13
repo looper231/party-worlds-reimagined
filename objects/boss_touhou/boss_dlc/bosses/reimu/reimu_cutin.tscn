@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpce1khs018mn"]
+
+[ext_resource type="PackedScene" uid="uid://8ti6vvvj58k2" path="res://objects/boss_touhou/boss_dlc/components/spell_cutin_generic.tscn" id="1_6gjfa"]
+
+[node name="SpellCutinGeneric" instance=ExtResource("1_6gjfa")]

@@ -43,11 +43,11 @@ point_count = 2
 base_font = ExtResource("16_by8ck")
 spacing_bottom = -10
 
-[sub_resource type="Gradient" id="Gradient_21qqm"]
+[sub_resource type="Gradient" id="Gradient_ns13h"]
 colors = PackedColorArray(0.227451, 0.345098, 0.470588, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rkj87"]
-gradient = SubResource("Gradient_21qqm")
+gradient = SubResource("Gradient_ns13h")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Resource" id="Resource_rkj87"]
