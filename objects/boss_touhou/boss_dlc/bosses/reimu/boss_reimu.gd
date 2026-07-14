@@ -42,4 +42,6 @@ func _on_boss_sprite_animation_changed() -> void:
 		&"attack": boss_sprite.offset = Vector2(0.0, -20.0)
 		&"move_left": boss_sprite.offset = Vector2(20.0, 0.0)
 		&"stop_left": boss_sprite.offset = Vector2(20.0, 0.0)
-		_: boss_sprite.offset = Vector2.ZERO
+		&"move_right": boss_sprite.offset = Vector2.ZERO
+		&"stop_right": boss_sprite.offset = Vector2.ZERO
+		_: boss_sprite.offset = Vector2(-21.0, 0.0)

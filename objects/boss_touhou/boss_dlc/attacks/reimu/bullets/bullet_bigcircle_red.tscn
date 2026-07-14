@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ovw8uxhhn5t"]
+
+[ext_resource type="PackedScene" uid="uid://bck46pm8sso1g" path="res://objects/boss_touhou/common/bullet_base.tscn" id="1_boclm"]
+[ext_resource type="Script" uid="uid://dagygr7w7f5o4" path="res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_arrow_red.gd" id="2_i32qp"]
+[ext_resource type="Texture2D" uid="uid://basuab21se1l2" path="res://objects/boss_touhou/common/textures/bullet_tex2.png" id="2_v4g0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i32qp"]
+radius = 10.0499
+
+[node name="BulletBigCircleRed" instance=ExtResource("1_boclm")]
+script = ExtResource("2_i32qp")
+bullet_erase_color = Color(1, 0, 0, 1)
+bullet_erase_scale = 2.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_i32qp")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_v4g0i")
+hframes = 8
+vframes = 8
+frame = 9
+region_rect = Rect2(1, 32, 12, 13)
+
+[node name="AppearAnim" parent="Sprite" index="0"]
+visible = true
+scale = Vector2(1.6, 1.6)
+frame = 1

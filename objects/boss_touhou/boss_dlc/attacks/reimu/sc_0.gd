@@ -26,7 +26,9 @@ func middle_attack() -> void:
 	super()
 
 func _physics_process(delta: float) -> void:
-	if _boss_attack_interrupt(): return
+	if _boss_attack_interrupt():
+		attacking_phase = false
+		return
 	# During each attacking phase:
 	# 1. Reimu shoots gray and red amulet rings
 	# 2. Immediately shoots Yinyangs everywhere
@@ -36,22 +38,24 @@ func _physics_process(delta: float) -> void:
 	if attacking_phase and !is_attacking:
 		is_attacking = true
 		if total_waves_elapsed > 3:
-			bullet_screen_clear(false)
 			sc0_boss_wander()
 			sc0_gradual_small_yinyang(yinyang_direction)
 			play_sound(boss.summon_option)
 			await _set_timer(1.5)
+			if _boss_attack_interrupt(): return
 			play_sound(boss.short_charge_up)
 			leaf_gather_effect()
 			await _set_timer(1.5)
+			if _boss_attack_interrupt(): return
 			bullet_screen_clear(false)
 			sc0_boss_wander()
 			var internal_i: int = 0
-			while internal_i < 7:
+			while internal_i < 50:
 				if _boss_attack_interrupt(): break
-				sc0_shoot_gray_amulet_rings(aim_at_player())
-				play_sound(boss.bullet_shoot_1)
-				await get_tree().create_timer(0.4, false).timeout
+				sc0_shoot_gray_amulet_rings(aim_at_player(), clampi(internal_i, 1, 20))
+				play_sound(boss.bullet_shoot_1, null, true)
+				await _set_timer(0.3)
+				if _boss_attack_interrupt(): return
 				internal_i += 1
 			sc0_boss_wander()
 			total_waves_elapsed = 0
@@ -62,20 +66,25 @@ func _physics_process(delta: float) -> void:
 		
 		boss_play_attack_anim()
 		sc0_shoot_gray_amulet_rings(player_angle, 6)
-		play_sound(boss.bullet_shoot_1)
-		await get_tree().create_timer(0.1, false).timeout
+		play_sound(boss.bullet_shoot_1, null, true)
+		await _set_timer(0.1)
+		if _boss_attack_interrupt(): return
 		sc0_shoot_red_amulet_rings(yinyang_direction, player_angle, 7)
-		play_sound(boss.bullet_shoot_1)
-		await get_tree().create_timer(0.4, false).timeout
+		play_sound(boss.bullet_shoot_1, null, true)
+		await _set_timer(0.4)
+		if _boss_attack_interrupt(): return
 		sc0_gradual_big_yinyang(yinyang_direction)
+		play_sound(boss.bullet_shoot_1, null, true)
 		play_sound(boss.summon_option)
 		yinyang_direction *= -1
 		yinyang_wave_count += 1
 		total_waves_elapsed += 1
-		await get_tree().create_timer(0.5, false).timeout
+		await _set_timer(0.5)
+		if _boss_attack_interrupt(): return
 		boss_nice_aura()
 		sc0_boss_wander()
-		await get_tree().create_timer(2.4, false).timeout
+		await _set_timer(2.4)
+		if _boss_attack_interrupt(): return
 		is_attacking = false
 
 func end_attack() -> void:
@@ -111,10 +120,10 @@ func sc0_shoot_red_amulet_rings(direction: int = 1, angle: float = 0.0, ring_amo
 		sc0_shoot_amulet_ring(BULLET_RED_AMULET, sc0_red_ring_speed * (1.0 + 0.2 * i), angle + deg_to_rad(3.0) * i * direction, sc0_red_ring_amount)
 
 func sc0_gradual_big_yinyang(direction: int = 1) -> void:
-	sc0_shoot_yinyang_gradual(BULLET_YINYANG_BIG, direction, 0.0, 600.0, 3)
+	sc0_shoot_yinyang_gradual(BULLET_YINYANG_BIG, direction, 0.0, 600.0, 5)
 
 func sc0_gradual_small_yinyang(direction: int = 1) -> void:
-	sc0_shoot_yinyang_gradual(BULLET_YINYANG, direction, 0.0, 300.0, 16)
+	sc0_shoot_yinyang_gradual(BULLET_YINYANG, direction, 0.0, 400.0, 27)
 
 func sc0_shoot_yinyang_gradual(bullet_type: PackedScene, direction: int = 1, angle: float = 0.0, speed: float = 500.0, number: int = 5) -> void:
 	var shoot_angle_start: float = angle + ((PI/2) + deg_to_rad((360.0 - sc0_yinyang_shoot_zone) / 2.0) * direction)
@@ -127,4 +136,4 @@ func sc0_shoot_yinyang_gradual(bullet_type: PackedScene, direction: int = 1, ang
 func sc0_boss_wander() -> void:
 	var upper_bound = Vector2(300, -90)
 	var lower_bound = Vector2(-300, -200)
-	move_boss_wander(Wander_Type.MOVE_X_TOWARDS_PLAYER, boss.boss_handler.global_position, upper_bound, lower_bound, randf_range(80.0, 180.0), 1.7)
+	move_boss_wander(Wander_Type.RANDOM, boss.boss_handler.global_position, upper_bound, lower_bound, randf_range(80.0, 180.0), 1.7)

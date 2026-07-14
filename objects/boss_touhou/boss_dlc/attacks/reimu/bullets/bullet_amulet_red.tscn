@@ -4,19 +4,22 @@
 [ext_resource type="Script" uid="uid://dagygr7w7f5o4" path="res://objects/boss_touhou/boss_w9/attacks/bullets/bullet_arrow_red.gd" id="2_afbql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v155y"]
-radius = 4.0
+radius = 2.0
 
 [node name="BulletAmuletRed" instance=ExtResource("1_thdoy")]
 script = ExtResource("2_afbql")
 bullet_erase_color = Color(0.917647, 0, 0, 1)
 
 [node name="CollisionShape2D" parent="." index="0"]
-visible = true
 shape = SubResource("CircleShape2D_v155y")
 
 [node name="Sprite" parent="." index="1"]
 rotation = 1.5708
-frame = 114
+hframes = 1
+vframes = 1
+frame = 0
+region_enabled = true
+region_rect = Rect2(33, 112, 14, 16)
 
 [node name="AppearAnim" parent="Sprite" index="0"]
 visible = true

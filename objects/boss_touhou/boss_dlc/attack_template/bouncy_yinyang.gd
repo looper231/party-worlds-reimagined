@@ -82,6 +82,7 @@ func _on_collided_floor() -> void:
 
 
 func _bounce_triggered() -> void:
+	if has_left_screen: return
 	screen_edge_bounce_times -= 1
 
 

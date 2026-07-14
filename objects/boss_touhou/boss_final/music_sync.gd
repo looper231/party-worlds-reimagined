@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	
 	var mod: AudioStreamMPT
 	if !Audio._music_channels.has(32): return
+	if !is_instance_valid(Audio._music_channels[32]): return
 	if (is_instance_valid(Audio._music_channels[32]) &&
 		Audio._music_channels[32].stream is AudioStreamMPT):
 		mod = Audio._music_channels[32].stream

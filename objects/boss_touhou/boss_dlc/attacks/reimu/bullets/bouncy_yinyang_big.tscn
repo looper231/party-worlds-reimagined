@@ -9,6 +9,7 @@ radius = 32.0
 radius = 19.0
 
 [node name="BouncyYinyangBig" instance=ExtResource("1_ktcpx")]
+yinyang_jump_speed = 600.0
 
 [node name="Sprite" parent="." index="0"]
 region_rect = Rect2(0, 33, 63, 62)

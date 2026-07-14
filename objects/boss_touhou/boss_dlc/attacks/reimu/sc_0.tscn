@@ -4,4 +4,3 @@
 
 [node name="sc_0" type="Node"]
 script = ExtResource("1_m4hke")
-spellcard_time = 18.2

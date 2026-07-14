@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgc4y6yylfxt8"]
+
+[ext_resource type="Script" uid="uid://jpysu8qdpwnl" path="res://objects/boss_touhou/boss_dlc/attacks/reimu/sc_1.gd" id="1_l30iv"]
+
+[node name="sc_1" type="Node"]
+script = ExtResource("1_l30iv")
+is_spell_card = true
+spellcard_name = "Spirit Sign \"Hakurei Homing Amulet\""
+spellcard_time = 23.0
