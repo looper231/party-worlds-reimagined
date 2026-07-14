@@ -17,12 +17,14 @@ extends Sprite2D
 
 var free_rotate: bool = false
 var actual_rotate_speed: float = 0.0
+var true_phase: float = 0.0
 
 @onready var quality: SettingsManager.QUALITY = SettingsManager.settings.quality
 @onready var QUALITY = SettingsManager.QUALITY
 
 func _ready() -> void:
 	scale = Vector2.ZERO
+	true_phase = phase
 	SettingsManager.settings_updated.connect(_update_visibility)
 	_update_visibility.call_deferred()
 
@@ -35,9 +37,9 @@ func _physics_process(delta: float) -> void:
 		rotate(actual_rotate_speed * Engine.time_scale)
 		return
 	rotate(rotation_speed_in_radians * Engine.time_scale)
-	var scale_calc = Thunder.Math.oval(scale_min, scale_max - scale_min, deg_to_rad(phase))
+	var scale_calc = Thunder.Math.oval(scale_min, scale_max - scale_min, deg_to_rad(true_phase))
 	scale = Vector2(scale_calc.x, scale_calc.x)
-	phase = wrapf(phase + frequency * Thunder.get_delta(delta), 0, 360)
+	true_phase = wrapf(true_phase + frequency * Thunder.get_delta(delta), 0, 360)
 
 func appear_animation() -> void:
 	actual_rotate_speed = rotation_speed_on_appear_in_radians
@@ -50,8 +52,9 @@ func appear_animation() -> void:
 	tw_rotate.tween_property(self, "actual_rotate_speed", 0.0, animation_duration)
 
 func allow_free_rotate() -> void:
-	free_rotate = true
+	true_phase = phase
 	actual_rotate_speed = rotation_speed_in_radians
+	free_rotate = true
 
 func disappear_animation() -> void:
 	var tw = get_tree().create_tween()
