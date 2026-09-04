@@ -438,6 +438,7 @@ z_index = -2
 position = Vector2(917, 380)
 rotation = -0.274336
 texture = ExtResource("21_chjis")
+metadata/_edit_lock_ = true
 
 [node name="Sign1" type="Sprite2D" parent="TBD_Backdrops/Sign"]
 z_index = -2

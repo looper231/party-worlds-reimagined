@@ -51,8 +51,9 @@ func finish(walking: bool = false, walking_dir: int = 1) -> void:
 	Thunder._current_hud.time_countdown_finished.connect(
 		func() -> void:
 			await get_tree().create_timer(0.8, false, false).timeout
-			SPECIAL_do_cutscene()
-			await get_tree().create_timer(total_cutscene_time_sec, false, false, ignore_time_scale).timeout
+			if not CustomGlobals.is_boss_rematch:
+				SPECIAL_do_cutscene()
+				await get_tree().create_timer(total_cutscene_time_sec, false, false, ignore_time_scale).timeout
 			# Do not switch scenes if game over screen is opened, might be rare but just in case
 			if Scenes.custom_scenes.get("game_over"):
 				if Scenes.custom_scenes.game_over.get("opened"):
@@ -63,6 +64,8 @@ func finish(walking: bool = false, walking_dir: int = 1) -> void:
 
 			var scene_to_jump_to: String = jump_to_scene
 			if alternate_jump_to_scene: scene_to_jump_to = alternate_jump_to_scene
+			if CustomGlobals.is_boss_rematch:
+				scene_to_jump_to = "res://stages/main/save_game_room_pw.tscn"
 
 			if (jump_to_scene or alternate_jump_to_scene) and !do_not_jump_to_scene:
 				if !_crossfade:

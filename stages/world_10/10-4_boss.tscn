@@ -1,6 +1,5 @@
 [gd_scene load_steps=50 format=4 uid="uid://dmv1cfedqdjph"]
 
-[ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_tuyco"]
 [ext_resource type="AudioStream" uid="uid://c3fuj530bqcdh" path="res://stages/world_10/music/you_win.ogg" id="2_jhiy2"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_wew7x"]
 [ext_resource type="Script" uid="uid://s4is3yy0cg1p" path="res://stages/world_10/Additives/end_world_handler.gd" id="4_8utrm"]
@@ -29,6 +28,15 @@
 [ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="25_65f8u"]
 [ext_resource type="Script" uid="uid://c0r05ef7jks2l" path="res://stages/world_10/Additives/final_boss_label.gd" id="26_jv3qh"]
 [ext_resource type="PackedScene" uid="uid://b8kgbn8f7lvf0" path="res://engine/objects/items/coin/coin.tscn" id="27_k6vjy"]
+
+[sub_resource type="GDScript" id="GDScript_w8w0w"]
+script/source = "extends Level
+
+func _ready() -> void:
+	super()
+	if CustomGlobals.is_boss_rematch:
+		jump_to_scene = \"res://stages/main/save_game_room_pw.tscn\"
+"
 
 [sub_resource type="Gradient" id="Gradient_cmi6i"]
 interpolation_mode = 2
@@ -138,7 +146,7 @@ scale_min = 0.5
 scale_curve = SubResource("CurveTexture_gq12p")
 
 [node name="10-4Boss" type="Node2D"]
-script = ExtResource("1_tuyco")
+script = SubResource("GDScript_w8w0w")
 time = -1
 completion_music = ExtResource("2_jhiy2")
 jump_to_scene = "uid://dpmk8p0lknr8p"

@@ -3019,48 +3019,48 @@ amplitude = Vector2(0, 150)
 position = Vector2(5776, 208)
 
 [node name="RotoRed" parent="Enemies/RotoCenter6" instance=ExtResource("61_8ionl")]
-position = Vector2(13, -69)
+position = Vector2(3, 70)
 preview = true
 amplitude = Vector2(70, 70)
-phase = -79.9997
+phase = 86.667
 frequency = -50.0
 
 [node name="RotoCenter5" parent="Enemies" instance=ExtResource("60_lsndb")]
 position = Vector2(2800, -208)
 
 [node name="RotoRed" parent="Enemies/RotoCenter5" instance=ExtResource("61_8ionl")]
-position = Vector2(100, 4)
+position = Vector2(-96, -27)
 preview = true
 amplitude = Vector2(100, 100)
-phase = 3.33407
+phase = -163.333
 
 [node name="RotoCenter4" parent="Enemies" instance=ExtResource("60_lsndb")]
 position = Vector2(3824, 144)
 
 [node name="RotoRed" parent="Enemies/RotoCenter4" instance=ExtResource("61_8ionl")]
-position = Vector2(-91, 18)
+position = Vector2(80, -2)
 preview = true
 amplitude = Vector2(110, 50)
-phase = -142.498
+phase = 50.8353
 track_rot = -30.0
 
 [node name="RotoCenter2" parent="Enemies" instance=ExtResource("60_lsndb")]
 position = Vector2(4432, 368)
 
 [node name="RotoRed" parent="Enemies/RotoCenter2" instance=ExtResource("61_8ionl")]
-position = Vector2(106, 35)
+position = Vector2(-79, -43)
 preview = true
 amplitude = Vector2(150, 50)
-phase = 45.8337
+phase = -120.833
 
 [node name="RotoCenter3" parent="Enemies" instance=ExtResource("60_lsndb")]
 position = Vector2(4464, 368)
 
 [node name="RotoRed" parent="Enemies/RotoCenter3" instance=ExtResource("61_8ionl")]
-position = Vector2(-106, -35)
+position = Vector2(79, 43)
 preview = true
 amplitude = Vector2(150, 50)
-phase = -134.166
+phase = 59.1673
 
 [node name="HammerBro" parent="Enemies" instance=ExtResource("62_x3sr5")]
 position = Vector2(11712, -96)
@@ -3436,9 +3436,9 @@ position = Vector2(10992, 384)
 rotation = 1.5708
 warp_direction = 0
 
-[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="unlock_secret"]
 [connection signal="warp_started" from="PipeIn" to="HUD/World9Warp" method="activate"]
 [connection signal="warp_started" from="PipeIn" to="HUD/World9Warp" method="warp_split"]
+[connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="unlock_secret"]
 [connection signal="warp_started" from="PipeIn" to="Secret Unlocker" method="add_shit_to_profile" binds= ["warped"]]
 
 [editable path="FG Fog"]

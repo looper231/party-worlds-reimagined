@@ -1,6 +1,7 @@
 extends Node
 # Alt boss checker
 var w9_alt_boss: bool
+var is_boss_rematch: bool
 
 ## Checks whether Hatate Himekaidou should be the boss for 9-3 or not.
 func check_for_hatate_boss() -> bool:
@@ -11,7 +12,8 @@ func save_boss_status_w9(new_status: bool) -> void:
 
 func load_boss_status_w9() -> void:
 	if ProfileManager.current_profile.data.get("w9_alt_boss") == null: return
-	w9_alt_boss = ProfileManager.current_profile.data.get("w9_alt_boss") 
+	w9_alt_boss = ProfileManager.current_profile.data.get("w9_alt_boss")
+	print("[W9] Found data for W9 Boss: " + str(w9_alt_boss))
 
 # W9 Boss Hint system
 var w9b_death_count: int
