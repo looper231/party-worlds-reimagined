@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cq8yl0fsgr2pn"]
+[gd_scene load_steps=14 format=4 uid="uid://cq8yl0fsgr2pn"]
 
 [ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_6jhg3"]
 [ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_707tx"]
@@ -9,9 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bwl1guuudbn6j" path="res://gfx/gensokyo/level_1.png" id="7_oojgg"]
 [ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="8_jahwi"]
 [ext_resource type="Texture2D" uid="uid://6mp6lx3o8v5f" path="res://gfx/gensokyo/netherworld_bg1.png" id="9_wq40v"]
-[ext_resource type="PackedScene" uid="uid://blhs8yc2rqp6d" path="res://addons/seirensen_ufo/components/ufo_hud.tscn" id="10_707tx"]
 [ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="11_fhs20"]
-[ext_resource type="PackedScene" uid="uid://brnvj3qabk65w" path="res://addons/seirensen_ufo/enemy_template/goomba_ufo.tscn" id="11_prgr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wq40v"]
 texture = ExtResource("7_oojgg")
@@ -721,8 +719,6 @@ metadata/_edit_lock_ = true
 
 [node name="HUD" parent="." instance=ExtResource("11_fhs20")]
 
-[node name="UFO HUD" parent="HUD" instance=ExtResource("10_707tx")]
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -740,17 +736,3 @@ stretch_mode = 1
 
 [node name="Objects" type="Node2D" parent="."]
 script = SubResource("GDScript_6jhg3")
-
-[node name="Goomba with UFO" parent="." instance=ExtResource("11_prgr4")]
-position = Vector2(688, 304)
-ufo_color = 2
-is_volatile_color = true
-
-[node name="Goomba with UFO2" parent="." instance=ExtResource("11_prgr4")]
-position = Vector2(752, 304)
-ufo_color = 1
-is_volatile_color = true
-
-[node name="Goomba with UFO3" parent="." instance=ExtResource("11_prgr4")]
-position = Vector2(624, 400)
-is_volatile_color = true

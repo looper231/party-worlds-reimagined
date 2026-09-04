@@ -63,7 +63,6 @@ CustomGlobals="*res://stages/singletones/CustomGlobals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SecretsManager="*res://addons/secrets_manager/SecretsManager.tscn"
 GameOverContinue="*res://addons/game_over_pwr/game_over_layer.tscn"
-UFOGlobals="*res://addons/seirensen_ufo/components/UFOGlobals.gd"
 
 [debug]
 
