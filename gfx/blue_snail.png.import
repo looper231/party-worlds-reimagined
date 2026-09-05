@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg308lf1a65xf"
-path="res://.godot/imported/PC Computer - MapleStory - Blue Snail.png-2450423316e9efffb686f207cc3829cd.ctex"
+path="res://.godot/imported/blue_snail.png-6905d2bb5f768e24ef7d5d9ff8884adb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/PC Computer - MapleStory - Blue Snail.png"
-dest_files=["res://.godot/imported/PC Computer - MapleStory - Blue Snail.png-2450423316e9efffb686f207cc3829cd.ctex"]
+source_file="res://gfx/blue_snail.png"
+dest_files=["res://.godot/imported/blue_snail.png-6905d2bb5f768e24ef7d5d9ff8884adb.ctex"]
 
 [params]
 
