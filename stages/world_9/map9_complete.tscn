@@ -1,6 +1,5 @@
 [gd_scene load_steps=32 format=3 uid="uid://bh4hvwf4d31co"]
 
-[ext_resource type="Script" uid="uid://cgmeyo2w81dhx" path="res://engine/scenes/map/scripts/map-complete.gd" id="1_bvwo2"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_cc3ot"]
 [ext_resource type="AudioStream" uid="uid://cx6jafqubqpsj" path="res://stages/main/intronumber102.mod" id="3_v2bfy"]
 [ext_resource type="Texture2D" uid="uid://usm6n80msr7n" path="res://engine/scenes/map/textures/bg.png" id="4_40n7q"]
@@ -14,6 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://n1e15y87rcxo" path="res://gfx/maps/9-3.png" id="12_gg345"]
 [ext_resource type="Texture2D" uid="uid://b01tuwhqgq4sf" path="res://gfx/maps/9-2_level.png" id="12_s87vh"]
 [ext_resource type="Texture2D" uid="uid://bbx5cp5jd0x2p" path="res://gfx/maps/9-2_bg.png" id="13_6hybh"]
+
+[sub_resource type="GDScript" id="GDScript_kme3n"]
+script/source = "extends \"res://engine/scenes/map/scripts/map-complete.gd\"
+
+func _ready() -> void:
+	super()
+	if not CustomGlobals.is_easy_mode_enabled(): return
+	goto_scene = \"res://stages/world_10/map10.tscn\"
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uckvt"]
 atlas = ExtResource("9_iq14n")
@@ -136,7 +144,7 @@ animations = [{
 }]
 
 [node name="Map-complete" type="Node2D"]
-script = ExtResource("1_bvwo2")
+script = SubResource("GDScript_kme3n")
 goto_scene = "res://stages/world_9/after_9-3_cutscene.tscn"
 world_name = "9"
 

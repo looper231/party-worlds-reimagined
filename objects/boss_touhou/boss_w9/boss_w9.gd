@@ -105,6 +105,12 @@ func _ready() -> void:
 			starting_position = boss_handler.global_position
 	
 	sc_actual_timer.timeout.connect(end_spell_card)
+	enable_easy_mode()
+
+func enable_easy_mode() -> void:
+	if not CustomGlobals.is_easy_mode_enabled(): return
+	max_number_of_pictures_allowed = 23
+	max_number_of_pictures_allowed_alt = 26
 
 func _physics_process(delta: float) -> void:
 	_animation_process(delta)

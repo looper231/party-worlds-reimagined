@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://coaujkfk2lcc4"]
+
+[ext_resource type="TileSet" uid="uid://ch1gwbf1qp55e" path="res://stages/world_10/Additives/w8_office.tres" id="1_tv35r"]
+[ext_resource type="PackedScene" uid="uid://dfm7d4qtja67b" path="res://engine/objects/core/finish_line/finish_line.tscn" id="2_sm1ag"]
+
+[sub_resource type="GDScript" id="GDScript_tv35r"]
+script/source = "extends TileMapLayer
+
+const KICK_SFX = preload(\"res://engine/objects/players/prefabs/sounds/kick.wav\")
+
+@export var is_second_goal: bool = true
+@onready var goalpost = $FinishLine
+@onready var player_detector = $Area2D
+
+signal funny_interaction
+
+var is_player_in_area: bool = false
+var began_rotate_anim: bool = false
+
+var rotating_direction: int = -1
+var layer_speed: Vector2 = Vector2(0.0, 0.0)
+
+func _ready() -> void:
+	if is_second_goal:
+		goalpost.use_strict_detection_area = false
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	is_player_in_area = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	is_player_in_area = false
+
+func _physics_process(delta: float) -> void:
+	if is_second_goal: return
+	global_position += layer_speed * 30 * delta
+	var player = Thunder._current_player
+	if !began_rotate_anim and player_detector.overlaps_body(player) and player.is_on_floor():
+		began_rotate_anim = true
+		funny_interaction.emit()
+		Audio.play_sound(KICK_SFX, goalpost)
+		goalpost.detect_by_position = false
+		collision_enabled = false
+		layer_speed.y = -50.0
+		layer_speed.x = rotating_direction * 17
+	if began_rotate_anim:
+		layer_speed.y += 20.0 * delta * 6
+		rotation_degrees += 12 * 100 * rotating_direction * delta
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv35r"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm1ag"]
+size = Vector2(96, 40)
+
+[node name="WeirdLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 252, 255, 4, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 4, 0, 1, 0, 1, 0, 0, 0, 0, 0, 3, 0, 4, 0, 1, 0, 1, 0, 0, 0, 0, 0, 2, 0, 4, 0, 1, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_tv35r")
+script = SubResource("GDScript_tv35r")
+
+[node name="FinishLine" parent="." instance=ExtResource("2_sm1ag")]
+position = Vector2(-128, 128)
+use_strict_detection_area = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-112, 148)
+shape = SubResource("RectangleShape2D_tv35r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80, 148)
+shape = SubResource("RectangleShape2D_sm1ag")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

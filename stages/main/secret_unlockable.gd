@@ -6,6 +6,7 @@ extends Node2D
 @export var callback_only: bool
 
 signal unlock_achievement
+signal node_hidden
 
 func _ready() -> void:
 	if len(secrets_conditionals) <= 0:
@@ -28,6 +29,7 @@ func _ready() -> void:
 			return
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
+	node_hidden.emit()
 
 
 func special_get_secret(secret_name: String) -> bool:

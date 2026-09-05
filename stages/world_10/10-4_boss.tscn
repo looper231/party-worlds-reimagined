@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://dmv1cfedqdjph"]
+[gd_scene load_steps=55 format=4 uid="uid://dmv1cfedqdjph"]
 
 [ext_resource type="AudioStream" uid="uid://c3fuj530bqcdh" path="res://stages/world_10/music/you_win.ogg" id="2_jhiy2"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_wew7x"]
@@ -28,13 +28,16 @@
 [ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="25_65f8u"]
 [ext_resource type="Script" uid="uid://c0r05ef7jks2l" path="res://stages/world_10/Additives/final_boss_label.gd" id="26_jv3qh"]
 [ext_resource type="PackedScene" uid="uid://b8kgbn8f7lvf0" path="res://engine/objects/items/coin/coin.tscn" id="27_k6vjy"]
+[ext_resource type="PackedScene" uid="uid://coaujkfk2lcc4" path="res://stages/world_10/Additives/weird_layer.tscn" id="29_oylyn"]
 
 [sub_resource type="GDScript" id="GDScript_w8w0w"]
 script/source = "extends Level
 
 func _ready() -> void:
 	super()
-	if CustomGlobals.is_boss_rematch:
+	if CustomGlobals.is_easy_mode_enabled():
+		completion_music = DEFAULT_COMPLETION
+	if CustomGlobals.is_boss_rematch or CustomGlobals.is_easy_mode_enabled():
 		jump_to_scene = \"res://stages/main/save_game_room_pw.tscn\"
 "
 
@@ -144,6 +147,117 @@ tangential_accel_min = -10.0
 tangential_accel_max = 10.0
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_gq12p")
+
+[sub_resource type="GDScript" id="GDScript_tmt3m"]
+script/source = "extends Node2D
+
+const MESSAGE_SFX = preload(\"res://engine/objects/bumping_blocks/message_block/message_block.wav\")
+const TEXT1 = \"...Well, what are you waiting for?\\nAre you expecting something to happen here?\"
+const TEXT2 = \"If you're looking for the final boss, they're not here today.\\nThey never showed up.\"
+const TEXT3 = \"Try not to take the Easy Route next time.\"
+const TEXT4 = \"You have a long way to go.\\nCome back two hours earlier.\"
+const GOAL_LAYER = preload(\"res://stages/world_10/Additives/weird_layer.tscn\")
+
+@onready var weird_layer = $WeirdLayer
+@onready var text_msg = $TextDialog
+
+signal enable_borders
+
+var cutscene_started: bool = false
+var goal_tween: Tween
+
+func _ready() -> void:
+	weird_layer.hide()
+	weird_layer.process_mode = Node.PROCESS_MODE_DISABLED
+	text_msg.hide()
+	show()
+	if CustomGlobals.is_easy_mode_enabled(): return
+	queue_free()
+
+func execute_cutscene() -> void:
+	if cutscene_started: return
+	enable_borders.emit()
+	cutscene_started = true
+	fix_camera()
+	await wait_time(2.0)
+	await change_text(7.0, TEXT1)
+	await change_text(7.0, TEXT2)
+	await wait_time(6.0)
+	await change_text(7.0, TEXT3)
+	await wait_time(3.0)
+	await change_text(7.5, TEXT4)
+	lower_goal()
+
+func lower_goal() -> void:
+	weird_layer.show()
+	weird_layer.process_mode = Node.PROCESS_MODE_INHERIT
+	goal_tween = get_tree().create_tween()
+	goal_tween.tween_property(weird_layer, \"position:y\", 288, 6.0)
+	await wait_time(4.0)
+	text_msg.hide()
+
+func spawn_goal() -> void:
+	await wait_time(0.2)
+	var new_goal = GOAL_LAYER.instantiate()
+	add_child(new_goal)
+	new_goal.scale.x = -1.0
+	new_goal.global_position = Vector2(global_position.x + 128, global_position.y - 160)
+	new_goal.reset_physics_interpolation()
+	goal_tween = get_tree().create_tween()
+	goal_tween.tween_property(new_goal, \"position:y\", 288, 0.1)
+
+func change_text(time_to_wait: float, next_text: String) -> void:
+	text_msg.hide()
+	await wait_time(1.0)
+	text_msg.text = next_text
+	text_msg.show()
+	Audio.play_sound(MESSAGE_SFX, self)
+	await wait_time(clampf(time_to_wait, 0.0, time_to_wait))
+
+func fix_camera() -> void:
+	var cam: Camera2D = Thunder._current_camera
+	if cam: 
+		var _cam_parent = cam.get_parent()
+		cam.reparent(self)
+		cam.par = cam.get_parent()
+		cam.force_update_transform()
+		cam.reset_physics_interpolation()
+		cam.force_update_scroll()
+		cam.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+		cam.stop_blocking_edges = false
+
+func wait_time(seconds: float) -> void:
+	await get_tree().create_timer(seconds, false, false, false).timeout
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	execute_cutscene()
+
+func _cancel_tween() -> void:
+	weird_layer.z_index += 20
+	spawn_goal()
+	if is_instance_valid(goal_tween): goal_tween.kill()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmt3m"]
+size = Vector2(624, 480)
+
+[sub_resource type="GDScript" id="GDScript_oylyn"]
+script/source = "extends StaticBody2D
+
+@onready var current_level = Scenes.current_scene
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+func _delete_borders() -> void:
+	queue_free()
+
+func _activate_borders() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oylyn"]
+size = Vector2(32, 992)
 
 [node name="10-4Boss" type="Node2D"]
 script = SubResource("GDScript_w8w0w")
@@ -257,6 +371,7 @@ metadata/_edit_lock_ = true
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
 position = Vector2(0, 16)
 motion_scale = Vector2(0, 0)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4"]
 position = Vector2(320, 240)
@@ -267,6 +382,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 16)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
 
 [node name="Bg3" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
 position = Vector2(320, 304)
@@ -277,6 +393,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 16)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
 
 [node name="Bg2" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
 position = Vector2(320, 304)
@@ -287,6 +404,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 16)
 motion_scale = Vector2(0.85, 0.85)
 motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
 
 [node name="Bg1" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer3"]
 position = Vector2(320, 304)
@@ -304,6 +422,7 @@ preprocess = 5.0
 visibility_rect = Rect2(-100, 0, 11178, 480)
 process_material = SubResource("ParticleProcessMaterial_jhiy2")
 script = ExtResource("16_xgg62")
+metadata/_edit_lock_ = true
 
 [node name="FinalBossHandler" parent="." node_paths=PackedStringArray("white_background", "you_win_text", "boss", "side_boss", "trigger_boss_HUD") instance=ExtResource("19_xgg62")]
 position = Vector2(1536, 240)
@@ -366,6 +485,69 @@ position = Vector2(80, 56)
 [node name="Coin5" parent="Label" instance=ExtResource("27_k6vjy")]
 position = Vector2(48, 56)
 
+[node name="WeirdRoute" type="Node2D" parent="."]
+position = Vector2(1216, 0)
+script = SubResource("GDScript_tmt3m")
+metadata/_edit_lock_ = true
+
+[node name="WeirdLayer" parent="WeirdRoute" instance=ExtResource("29_oylyn")]
+position = Vector2(448, -160)
+is_second_goal = false
+
+[node name="DustParticles" type="GPUParticles2D" parent="WeirdRoute"]
+modulate = Color(0.44, 0.44, 0.44, 1)
+z_index = 50
+material = SubResource("CanvasItemMaterial_65f8u")
+position = Vector2(-64, 0)
+amount = 200
+texture = ExtResource("18_jhiy2")
+lifetime = 10.0
+preprocess = 5.0
+visibility_rect = Rect2(-100, 0, 11178, 480)
+process_material = SubResource("ParticleProcessMaterial_jhiy2")
+script = ExtResource("16_xgg62")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="WeirdRoute"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeirdRoute/Area2D"]
+position = Vector2(648, 240)
+shape = SubResource("RectangleShape2D_tmt3m")
+
+[node name="TextDialog" type="Label" parent="WeirdRoute"]
+z_index = 100
+offset_left = 64.0
+offset_top = 176.0
+offset_right = 576.0
+offset_bottom = 248.0
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("25_65f8u")
+theme_override_font_sizes/font_size = 25
+text = "weird route"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="WeirdBorder" type="StaticBody2D" parent="."]
+position = Vector2(1216, 0)
+collision_layer = 112
+script = SubResource("GDScript_oylyn")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Left" type="CollisionShape2D" parent="WeirdBorder"]
+position = Vector2(-16, -48)
+shape = SubResource("RectangleShape2D_oylyn")
+
+[node name="Right" type="CollisionShape2D" parent="WeirdBorder"]
+position = Vector2(656, -48)
+shape = SubResource("RectangleShape2D_oylyn")
+
+[connection signal="level_completed" from="." to="WeirdBorder" method="_delete_borders"]
 [connection signal="damaged" from="Player" to="FinalBossHandler" method="_on_player_damaged"]
 [connection signal="died" from="Player" to="FinalBossHandler" method="_on_player_died"]
 [connection signal="final_boss_damageless" from="FinalBossHandler" to="End World Handler" method="unlock_secret" binds= [1]]
@@ -376,3 +558,6 @@ position = Vector2(48, 56)
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="GPUParticles2D" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="final_boss_triggered" from="FinalBossHandler" to="Label" method="_on_final_boss_handler_final_boss_triggered"]
 [connection signal="bumped" from="Label/SwitchBlockSwitcher" to="Label" method="change_bonus_status"]
+[connection signal="enable_borders" from="WeirdRoute" to="WeirdBorder" method="_activate_borders"]
+[connection signal="funny_interaction" from="WeirdRoute/WeirdLayer" to="WeirdRoute" method="_cancel_tween"]
+[connection signal="body_entered" from="WeirdRoute/Area2D" to="WeirdRoute" method="_on_area_2d_body_entered"]

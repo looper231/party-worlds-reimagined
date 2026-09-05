@@ -51,7 +51,7 @@ func finish(walking: bool = false, walking_dir: int = 1) -> void:
 	Thunder._current_hud.time_countdown_finished.connect(
 		func() -> void:
 			await get_tree().create_timer(0.8, false, false).timeout
-			if not CustomGlobals.is_boss_rematch:
+			if not CustomGlobals.is_boss_rematch and not CustomGlobals.is_easy_mode_enabled():
 				SPECIAL_do_cutscene()
 				await get_tree().create_timer(total_cutscene_time_sec, false, false, ignore_time_scale).timeout
 			# Do not switch scenes if game over screen is opened, might be rare but just in case

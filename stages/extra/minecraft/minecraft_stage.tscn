@@ -214,6 +214,7 @@ size = Vector2(32, 192)
 
 [node name="MinecraftStage" type="Node2D"]
 script = ExtResource("1_ujjxe")
+time = 510
 completion_music = ExtResource("2_7svnh")
 jump_to_scene = "uid://bttcwqhe3g75w"
 

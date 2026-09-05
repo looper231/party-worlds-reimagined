@@ -6,3 +6,7 @@ func _ready() -> void:
 	else:
 		progress_by_id = "aya"
 	super()
+
+func enable_easy_mode() -> void:
+	add_shit_to_profile("game_journalist", true)
+	print("[Secrets] Easy Mode enabled.")

@@ -48,6 +48,11 @@ var facing: float
 
 @onready var center: Vector2 = position
 
+func _ready() -> void:
+	if CustomGlobals.is_easy_mode_enabled():
+		queue_free()
+		return
+
 func _physics_process(delta: float) -> void:
 	position = Thunder.Math.oval(center, amplitude, deg_to_rad(phase))
 	phase = wrapf(phase + frequency * Thunder.get_delta(delta), 0, 360)

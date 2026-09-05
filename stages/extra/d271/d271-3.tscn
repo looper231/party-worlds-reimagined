@@ -166,3 +166,7 @@ position = Vector2(6592, 320)
 position = Vector2(4688, 304)
 result = SubResource("Resource_tu34n")
 initially_visible_and_solid = false
+
+[connection signal="collided_wall" from="TileMap2/Goomba" to="TileMap2/Goomba" method="turn_x"]
+[connection signal="collided_wall" from="TileMap2/@CharacterBody2D@108777" to="TileMap2/@CharacterBody2D@108777" method="turn_x"]
+[connection signal="collided_wall" from="TileMap2/@CharacterBody2D@108778" to="TileMap2/@CharacterBody2D@108778" method="turn_x"]

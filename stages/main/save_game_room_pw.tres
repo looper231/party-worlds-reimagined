@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cjoxdod5qfcit"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cjoxdod5qfcit"]
 
 [ext_resource type="Texture2D" uid="uid://djwe62jh83kf" path="res://engine/tilesets/overworld/hard_block.png" id="1_v4nst"]
 [ext_resource type="Texture2D" uid="uid://cickx28h6r5ou" path="res://gfx/world3/3-1.png" id="2_2m8kk"]
 [ext_resource type="Texture2D" uid="uid://lhp0d6fuom4u" path="res://gfx/world3/3-1-pipe.png" id="3_mkvde"]
 [ext_resource type="PackedScene" uid="uid://vkk13sb8mecf" path="res://stages/world_3/additives/3-1grass.tscn" id="4_kkg1c"]
 [ext_resource type="Texture2D" uid="uid://b05idke4kptq6" path="res://gfx/world3/3-1tree.png" id="5_mrkyf"]
+[ext_resource type="Texture2D" uid="uid://bgcayqfivo5wf" path="res://engine/objects/warps/door/door_red.png" id="6_2m8kk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4svs"]
 texture = ExtResource("1_v4nst")
@@ -353,6 +354,14 @@ texture = ExtResource("5_mrkyf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mkvde"]
+texture = ExtResource("6_2m8kk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.306923, 0.306923, 0.306923, 1)
+0:1/0 = 0
+0:1/0/modulate = Color(0.306923, 0.306923, 0.306923, 1)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 112
@@ -368,3 +377,4 @@ sources/5 = SubResource("TileSetAtlasSource_7phk3")
 sources/6 = SubResource("TileSetAtlasSource_q62le")
 sources/7 = SubResource("TileSetScenesCollectionSource_4qgcm")
 sources/8 = SubResource("TileSetAtlasSource_ewu63")
+sources/9 = SubResource("TileSetAtlasSource_mkvde")

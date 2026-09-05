@@ -14,6 +14,9 @@ func _ready() -> void:
 		toast_text_overrides.resize(secrets.size())
 
 func unlock_secret(id: int = 0) -> void:
+	if ProfileManager.current_profile.data.get("game_journalist", false):
+		print("[Secrets] Profile has Easy Mode enabled! Cancelling ID %d." % [id])
+		return
 	if id < len(secrets):
 		if secrets[id].is_empty(): return
 		_make_split(id)
@@ -33,6 +36,10 @@ func unlock_if(conditions: PackedStringArray, id: int = 0) -> void:
 
 
 func progress_secret(id: int = 0, replace_on_complete: bool = true) -> void:
+	if ProfileManager.current_profile.data.get("game_journalist", false):
+		print("[Secrets] Profile has Easy Mode enabled! Cancelling ID %d." % [id])
+		return
+	
 	var new_secret = SecretsManager.get_secret(secrets[id])
 	# Stop all further logic if already finished the progress
 	if typeof(new_secret) == TYPE_BOOL && new_secret == true:

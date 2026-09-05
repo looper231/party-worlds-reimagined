@@ -74,6 +74,15 @@ var is_in_dialog: bool = false
 @onready var SFXPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
+	if CustomGlobals.is_easy_mode_enabled():
+		if is_instance_valid(boss): boss.queue_free()
+		if is_instance_valid(side_boss): side_boss.queue_free()
+		if is_instance_valid(trigger_boss_HUD): trigger_boss_HUD.queue_free()
+		if is_instance_valid(white_background): white_background.queue_free()
+		if is_instance_valid(you_win_text): you_win_text.queue_free()
+		queue_free()
+		return
+	
 	if CharacterManager.get_character_display_name().to_lower() != "marisa" and CharacterManager.get_character_display_name().to_lower() != "reimu":
 		if is_instance_valid(trigger_dialogue): trigger_dialogue.queue_free()
 	if !is_instance_valid(trigger_boss_HUD):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c4a2b8n4cvbni"]
+[gd_scene load_steps=42 format=4 uid="uid://c4a2b8n4cvbni"]
 
 [ext_resource type="Script" uid="uid://xwml13twhn4b" path="res://stages/world_9/Additives/9_3.gd" id="1_chjis"]
 [ext_resource type="Script" uid="uid://u57wnn4q3hnx" path="res://stages/world_9/Additives/9-3/secret_unlocker.gd" id="2_y80lx"]
@@ -24,10 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://rkt3mgg0nu41" path="res://objects/boss_touhou/common/components/boss_borders.tscn" id="21_5yyu5"]
 [ext_resource type="Texture2D" uid="uid://be24f85qdim5o" path="res://gfx/world9/sign_camera.png" id="21_chjis"]
 [ext_resource type="AudioStream" uid="uid://dfycrmtxi2ohh" path="res://stages/world_9/music/mountain_64.ogg" id="21_fufsc"]
-[ext_resource type="Texture2D" uid="uid://bs5xxybk0ioet" path="res://gfx/world1/sign1.png" id="22_jay7j"]
+[ext_resource type="Texture2D" uid="uid://betk22ib1t5ut" path="res://gfx/sign_small_new.png" id="22_vd30t"]
 [ext_resource type="PackedScene" uid="uid://u6gxj4cj5m4f" path="res://engine/objects/bumping_blocks/message_block/message_block.tscn" id="22_yx5jh"]
 [ext_resource type="Script" uid="uid://d2h18okmm7hfk" path="res://stages/world_9/Additives/9-3/hint_arrow_sign.gd" id="23_chjis"]
+[ext_resource type="Texture2D" uid="uid://uon36vs1rcmq" path="res://gfx/arrow_left.png" id="24_ijfgu"]
 [ext_resource type="PackedScene" uid="uid://cefmm6mdbm842" path="res://objects/boss_touhou/boss_w9/boss_hud.tscn" id="28_y80lx"]
+[ext_resource type="PackedScene" uid="uid://dym6dmtca3rhi" path="res://engine/objects/bumping_blocks/message_block/message_block_choicer.tscn" id="29_3nuat"]
+[ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="30_vd30t"]
 
 [sub_resource type="Curve" id="Curve_c233m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.616216, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.01374, 0.0, 0, 0]
@@ -81,6 +84,42 @@ collision_friction = 1.0
 collision_bounce = 0.0
 collision_use_scale = true
 
+[sub_resource type="GDScript" id="GDScript_3nuat"]
+script/source = "extends \"res://engine/objects/bumping_blocks/message_block/message_block_choicer.gd\"
+
+const OMINOUS_SFX = preload(\"res://stages/world_9/music/weird_ominous.wav\")
+const OMINOUS_MESSAGE = \"Easy Route has been activated for the upcoming endurance battle.
+
+The photoshoot amnesty count has been greatly increased.
+
+However, in exchange:
+- Your current save file has lost the ability to earn achievements.
+- You will not encounter the final boss.
+
+You may not abort this.\"
+
+signal easy_mode_signal
+
+func _ready() -> void:
+	if not CustomGlobals.w9b_get_skip_visibility() or CustomGlobals.is_boss_rematch:
+		queue_free()
+		return
+	
+	super()
+	if not CustomGlobals.is_easy_mode_enabled(): return
+	set_easy_mode_text()
+
+func enable_easy_mode() -> void:
+	if CustomGlobals.is_easy_mode_enabled(): return
+	set_easy_mode_text()
+	Audio.play_sound(OMINOUS_SFX, Thunder._current_player)
+	easy_mode_signal.emit()
+
+func set_easy_mode_text() -> void:
+	message = OMINOUS_MESSAGE
+	box_size.y = 220.0
+"
+
 [node name="9-3" type="Node2D"]
 script = ExtResource("1_chjis")
 total_cutscene_time_sec = 3.0
@@ -112,7 +151,7 @@ metadata/_edit_lock_ = true
 
 [node name="LeafLayer" type="TileMapLayer" parent="."]
 z_index = 5
-tile_map_data = PackedByteArray("AAAAAAYABQAEAAUAAAACAAUABQAEAAUAAAAGAAQABQAEAAUAAAAJAAMABQAEAAUAAAANAAMABQACAAUAAAARAAQABQACAAUAAAAVAAUABQACAAUAAAAZAAUABQAEAAUAAAAbAAQABQAEAAUAAAAfAAQABQACAAUAAAAgAAUABQACAAUAAAAkAAUABQAEAAUAAAAmAAQABQAEAAUAAAAoAAIABQAEAAUAAAArAAIABQACAAUAAAAtAAIABQAEAAUAAAAwAAEABQAEAAUAAAAxAAAABQAEAAUAAAAwAAAABQAIAAcAAAAtAAEABQAIAAcAAAAoAAEABQAIAAcAAAAmAAIABQAIAAcAAAAkAAQABQAIAAcAAAAbAAMABQAIAAcAAAAZAAQABQAIAAcAAAAGAAMABQAIAAcAAAACAAQABQAIAAcAAAAAAAUABQAIAAcAAAAJAAIABQAIAAcAAAANAAIABQAHAAcAAAARAAMABQAHAAcAAAAVAAQABQAHAAcAAAAfAAMABQAHAAcAAAAgAAQABQAHAAcAAAArAAEABQAHAAcAAAAvAAEABQADAAUAAAAuAAEABQAJAAcAAAAsAAIABQADAAUAAAApAAEABQADAAUAAAAqAAEABQAJAAcAAAAnAAIABQADAAUAAAAlAAQABQAJAAcAAAAhAAUABQAJAAcAAAAiAAUABQADAAUAAAAjAAUABQAJAAcAAAAdAAMABQADAAUAAAAcAAMABQAJAAcAAAAeAAMABQAJAAcAAAAaAAQABQAJAAcAAAAYAAUABQAJAAcAAAAXAAUABQADAAUAAAAWAAUABQAJAAcAAAAUAAQABQAJAAcAAAATAAQABQADAAUAAAASAAQABQAJAAcAAAAQAAMABQAJAAcAAAAPAAMABQADAAUAAAAOAAMABQAJAAcAAAAMAAIABQAJAAcAAAALAAIABQADAAUAAAAKAAIABQAJAAcAAAAIAAMABQADAAUAAAAHAAMABQAJAAcAAAAFAAQABQAJAAcAAAAEAAQABQADAAUAAAADAAQABQAJAAcAAAABAAUABQADAAUAAAAAAAAABQADAAQAAAAAAAEABQADAAQAAAAAAAIABQADAAQAAAABAAAABQADAAQAAAABAAEABQADAAQAAAABAAIABQADAAQAAAACAAAABQADAAQAAAACAAEABQADAAQAAAACAAIABQADAAQAAAADAAAABQADAAQAAAADAAEABQADAAQAAAADAAIABQADAAQAAAAEAAAABQADAAQAAAAEAAEABQADAAQAAAAEAAIABQADAAQAAAAFAAAABQADAAQAAAAFAAEABQADAAQAAAAFAAIABQADAAQAAAAGAAAABQADAAQAAAAGAAEABQADAAQAAAAGAAIABQADAAQAAAAHAAAABQADAAQAAAAHAAEABQADAAQAAAAHAAIABQADAAQAAAAIAAAABQADAAQAAAAIAAEABQADAAQAAAAIAAIABQADAAQAAAAJAAAABQADAAQAAAAJAAEABQADAAQAAAAKAAAABQADAAQAAAAKAAEABQADAAQAAAALAAAABQADAAQAAAALAAEABQADAAQAAAAMAAAABQADAAQAAAAMAAEABQADAAQAAAANAAAABQADAAQAAAANAAEABQADAAQAAAAOAAAABQADAAQAAAAOAAEABQADAAQAAAAPAAAABQADAAQAAAAPAAEABQADAAQAAAAQAAAABQADAAQAAAAQAAEABQADAAQAAAARAAAABQADAAQAAAARAAEABQADAAQAAAASAAAABQADAAQAAAASAAEABQADAAQAAAATAAAABQADAAQAAAATAAEABQADAAQAAAAUAAAABQADAAQAAAAUAAEABQADAAQAAAAVAAAABQADAAQAAAAVAAEABQADAAQAAAAWAAAABQADAAQAAAAWAAEABQADAAQAAAAXAAAABQADAAQAAAAXAAEABQADAAQAAAAYAAAABQADAAQAAAAYAAEABQADAAQAAAAZAAAABQADAAQAAAAZAAEABQADAAQAAAAaAAAABQADAAQAAAAaAAEABQADAAQAAAAbAAAABQADAAQAAAAbAAEABQADAAQAAAAcAAAABQADAAQAAAAcAAEABQADAAQAAAASAAIABQADAAQAAAASAAMABQADAAQAAAATAAIABQADAAQAAAATAAMABQADAAQAAAAUAAIABQADAAQAAAAUAAMABQADAAQAAAAVAAIABQADAAQAAAAVAAMABQADAAQAAAAWAAIABQADAAQAAAAWAAMABQADAAQAAAAXAAIABQADAAQAAAAXAAMABQADAAQAAAAYAAIABQADAAQAAAAYAAMABQADAAQAAAAZAAIABQADAAQAAAAZAAMABQADAAQAAAAaAAIABQADAAQAAAAaAAMABQADAAQAAAAdAAAABQADAAQAAAAdAAEABQADAAQAAAAdAAIABQADAAQAAAAeAAAABQADAAQAAAAeAAEABQADAAQAAAAeAAIABQADAAQAAAAfAAAABQADAAQAAAAfAAEABQADAAQAAAAfAAIABQADAAQAAAAgAAAABQADAAQAAAAgAAEABQADAAQAAAAgAAIABQADAAQAAAAhAAAABQADAAQAAAAhAAEABQADAAQAAAAhAAIABQADAAQAAAAiAAAABQADAAQAAAAiAAEABQADAAQAAAAiAAIABQADAAQAAAAjAAAABQADAAQAAAAjAAEABQADAAQAAAAjAAIABQADAAQAAAAkAAAABQADAAQAAAAkAAEABQADAAQAAAAkAAIABQADAAQAAAAlAAAABQADAAQAAAAlAAEABQADAAQAAAAlAAIABQADAAQAAAAbAAIABQADAAQAAAAcAAIABQADAAQAAAAhAAMABQADAAQAAAAhAAQABQADAAQAAAAiAAMABQADAAQAAAAiAAQABQADAAQAAAAjAAMABQADAAQAAAAjAAQABQADAAQAAAAmAAMABQAEAAQAAAAlAAMABQADAAQAAAAkAAMABQADAAQAAAAgAAMABQADAAQAAAAmAAAABQADAAQAAAAmAAEABQADAAQAAAAnAAEABQADAAQAAAAnAAAABQADAAQAAAAoAAAABQADAAQAAAApAAAABQADAAQAAAAqAAAABQADAAQAAAArAAAABQADAAQAAAAsAAAABQADAAQAAAAtAAAABQADAAQAAAAuAAAABQADAAQAAAAvAAAABQADAAQAAAAsAAEABQADAAQAAAAYAAQABQADAAQAAAAXAAQABQADAAQAAAAWAAQABQADAAQAAAAOAAIABQADAAQAAAAPAAIABQADAAQAAAAQAAIABQADAAQAAAARAAIABQADAAQAAAAAAAMABQADAAQAAAABAAMABQADAAQAAAACAAMABQADAAQAAAADAAMABQADAAQAAAAEAAMABQADAAQAAAAFAAMABQADAAQAAAABAAQABQADAAQAAAAAAAQABQADAAQAAAAuAAUABQAFAAUAAAAqAAcABQAFAAUAAAAlAAYABQAFAAUAAAAjAAgABQAGAAUAAAAhAAcABQAFAAUAAAAeAAcABQAFAAUAAAAcAAUABQAFAAUAAAAaAAkABQAGAAUAAAAYAAsABQAGAAUAAAAWAAkABQAGAAUAAAAUAAoABQAGAAUAAAASAAcABQAGAAUAAAAQAAYABQAGAAUAAAAOAAoABQAGAAUAAAAMAAcABQAGAAUAAAAKAAsABQAGAAUAAAAHAAcABQAGAAUAAAAFAAkABQAGAAUAAAADAAsABQAGAAUAAAADAAUABQAFAAUAAAADAAYABQAFAAUAAAADAAcABQAFAAUAAAADAAgABQAFAAUAAAADAAkABQAFAAUAAAADAAoABQAFAAUAAAAFAAUABQAFAAUAAAAFAAYABQAFAAUAAAAFAAcABQAFAAUAAAAFAAgABQAFAAUAAAAHAAUABQAFAAUAAAAHAAQABQAFAAUAAAAHAAYABQAFAAUAAAAKAAMABQAFAAUAAAAKAAQABQAFAAUAAAAKAAUABQAFAAUAAAAKAAYABQAFAAUAAAAKAAcABQAFAAUAAAAKAAgABQAFAAUAAAAKAAkABQAFAAUAAAAKAAoABQAFAAUAAAAMAAYABQAFAAUAAAAMAAUABQAFAAUAAAAMAAQABQAFAAUAAAAMAAMABQAFAAUAAAAOAAQABQAFAAUAAAAOAAUABQAFAAUAAAAOAAYABQAFAAUAAAAOAAcABQAFAAUAAAAOAAgABQAFAAUAAAAOAAkABQAFAAUAAAAQAAQABQAFAAUAAAAQAAUABQAFAAUAAAASAAUABQAFAAUAAAASAAYABQAFAAUAAAAUAAUABQAFAAUAAAAUAAYABQAFAAUAAAAUAAcABQAFAAUAAAAUAAgABQAFAAUAAAAUAAkABQAFAAUAAAAWAAYABQAFAAUAAAAWAAcABQAFAAUAAAAWAAgABQAFAAUAAAAYAAYABQAFAAUAAAAYAAcABQAFAAUAAAAYAAgABQAFAAUAAAAYAAkABQAFAAUAAAAYAAoABQAFAAUAAAAaAAYABQAFAAUAAAAaAAcABQAFAAUAAAAaAAgABQAFAAUAAAAaAAUABQAFAAUAAAAcAAQABQAFAAUAAAAeAAQABQAFAAUAAAAeAAUABQAFAAUAAAAeAAYABQAFAAUAAAAhAAYABQAFAAUAAAAjAAYABQAFAAUAAAAjAAcABQAFAAUAAAAlAAUABQAFAAUAAAAqAAIABQAFAAUAAAAqAAMABQAFAAUAAAAqAAQABQAFAAUAAAAqAAUABQAFAAUAAAAqAAYABQAFAAUAAAAuAAQABQAFAAUAAAAuAAMABQAFAAUAAAAuAAIABQAFAAUAAAAeAAoABQAGAAUAAAAhAAkABQAGAAUAAAAlAAsABQAGAAUAAAAqAAkABQAGAAUAAAAuAAgABQAGAAUAAAAuAAYABQAFAAUAAAAuAAcABQAFAAUAAAAqAAgABQAFAAUAAAAlAAcABQAFAAUAAAAlAAgABQAFAAUAAAAlAAkABQAFAAUAAAAlAAoABQAFAAUAAAAhAAgABQAFAAUAAAAeAAgABQAFAAUAAAAeAAkABQAFAAUAAAAcAAcABQAGAAUAAAAcAAYABQAFAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAYABQAEAAUAAAACAAUABQAEAAUAAAAGAAQABQAEAAUAAAAJAAMABQAEAAUAAAANAAMABQACAAUAAAARAAQABQACAAUAAAAVAAUABQACAAUAAAAZAAUABQAEAAUAAAAbAAQABQAEAAUAAAAfAAQABQACAAUAAAAgAAUABQACAAUAAAAkAAUABQAEAAUAAAAmAAQABQAEAAUAAAAoAAIABQAEAAUAAAArAAIABQACAAUAAAAtAAIABQAEAAUAAAAwAAEABQAEAAUAAAAxAAAABQAEAAUAAAAwAAAABQAIAAcAAAAtAAEABQAIAAcAAAAoAAEABQAIAAcAAAAmAAIABQAIAAcAAAAkAAQABQAIAAcAAAAbAAMABQAIAAcAAAAZAAQABQAIAAcAAAAGAAMABQAIAAcAAAACAAQABQAIAAcAAAAAAAUABQAIAAcAAAAJAAIABQAIAAcAAAANAAIABQAHAAcAAAARAAMABQAHAAcAAAAVAAQABQAHAAcAAAAfAAMABQAHAAcAAAAgAAQABQAHAAcAAAArAAEABQAHAAcAAAAvAAEABQADAAUAAAAuAAEABQAJAAcAAAAsAAIABQADAAUAAAApAAEABQADAAUAAAAqAAEABQAJAAcAAAAnAAIABQADAAUAAAAlAAQABQAJAAcAAAAhAAUABQAJAAcAAAAiAAUABQADAAUAAAAjAAUABQAJAAcAAAAdAAMABQADAAUAAAAcAAMABQAJAAcAAAAeAAMABQAJAAcAAAAaAAQABQAJAAcAAAAYAAUABQAJAAcAAAAXAAUABQADAAUAAAAWAAUABQAJAAcAAAAUAAQABQAJAAcAAAATAAQABQADAAUAAAASAAQABQAJAAcAAAAQAAMABQAJAAcAAAAPAAMABQADAAUAAAAOAAMABQAJAAcAAAAMAAIABQAJAAcAAAALAAIABQADAAUAAAAKAAIABQAJAAcAAAAIAAMABQADAAUAAAAHAAMABQAJAAcAAAAFAAQABQAJAAcAAAAEAAQABQADAAUAAAADAAQABQAJAAcAAAABAAUABQADAAUAAAAAAAAABQADAAQAAAAAAAEABQADAAQAAAAAAAIABQADAAQAAAABAAAABQADAAQAAAABAAEABQADAAQAAAABAAIABQADAAQAAAACAAAABQADAAQAAAACAAEABQADAAQAAAACAAIABQADAAQAAAADAAAABQADAAQAAAADAAEABQADAAQAAAADAAIABQADAAQAAAAEAAAABQADAAQAAAAEAAEABQADAAQAAAAEAAIABQADAAQAAAAFAAAABQADAAQAAAAFAAEABQADAAQAAAAFAAIABQADAAQAAAAGAAAABQADAAQAAAAGAAEABQADAAQAAAAGAAIABQADAAQAAAAHAAAABQADAAQAAAAHAAEABQADAAQAAAAHAAIABQADAAQAAAAIAAAABQADAAQAAAAIAAEABQADAAQAAAAIAAIABQADAAQAAAAJAAAABQADAAQAAAAJAAEABQADAAQAAAAKAAAABQADAAQAAAAKAAEABQADAAQAAAALAAAABQADAAQAAAALAAEABQADAAQAAAAMAAAABQADAAQAAAAMAAEABQADAAQAAAANAAAABQADAAQAAAANAAEABQADAAQAAAAOAAAABQADAAQAAAAOAAEABQADAAQAAAAPAAAABQADAAQAAAAPAAEABQADAAQAAAAQAAAABQADAAQAAAAQAAEABQADAAQAAAARAAAABQADAAQAAAARAAEABQADAAQAAAASAAAABQADAAQAAAASAAEABQADAAQAAAATAAAABQADAAQAAAATAAEABQADAAQAAAAUAAAABQADAAQAAAAUAAEABQADAAQAAAAVAAAABQADAAQAAAAVAAEABQADAAQAAAAWAAAABQADAAQAAAAWAAEABQADAAQAAAAXAAAABQADAAQAAAAXAAEABQADAAQAAAAYAAAABQADAAQAAAAYAAEABQADAAQAAAAZAAAABQADAAQAAAAZAAEABQADAAQAAAAaAAAABQADAAQAAAAaAAEABQADAAQAAAAbAAAABQADAAQAAAAbAAEABQADAAQAAAAcAAAABQADAAQAAAAcAAEABQADAAQAAAASAAIABQADAAQAAAASAAMABQADAAQAAAATAAIABQADAAQAAAATAAMABQADAAQAAAAUAAIABQADAAQAAAAUAAMABQADAAQAAAAVAAIABQADAAQAAAAVAAMABQADAAQAAAAWAAIABQADAAQAAAAWAAMABQADAAQAAAAXAAIABQADAAQAAAAXAAMABQADAAQAAAAYAAIABQADAAQAAAAYAAMABQADAAQAAAAZAAIABQADAAQAAAAZAAMABQADAAQAAAAaAAIABQADAAQAAAAaAAMABQADAAQAAAAdAAAABQADAAQAAAAdAAEABQADAAQAAAAdAAIABQADAAQAAAAeAAAABQADAAQAAAAeAAEABQADAAQAAAAeAAIABQADAAQAAAAfAAAABQADAAQAAAAfAAEABQADAAQAAAAfAAIABQADAAQAAAAgAAAABQADAAQAAAAgAAEABQADAAQAAAAgAAIABQADAAQAAAAhAAAABQADAAQAAAAhAAEABQADAAQAAAAhAAIABQADAAQAAAAiAAAABQADAAQAAAAiAAEABQADAAQAAAAiAAIABQADAAQAAAAjAAAABQADAAQAAAAjAAEABQADAAQAAAAjAAIABQADAAQAAAAkAAAABQADAAQAAAAkAAEABQADAAQAAAAkAAIABQADAAQAAAAlAAAABQADAAQAAAAlAAEABQADAAQAAAAlAAIABQADAAQAAAAbAAIABQADAAQAAAAcAAIABQADAAQAAAAhAAMABQADAAQAAAAhAAQABQADAAQAAAAiAAMABQADAAQAAAAiAAQABQADAAQAAAAjAAMABQADAAQAAAAjAAQABQADAAQAAAAmAAMABQAEAAQAAAAlAAMABQADAAQAAAAkAAMABQADAAQAAAAgAAMABQADAAQAAAAmAAAABQADAAQAAAAmAAEABQADAAQAAAAnAAEABQADAAQAAAAnAAAABQADAAQAAAAoAAAABQADAAQAAAApAAAABQADAAQAAAAqAAAABQADAAQAAAArAAAABQADAAQAAAAsAAAABQADAAQAAAAtAAAABQADAAQAAAAuAAAABQADAAQAAAAvAAAABQADAAQAAAAsAAEABQADAAQAAAAYAAQABQADAAQAAAAXAAQABQADAAQAAAAWAAQABQADAAQAAAAOAAIABQADAAQAAAAPAAIABQADAAQAAAAQAAIABQADAAQAAAARAAIABQADAAQAAAAAAAMABQADAAQAAAABAAMABQADAAQAAAACAAMABQADAAQAAAADAAMABQADAAQAAAAEAAMABQADAAQAAAAFAAMABQADAAQAAAABAAQABQADAAQAAAAAAAQABQADAAQAAAAuAAUABQAFAAUAAAAqAAcABQAFAAUAAAAlAAYABQAFAAUAAAAjAAgABQAGAAUAAAAhAAcABQAFAAUAAAAeAAcABQAFAAUAAAAcAAUABQAFAAUAAAAaAAkABQAGAAUAAAAYAAsABQAGAAUAAAAWAAkABQAGAAUAAAAUAAoABQAGAAUAAAASAAcABQAGAAUAAAAQAAYABQAGAAUAAAAMAAcABQAGAAUAAAAKAAsABQAGAAUAAAAHAAcABQAGAAUAAAAFAAkABQAGAAUAAAADAAsABQAGAAUAAAADAAUABQAFAAUAAAADAAYABQAFAAUAAAADAAcABQAFAAUAAAADAAgABQAFAAUAAAADAAkABQAFAAUAAAADAAoABQAFAAUAAAAFAAUABQAFAAUAAAAFAAYABQAFAAUAAAAFAAcABQAFAAUAAAAFAAgABQAFAAUAAAAHAAUABQAFAAUAAAAHAAQABQAFAAUAAAAHAAYABQAFAAUAAAAKAAMABQAFAAUAAAAKAAQABQAFAAUAAAAKAAUABQAFAAUAAAAKAAYABQAFAAUAAAAKAAcABQAFAAUAAAAKAAgABQAFAAUAAAAKAAkABQAFAAUAAAAKAAoABQAFAAUAAAAMAAYABQAFAAUAAAAMAAUABQAFAAUAAAAMAAQABQAFAAUAAAAMAAMABQAFAAUAAAAOAAQABQAFAAUAAAAOAAUABQAFAAUAAAAOAAYABQAFAAUAAAAOAAcABQAFAAUAAAAOAAgABQAGAAUAAAAQAAQABQAFAAUAAAAQAAUABQAFAAUAAAASAAUABQAFAAUAAAASAAYABQAFAAUAAAAUAAUABQAFAAUAAAAUAAYABQAFAAUAAAAUAAcABQAFAAUAAAAUAAgABQAFAAUAAAAUAAkABQAFAAUAAAAWAAYABQAFAAUAAAAWAAcABQAFAAUAAAAWAAgABQAFAAUAAAAYAAYABQAFAAUAAAAYAAcABQAFAAUAAAAYAAgABQAFAAUAAAAYAAkABQAFAAUAAAAYAAoABQAFAAUAAAAaAAYABQAFAAUAAAAaAAcABQAFAAUAAAAaAAgABQAFAAUAAAAaAAUABQAFAAUAAAAcAAQABQAFAAUAAAAeAAQABQAFAAUAAAAeAAUABQAFAAUAAAAeAAYABQAFAAUAAAAhAAYABQAFAAUAAAAjAAYABQAFAAUAAAAjAAcABQAFAAUAAAAlAAUABQAFAAUAAAAqAAIABQAFAAUAAAAqAAMABQAFAAUAAAAqAAQABQAFAAUAAAAqAAUABQAFAAUAAAAqAAYABQAFAAUAAAAuAAQABQAFAAUAAAAuAAMABQAFAAUAAAAuAAIABQAFAAUAAAAeAAoABQAGAAUAAAAhAAkABQAGAAUAAAAlAAsABQAGAAUAAAAqAAkABQAGAAUAAAAuAAgABQAGAAUAAAAuAAYABQAFAAUAAAAuAAcABQAFAAUAAAAqAAgABQAFAAUAAAAlAAcABQAFAAUAAAAlAAgABQAFAAUAAAAlAAkABQAFAAUAAAAlAAoABQAFAAUAAAAhAAgABQAFAAUAAAAeAAgABQAFAAUAAAAeAAkABQAFAAUAAAAcAAcABQAGAAUAAAAcAAYABQAFAAUAAAA=")
 tile_set = ExtResource("7_ie0s7")
 collision_enabled = false
 script = ExtResource("11_dps7q")
@@ -242,135 +281,162 @@ text = Array[String](["N/A", "ZUN - YOUKAI MOUNTAIN ~ MYSTERIOUS MOUNTAIN (LINDH
 
 [node name="TBD_Backdrops" type="Node2D" parent="."]
 script = ExtResource("11_dps7q")
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="Waterfall" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(16, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall2" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(48, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall3" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(80, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall4" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(272, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall5" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(304, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall6" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(336, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall8" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(528, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall9" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(624, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall10" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(592, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall7" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(400, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall11" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(752, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall12" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(784, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall13" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(848, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall14" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(880, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall15" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(944, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall27" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(1392, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall28" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(1504, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall29" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 z_index = 0
 position = Vector2(1424, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall16" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(992, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall17" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1024, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall18" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1056, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall19" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1088, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall20" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1120, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall21" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1152, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall22" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1184, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall23" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1216, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall24" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1248, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall25" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1280, 656)
+metadata/_edit_lock_ = true
 
 [node name="Waterfall26" parent="TBD_Backdrops" instance=ExtResource("11_ibkg3")]
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(1312, 656)
+metadata/_edit_lock_ = true
 
 [node name="3-1Grass" parent="TBD_Backdrops" instance=ExtResource("12_opsaf")]
 position = Vector2(96, 401)
@@ -435,17 +501,35 @@ message = "Say \"NO\" to unsolicited photography!"
 
 [node name="Sign" type="Sprite2D" parent="TBD_Backdrops"]
 z_index = -2
-position = Vector2(917, 380)
+position = Vector2(920, 384)
 rotation = -0.274336
 texture = ExtResource("21_chjis")
-metadata/_edit_lock_ = true
 
 [node name="Sign1" type="Sprite2D" parent="TBD_Backdrops/Sign"]
 z_index = -2
-position = Vector2(15.776, -74.5126)
-rotation = 0.412391
-texture = ExtResource("22_jay7j")
+position = Vector2(13.9718, -79.1757)
+rotation = 0.375246
+texture = ExtResource("22_vd30t")
 script = ExtResource("23_chjis")
+
+[node name="ArrowLeft" type="Sprite2D" parent="TBD_Backdrops/Sign/Sign1"]
+position = Vector2(-20.6158, -14.9995)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("24_ijfgu")
+
+[node name="Label6" type="Label" parent="TBD_Backdrops/Sign/Sign1"]
+offset_left = -5.70469
+offset_top = -26.5604
+offset_right = 35.2953
+offset_bottom = 2.43956
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("30_vd30t")
+theme_override_font_sizes/font_size = 18
+text = "tips &
+tricks"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Battlefield_Waterfalls" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -506,6 +590,33 @@ disable_hurtbox = true
 
 [node name="BossHUD" parent="." instance=ExtResource("28_y80lx")]
 
+[node name="MessageBlockChoicer" parent="." instance=ExtResource("29_3nuat")]
+position = Vector2(1424, 272)
+script = SubResource("GDScript_3nuat")
+message = "You are about to enable Easy Route for the upcoming endurance battle.
+
+Easy Route will increase the photoshoot amnesty count, so that you can focus on dodging more.
+
+However, this will come at a steep price:
+- Your current save file will permanently lose the ability to earn achievements until you delete it.
+- You will not encounter the final boss.
+
+Despite this, will you still continue?"
+box_size = Vector2(460, 240)
+
+[node name="Label6" type="Label" parent="MessageBlockChoicer"]
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 48.0
+offset_bottom = -11.0
+theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("30_vd30t")
+theme_override_font_sizes/font_size = 18
+text = "easy route?"
+horizontal_alignment = 1
+uppercase = true
+
 [connection signal="damaged" from="Player" to="BossW9Handler" method="_on_player_damaged"]
 [connection signal="died" from="Player" to="BossW9Handler" method="_on_player_died"]
 [connection signal="boss_w9_clear" from="BossW9Handler" to="Secret Unlocker" method="progress_secret" binds= [0]]
@@ -517,3 +628,6 @@ disable_hurtbox = true
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="BackgroundMapLayer" method="_on_boss_w_9_handler_boss_w_9_triggered"]
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="BGDarkened" method="_on_boss_w_9_handler_boss_w_9_triggered"]
 [connection signal="boss_w9_triggered" from="BossW9Handler" to="TBD_Backdrops" method="_on_boss_w_9_handler_boss_w_9_triggered"]
+[connection signal="choice_accepted" from="MessageBlockChoicer" to="MessageBlockChoicer" method="enable_easy_mode"]
+[connection signal="easy_mode_signal" from="MessageBlockChoicer" to="Secret Unlocker" method="enable_easy_mode"]
+[connection signal="easy_mode_signal" from="MessageBlockChoicer" to="BossW9" method="enable_easy_mode"]

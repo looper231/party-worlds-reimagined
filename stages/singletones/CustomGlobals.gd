@@ -19,7 +19,7 @@ func load_boss_status_w9() -> void:
 var w9b_death_count: int
 var w9b_death_phase: int = -1
 var w9b_show_hint: bool = false
-const w9b_death_max: int = 10
+const w9b_death_max: int = 7
 
 func w9b_death_reset() -> void:
 	w9b_death_count = 0
@@ -42,6 +42,10 @@ func w9b_death_add(current_phase: int = 0) -> void:
 func w9b_get_hint_visibility() -> bool:
 	return w9b_show_hint and w9b_death_count >= w9b_death_max
 
+func w9b_get_skip_visibility() -> bool:
+	return true
+	return w9b_show_hint and w9b_death_count >= floori(w9b_death_max * 1.6)
+
 # The one singular unlockable that is now deprecated.
 var unlock_fancy_credits: bool = false
 
@@ -54,3 +58,6 @@ func load_unlockables_status() -> void:
 		return
 
 var boss_should_give_pity: bool = true
+
+func is_easy_mode_enabled() -> bool:
+	return ProfileManager.current_profile.data.get("game_journalist", false)
