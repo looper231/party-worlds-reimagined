@@ -6,7 +6,7 @@
 script = ExtResource("1_yn8l3")
 is_spell_card = true
 spellcard_name = "Reporting \"Aya Shameimaru's Coercive Coverage\""
-spellcard_time = 26.0
+spellcard_time = 25.0
 spellcard_score_bonus = 10000
 
 [node name="ViewfinderWaitTimer" type="Timer" parent="."]

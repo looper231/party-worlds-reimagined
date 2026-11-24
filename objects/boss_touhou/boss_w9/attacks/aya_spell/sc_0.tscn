@@ -4,7 +4,7 @@
 
 [node name="sc_0" type="Node"]
 script = ExtResource("1_nyjf0")
-spellcard_time = 14.0
+spellcard_time = 13.45
 
 [node name="WaveTimer" type="Timer" parent="."]
 process_mode = 1

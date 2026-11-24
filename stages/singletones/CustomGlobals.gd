@@ -43,7 +43,6 @@ func w9b_get_hint_visibility() -> bool:
 	return w9b_show_hint and w9b_death_count >= w9b_death_max
 
 func w9b_get_skip_visibility() -> bool:
-	return true
 	return w9b_show_hint and w9b_death_count >= floori(w9b_death_max * 1.6)
 
 # The one singular unlockable that is now deprecated.

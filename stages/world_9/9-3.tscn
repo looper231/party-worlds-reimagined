@@ -23,11 +23,11 @@
 [ext_resource type="Script" uid="uid://bt73xnpa7jsdg" path="res://stages/world_9/Additives/9-3/hint_block.gd" id="20_ycnoe"]
 [ext_resource type="PackedScene" uid="uid://rkt3mgg0nu41" path="res://objects/boss_touhou/common/components/boss_borders.tscn" id="21_5yyu5"]
 [ext_resource type="Texture2D" uid="uid://be24f85qdim5o" path="res://gfx/world9/sign_camera.png" id="21_chjis"]
-[ext_resource type="AudioStream" uid="uid://dfycrmtxi2ohh" path="res://stages/world_9/music/mountain_64.ogg" id="21_fufsc"]
 [ext_resource type="Texture2D" uid="uid://betk22ib1t5ut" path="res://gfx/sign_small_new.png" id="22_vd30t"]
 [ext_resource type="PackedScene" uid="uid://u6gxj4cj5m4f" path="res://engine/objects/bumping_blocks/message_block/message_block.tscn" id="22_yx5jh"]
 [ext_resource type="Script" uid="uid://d2h18okmm7hfk" path="res://stages/world_9/Additives/9-3/hint_arrow_sign.gd" id="23_chjis"]
 [ext_resource type="Texture2D" uid="uid://uon36vs1rcmq" path="res://gfx/arrow_left.png" id="24_ijfgu"]
+[ext_resource type="AudioStream" uid="uid://b1vh187rwynb5" path="res://stages/world_9/music/mountain.ogg" id="27_ijfgu"]
 [ext_resource type="PackedScene" uid="uid://cefmm6mdbm842" path="res://objects/boss_touhou/boss_w9/boss_hud.tscn" id="28_y80lx"]
 [ext_resource type="PackedScene" uid="uid://dym6dmtca3rhi" path="res://engine/objects/bumping_blocks/message_block/message_block_choicer.tscn" id="29_3nuat"]
 [ext_resource type="FontVariation" uid="uid://4h0cbbutybo2" path="res://engine/fonts/font_variations/mister_earl_variation.tres" id="30_vd30t"]
@@ -576,9 +576,10 @@ position = Vector2(1920, 256)
 trigger_boss = NodePath("../BossW9")
 trigger_boss_borders = NodePath("../BossBorders")
 trigger_boss_HUD = NodePath("../BossHUD")
-boss_music = ExtResource("21_fufsc")
+boss_music = ExtResource("27_ijfgu")
 boss_music_fading = false
-boss_music_volume = 1.0
+boss_music_start_from_sec = 0.127
+boss_music_volume = -3.0
 metadata/_edit_lock_ = true
 
 [node name="BossBorders" parent="." instance=ExtResource("21_5yyu5")]

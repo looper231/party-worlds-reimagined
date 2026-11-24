@@ -122,16 +122,19 @@ process_mode = 1
 one_shot = true
 
 [node name="sc_0" parent="." instance=ExtResource("23_c2mle")]
+spellcard_time = 13.4
 
 [node name="sc_1" parent="." instance=ExtResource("24_eanc5")]
 
 [node name="sc_2" parent="." instance=ExtResource("26_4otmo")]
+spellcard_time = 30.0
 
 [node name="sc_3" parent="." instance=ExtResource("27_c2mle")]
 
 [node name="sc_0_alt" parent="." instance=ExtResource("28_uuu4c")]
 
 [node name="sc_1_alt" parent="." instance=ExtResource("29_ny752")]
+spellcard_time = 26.0
 
 [node name="sc_2_alt" parent="." instance=ExtResource("30_4r6tp")]
 
