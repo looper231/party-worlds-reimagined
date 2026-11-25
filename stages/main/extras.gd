@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var delete_node_after_increments: int = 4
+@export var delete_node_after_increments: int = 2
 var delete_node_var: int = 0
 
 func disable_rematch_bool() -> void:

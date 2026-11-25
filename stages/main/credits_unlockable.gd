@@ -12,15 +12,8 @@ func _ready() -> void:
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
 
-
 func check_game_clear_state() -> bool:
-	for key in ProfileManager.profiles:
-		if key == "debug": continue
-		var chosen_profile = ProfileManager.profiles[key]
-		if chosen_profile.has_completed_world("10"): return true
-	
 	return SecretsManager.has_secret("main clear") or CustomGlobals.unlock_fancy_credits
-
 
 func activate() -> void:
 	show()

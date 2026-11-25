@@ -12,7 +12,6 @@ const SOUND_THROW = preload("res://engine/objects/projectiles/sounds/throw.wav")
 const SOUND_STUN = preload("res://engine/objects/projectiles/sounds/stun.wav")
 const SOUND_WHAT = preload("res://objects/boss_touhou/cutscene/sounds/what.wav")
 const SOUND_PICK_UP = preload("res://objects/boss_touhou/cutscene/sounds/se_ok00.wav")
-const SOUND_SHOW_NEWS = preload("res://engine/objects/bumping_blocks/message_block/message_block.wav")
 const SOUND_SHOCK = preload("res://objects/boss_touhou/cutscene/sounds/warning.wav")
 const SOUND_TURN = preload("res://objects/boss_touhou/cutscene/sounds/smas_camera.wav")
 

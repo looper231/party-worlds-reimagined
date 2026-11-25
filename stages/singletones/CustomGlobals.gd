@@ -45,16 +45,29 @@ func w9b_get_hint_visibility() -> bool:
 func w9b_get_skip_visibility() -> bool:
 	return w9b_show_hint and w9b_death_count >= floori(w9b_death_max * 1.6)
 
-# The one singular unlockable that is now deprecated.
 var unlock_fancy_credits: bool = false
 
 func load_unlockables_status() -> void:
 	for key in ProfileManager.profiles:
 		if key == "debug": return
 		var chosen_profile = ProfileManager.profiles[key]
-		if chosen_profile.data.get("unlock_fancy_credits") == null: continue
-		unlock_fancy_credits = chosen_profile.data.get("unlock_fancy_credits")
-		return
+		# Checks if the save file given is an old file.
+		if chosen_profile.data.get("unlock_fancy_credits") == null:
+			# This means that the save file is new.
+			if chosen_profile.has_completed_world("10"):
+				unlock_fancy_credits = true
+		else:
+			# This means that the save file is not old.
+			var has_completed_all_worlds: bool = true
+			for world_number in range(1, 10):
+				if not chosen_profile.has_completed_world(str(world_number)):
+					has_completed_all_worlds = false
+			if chosen_profile.data.get("unlock_fancy_credits") == true and has_completed_all_worlds:
+				chosen_profile.complete_world("10")
+				unlock_fancy_credits = true
+			chosen_profile.data.unlock_fancy_credits = null
+			ProfileManager.save_profile_data(chosen_profile.name, chosen_profile.data)
+	return
 
 var boss_should_give_pity: bool = true
 

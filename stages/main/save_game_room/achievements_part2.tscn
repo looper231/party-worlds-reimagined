@@ -32,7 +32,8 @@ script = ExtResource("1_m73ep")
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_2ckv0")
-secret_id = "minecraft extra"
+secret_id = "d271 clear"
+hidden_on_init = true
 
 [node name="Label" type="Label" parent="D271World"]
 layout_mode = 2
@@ -66,7 +67,8 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("2_2ckv0")
-secret_id = "minecraft extra"
+secret_id = "d271 no death"
+hidden_on_init = true
 
 [node name="Label" type="Label" parent="D271NoDeath"]
 layout_mode = 2
@@ -222,113 +224,6 @@ uppercase = true
 metadata/_edit_lock_ = true
 
 [node name="Toggle" type="Label" parent="NeedleLives30"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_jrqni")
-theme_override_font_sizes/font_size = 28
-text = "no"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="GensokyoClear" type="HBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("2_2ckv0")
-secret_id = "gensokyo clear"
-hidden_on_init = true
-
-[node name="Label" type="Label" parent="GensokyoClear"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_m1ut6")
-theme_override_font_sizes/font_size = 20
-text = "world of illusions completed"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="Toggle" type="Label" parent="GensokyoClear"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_jrqni")
-theme_override_font_sizes/font_size = 28
-text = "no"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="GensokyoBosses" type="HBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("2_2ckv0")
-secret_id = "gensokyo bosses"
-progress_to = 4
-hidden_on_init = true
-
-[node name="Label" type="Label" parent="GensokyoBosses"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_m1ut6")
-theme_override_font_sizes/font_size = 20
-text = "all world of illusions bosses defeated"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="Toggle" type="Label" parent="GensokyoBosses"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.972549, 0.533333, 0.439216, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_jrqni")
-theme_override_font_sizes/font_size = 28
-text = "no"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="GensokyoNohit" type="HBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("2_2ckv0")
-secret_id = "gensokyo nohit"
-progress_to = 4
-hidden_on_init = true
-
-[node name="Label" type="Label" parent="GensokyoNohit"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_outline_color = Color(0, 0, 0.368627, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = SubResource("FontVariation_m1ut6")
-theme_override_font_sizes/font_size = 20
-text = "all world of illusions bosses damageless"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="Toggle" type="Label" parent="GensokyoNohit"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
