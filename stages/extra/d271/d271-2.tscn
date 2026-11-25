@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://bpwmprd4n6rrg"]
+
+[ext_resource type="Script" uid="uid://dh7ob1sbo8lx7" path="res://engine/scripts/classes/level/level.gd" id="1_n162v"]
+[ext_resource type="AudioStream" uid="uid://bqiy8kvcsy0rk" path="res://engine/scripts/classes/level/complete.ogg" id="2_gjsoe"]
+[ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="3_l45qs"]
+[ext_resource type="Script" uid="uid://bxx54cyd4mjsq" path="res://engine/objects/core/music_loader/music_loader.gd" id="4_qq647"]
+[ext_resource type="PackedScene" uid="uid://1do11cr84k7y" path="res://engine/objects/players/player.tscn" id="5_1ergg"]
+[ext_resource type="Script" uid="uid://bhycqbfutplh0" path="res://engine/objects/players/player.gd" id="6_sosnx"]
+[ext_resource type="Script" uid="uid://cugmax5psc2oo" path="res://engine/objects/players/player_camera_2d.gd" id="7_ehl3o"]
+[ext_resource type="PackedScene" uid="uid://yqftjpfskche" path="res://engine/components/cam_area/cam_area.tscn" id="8_4j5cy"]
+[ext_resource type="Script" uid="uid://dlpraskuccn72" path="res://engine/components/cam_area/cam_area.gd" id="9_uibmd"]
+[ext_resource type="Texture2D" uid="uid://djwe62jh83kf" path="res://engine/tilesets/overworld/hard_block.png" id="10_i1g0y"]
+[ext_resource type="PackedScene" uid="uid://ugxjxrdao5el" path="res://engine/components/hud/hud.tscn" id="11_qby6n"]
+[ext_resource type="Script" uid="uid://b8yydtvt64i62" path="res://engine/components/hud/hud.gd" id="12_vdgqc"]
+[ext_resource type="FontFile" uid="uid://b1pi0t5byork2" path="res://engine/components/hud/hud_font.fnt" id="13_gjsoe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnhfm"]
+texture = ExtResource("10_i1g0y")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_8v53q"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 112
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_xnhfm")
+
+[node name="D271-2" type="Node2D"]
+script = ExtResource("1_n162v")
+completion_music = ExtResource("2_gjsoe")
+metadata/_custom_type_script = "uid://dh7ob1sbo8lx7"
+
+[node name="MusicLoader" type="Node" parent="." instance=ExtResource("3_l45qs")]
+script = ExtResource("4_qq647")
+
+[node name="Player" type="CharacterBody2D" parent="." instance=ExtResource("5_1ergg")]
+position = Vector2(80, 400)
+collision_mask = 16
+slide_on_ceiling = false
+floor_max_angle = 0.837758
+floor_snap_length = 12.0
+platform_on_leave = 2
+script = ExtResource("6_sosnx")
+gravity_scale = 1.0
+max_falling_speed = 500.0
+
+[node name="PlayerCamera2D" type="Camera2D" parent="."]
+editor_draw_screen = false
+script = ExtResource("7_ehl3o")
+metadata/_edit_lock_ = true
+
+[node name="CameraArea" type="Control" parent="." instance=ExtResource("8_4j5cy")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 11008.0
+offset_bottom = 480.0
+script = ExtResource("9_uibmd")
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_8v53q")
+navigation_enabled = false
+
+[node name="HUD" type="CanvasLayer" parent="." instance=ExtResource("11_qby6n")]
+script = ExtResource("12_vdgqc")
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 370.0
+offset_top = 16.0
+offset_right = 445.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("13_gjsoe")
+text = "WORLD
+d271-2"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -100
+metadata/_edit_lock_ = true
