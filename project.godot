@@ -11,13 +11,12 @@ config_version=5
 [application]
 
 config/name="Mario Forever: Party Worlds Reimagined"
-config/version="1.3"
 run/main_scene="uid://bvsf4hcgm2vav"
 config/project_settings_override="user://boot.thss"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://cfs011efm6bq7"
-config/icon="res://taskbar.png"
+config/icon="uid://dq71vq3sm2ji6"
 config/windows_native_icon="res://taskbar.ico"
 boot_splash/minimum_display_time=75
 thunder_settings/save_game_room_path="res://stages/main/save_game_room_pw.tscn"

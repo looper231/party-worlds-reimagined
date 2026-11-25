@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dpmk8p0lknr8p"]
+[gd_scene load_steps=36 format=4 uid="uid://dpmk8p0lknr8p"]
 
 [ext_resource type="Script" uid="uid://bj7kkt8d3ximu" path="res://stages/main/credits/credits_pw.gd" id="1_enqoa"]
 [ext_resource type="PackedScene" uid="uid://d3srfe2r6fg2u" path="res://engine/objects/core/music_loader/music_loader.tscn" id="2_x2rqg"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://csgqeq5qdnl8m" path="res://stages/main/credits/sections/section_skintouhou.tscn" id="26_c0vol"]
 [ext_resource type="PackedScene" uid="uid://cdx3w1fqaokwx" path="res://stages/main/credits/sections/section_skintails.tscn" id="27_h8ywc"]
 [ext_resource type="PackedScene" uid="uid://c1vawpag2sccp" path="res://stages/main/credits/sections/section_music.tscn" id="28_jc6ks"]
-[ext_resource type="PackedScene" uid="uid://c5ulnyl1dldq6" path="res://stages/main/credits/sections/section_touhou.tscn" id="29_4aejj"]
 [ext_resource type="PackedScene" uid="uid://2xrnuovntj0" path="res://stages/main/credits/sections/section_graphics4.tscn" id="30_wwkhl"]
 [ext_resource type="PackedScene" uid="uid://ctwlpb8pv7yal" path="res://stages/main/credits/sections/section_sounds.tscn" id="31_rgh74"]
 [ext_resource type="PackedScene" uid="uid://c8vf0eiobdkfu" path="res://stages/main/credits/sections/section_dev1.tscn" id="32_mn3ds"]
@@ -47,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_enqoa")
-credits_section_list = [NodePath("Section0"), NodePath("SectionLead"), NodePath("SectionLevel"), NodePath("SectionFinalBoss"), NodePath("SectionMap"), NodePath("SectionGraphics1"), NodePath("SectionGraphics2"), NodePath("SectionGraphics3"), NodePath("SectionGraphics4"), NodePath("SectionMusic"), NodePath("SectionSounds"), NodePath("SectionTouhou"), NodePath("SectionEngine"), NodePath("SectionSkinTouhou"), NodePath("SectionSkinTails"), NodePath("SectionSpecialThanks"), NodePath("SectionDev1"), NodePath("SectionDev1Part2"), NodePath("SectionDev2"), NodePath("SectionDev2P2")]
+credits_section_list = [NodePath("Section0"), NodePath("SectionLead"), NodePath("SectionLevel"), NodePath("SectionFinalBoss"), NodePath("SectionMap"), NodePath("SectionGraphics1"), NodePath("SectionGraphics2"), NodePath("SectionGraphics3"), NodePath("SectionGraphics4"), NodePath("SectionMusic"), NodePath("SectionSounds"), NodePath("SectionEngine"), NodePath("SectionSkinTouhou"), NodePath("SectionSkinTails"), NodePath("SectionSpecialThanks"), NodePath("SectionDev1"), NodePath("SectionDev1Part2"), NodePath("SectionDev2"), NodePath("SectionDev2P2")]
 metadata/_edit_lock_ = true
 
 [node name="MusicLoader" parent="." instance=ExtResource("2_x2rqg")]
@@ -322,10 +321,6 @@ metadata/_edit_lock_ = true
 visible = false
 metadata/_edit_lock_ = true
 
-[node name="SectionTouhou" parent="." instance=ExtResource("29_4aejj")]
-visible = false
-metadata/_edit_lock_ = true
-
 [node name="SectionGraphics4" parent="." instance=ExtResource("30_wwkhl")]
 visible = false
 metadata/_edit_lock_ = true
@@ -338,16 +333,16 @@ metadata/_edit_lock_ = true
 visible = false
 metadata/_edit_lock_ = true
 
-[node name="SectionDev2" parent="." instance=ExtResource("33_b5mgi")]
-visible = false
-metadata/_edit_lock_ = true
-
 [node name="SectionDev1Part2" parent="." instance=ExtResource("35_knuph")]
 visible = false
 
-[node name="SectionSpecialThanks" parent="." instance=ExtResource("34_mcpje")]
+[node name="SectionDev2" parent="." instance=ExtResource("33_b5mgi")]
 visible = false
 metadata/_edit_lock_ = true
 
 [node name="SectionDev2P2" parent="." instance=ExtResource("36_jabwq")]
 visible = false
+
+[node name="SectionSpecialThanks" parent="." instance=ExtResource("34_mcpje")]
+visible = false
+metadata/_edit_lock_ = true

@@ -1066,8 +1066,8 @@ profile_name = "gensokyo"
 level_count = {
 1: 4
 }
-map_scene_template = "res://stages/extra/d271/map.tscn"
-map_scene_template_2 = "res://stages/extra/d271/map.tscn"
+map_scene_template = "res://stages/extra/d271/map_d271.tscn"
+map_scene_template_2 = "res://stages/extra/d271/map_d271.tscn"
 level_scene_template = "res://stages/extra/d271/d271-{1}.tscn"
 reset_node_path = NodePath("../../ResetD271")
 force_disable_level_save = false
