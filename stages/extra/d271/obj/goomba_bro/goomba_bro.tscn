@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckks7u5g2r7jo"]
+[gd_scene load_steps=24 format=3 uid="uid://ckks7u5g2r7jo"]
 
 [ext_resource type="Script" uid="uid://dmcn56u26b38a" path="res://engine/objects/enemies/hammer_bros/hammer_bro_base.gd" id="1_q7e8n"]
 [ext_resource type="PackedScene" uid="uid://cb5bu6hsd4l5n" path="res://stages/extra/d271/obj/goomba_bro/goomba_thrown.tscn" id="2_4n4qj"]
@@ -16,6 +16,7 @@
 [sub_resource type="Resource" id="Resource_f3ny6"]
 script = ExtResource("4_v1ict")
 creation_nodepack = ExtResource("2_4n4qj")
+creation_force_sibling = false
 trans_offset = Vector2(0, 0)
 trans_inheritances = 6
 trans_rotation = 0.0
@@ -37,6 +38,7 @@ size = Vector2(32, 40)
 resource_local_to_scene = true
 script = ExtResource("4_v1ict")
 creation_nodepack = ExtResource("6_dhxji")
+creation_force_sibling = false
 trans_offset = Vector2(0, 0)
 trans_inheritances = 7
 trans_rotation = 0.0
@@ -110,6 +112,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqtqs"]
+size = Vector2(32, 32)
+
 [node name="GoombaBro" type="CharacterBody2D" groups=["koopa_bro"]]
 collision_layer = 2
 collision_mask = 32
@@ -175,6 +180,15 @@ autostart = true
 [node name="Jump" type="Timer" parent="."]
 wait_time = 0.24
 autostart = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+enabled = false
+shape = SubResource("RectangleShape2D_sqtqs")
+target_position = Vector2(0, 0)
+max_results = 2
+collision_mask = 32
 
 [connection signal="killed_succeeded" from="Body/EnemyAttacked" to="." method="queue_free"]
 [connection signal="killed_succeeded" from="Body/EnemyAttacked" to="Sprite" method="set_speed_scale" binds= [0.0]]
