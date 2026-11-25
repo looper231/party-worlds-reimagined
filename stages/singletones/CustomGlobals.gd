@@ -52,22 +52,68 @@ func load_unlockables_status() -> void:
 		if key == "debug": return
 		var chosen_profile = ProfileManager.profiles[key]
 		# Checks if the save file given is an old file.
-		if chosen_profile.data.get("unlock_fancy_credits") == null:
-			# This means that the save file is new.
-			if chosen_profile.has_completed_world("10"):
+		if chosen_profile.data.has(&"unlock_fancy_credits"):
+			if chosen_profile.data.unlock_fancy_credits and check_if_old_save_complete(chosen_profile):
 				unlock_fancy_credits = true
-		else:
-			# This means that the save file is not old.
-			var has_completed_all_worlds: bool = true
-			for world_number in range(1, 10):
-				if not chosen_profile.has_completed_world(str(world_number)):
-					has_completed_all_worlds = false
-			if chosen_profile.data.get("unlock_fancy_credits") == true and has_completed_all_worlds:
+			else:
+				chosen_profile.data.erase("unlock_fancy_credits")
+				ProfileManager.save_profile_data(chosen_profile.name, chosen_profile.data)
+	return
+
+func convert_all_saves() -> void:
+	for key in ProfileManager.profiles:
+		if key == "debug": return
+		var chosen_profile = ProfileManager.profiles[key]
+		if chosen_profile.data.has(&"unlock_fancy_credits"):
+			if check_if_old_save_complete(chosen_profile):
 				chosen_profile.complete_world("10")
-				unlock_fancy_credits = true
-			chosen_profile.data.unlock_fancy_credits = null
+				chosen_profile.data.star_numbers = "10-4"
+				chosen_profile.data.star_world = true
+			chosen_profile.data.erase("unlock_fancy_credits")
 			ProfileManager.save_profile_data(chosen_profile.name, chosen_profile.data)
 	return
+
+func check_if_old_save_complete(save_profile) -> bool:
+	var level_max: int
+	var world_str: String
+	var level_file_str: String
+	for world_num in range(1, 11):
+		if save_profile.get_next_level_name() != "10-4":
+			return false
+		if save_profile.get_world_numbers() != "10-4":
+			return false
+		if world_num <= 9 and not save_profile.has_completed_world(str(world_num)):
+			return false
+		if world_num >= 10 and save_profile.has_completed_world(str(world_num)):
+			return false
+		
+		if world_num in [2, 7, 8, 9]:
+			level_max = 3
+		elif world_num in [4, 6]:
+			level_max = 5
+		elif world_num == 5:
+			if not save_profile.has_completed("res://stages/world_5/levelpartyworld5.tscn"):
+				return false
+			continue
+		else:
+			level_max = 4
+		
+		if world_num >= 10: world_str = "world_final"
+		else: world_str = "world_" + str(world_num)
+		
+		for level_num in range(1, level_max + 1):
+			level_file_str = "res://stages/{worldname}/{worldnum}-{levelnum}".format(
+				[
+					["worldname", world_str], ["worldnum", world_num], ["levelnum", level_num]
+				]
+			)
+			if world_num >= 10 and level_num >= 4:
+				level_file_str += "_boss"
+			level_file_str += ".tscn"
+			
+			if not save_profile.has_completed(level_file_str):
+				return false
+	return true
 
 var boss_should_give_pity: bool = true
 

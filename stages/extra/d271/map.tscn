@@ -99,6 +99,7 @@ space_name = 1
 dot_texture = ExtResource("23_bu02s")
 x_texture = ExtResource("24_m5yu0")
 draw_dots = true
+progress_title_level = "d271 - {1}"
 metadata/_edit_lock_ = true
 
 [node name="MapPlayerMarker9" type="Marker2D" parent="MarkerSpace"]

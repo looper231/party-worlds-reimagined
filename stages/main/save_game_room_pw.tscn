@@ -1056,18 +1056,17 @@ collision_mask = 0
 script = ExtResource("32_dc2yg")
 secrets_conditionals = Array[String](["main clear"])
 achievements_to_unlock = Array[String](["D271World", "D271NoDeath"])
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="PipeIn" parent="Extras/D271Unlock" instance=ExtResource("28_cenxx")]
 position = Vector2(0, -80)
 script = ExtResource("19_8x5mf")
-profile_name = "gensokyo"
+profile_name = "d271"
 level_count = {
 1: 4
 }
-map_scene_template = "res://stages/extra/d271/map_d271.tscn"
-map_scene_template_2 = "res://stages/extra/d271/map_d271.tscn"
+map_scene_template = "res://stages/extra/d271/map.tscn"
+map_scene_template_2 = "res://stages/extra/d271/map.tscn"
 level_scene_template = "res://stages/extra/d271/d271-{1}.tscn"
 reset_node_path = NodePath("../../ResetD271")
 force_disable_level_save = false
@@ -1075,7 +1074,6 @@ set_data_to_profile = ""
 allow_selecting_worlds = false
 allow_selecting_completed_levels = false
 no_applicable_text = true
-warp_to_scene = "uid://k5q4u8vwb6xx"
 warping_sound = ExtResource("29_fo23o")
 use_circle_transition = true
 circle_closing_speed = 0.03
